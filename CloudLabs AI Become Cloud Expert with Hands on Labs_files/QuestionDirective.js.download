@@ -1,0 +1,43 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .directive('question', question);
+
+    question.$inject = ['$compile', '$templateRequest'];
+    //Question directive
+    function question($compile, $templateRequest) {
+
+        var controller = function ($scope) {
+            //console.log($scope);
+            $scope.question = $scope.datasource.Question;
+            $scope.options = $scope.datasource.Options;
+            if ($scope.datasource.Type === "rating") {
+                $scope.options.sort(function (a, b) {
+                    return a.Value < b.Value;
+                });
+            }
+            $scope.qID = $scope.datasource.Id;
+        };
+
+        var linker = function (scope, element, attrs) {
+            //Load template dynamically according to kind of question
+            $templateRequest('App/Views/Templates/' + attrs.questiontype + '.html').then(function (template) {
+                //Bind loaded template to view
+                element.html(template).show();
+                $compile(element.contents())(scope);
+            })
+                .catch(function (error) { console.log(error); });
+        };
+
+        return {
+            restrict: 'EA',
+            scope: {
+                datasource: '=',
+                value: '&'
+            },
+            controller: controller,
+            link: linker
+        };
+    }
+})();

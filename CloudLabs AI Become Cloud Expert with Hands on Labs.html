@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" ng-style="{&#39;overflow-y&#39; : $root.overflow }" role="main"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    <title>CloudLabs AI  Become Cloud Expert with Hands on Labs</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="Microsoft Cloud Workshops, from Spektra Systems" name="description">
+    <meta content="Microsoft Azure Partner Solutions Training, from Spektra Systems" name="description">
+    <meta content="Microsoft, Azure, Training, Cloud labs" name="keywords">
+    <meta content="Spektra Systems" name="author">
+    <meta property="og:site_name" content="Microsoft Cloud Workshops">
+    <meta property="og:title" content="Microsoft Cloud Workshops">
+    <meta property="og:description" content="Microsoft Cloud Workshops, from Spektra Systems">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
+    <link rel="shortcut icon" href="https://manage.cloudlabs.ai//favicon.ico">
+    <!-- Fonts START -->
+    <style>
+        html * {
+            font-family: 'Segoe UI Condensed','Segoe UI','Segoe WP', 'Tahoma', 'Arial', sans-serif;
+        }
+    </style>
+    <!-- Fonts END -->
+    <link rel="stylesheet" href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/loading-bar.css" type="text/css" media="all">
+    <!-- Global styles START -->
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/bootstrap.min.css" rel="stylesheet">
+    <!-- Global styles END -->
+    <!-- Page level plugin styles START -->
+    <!--<link href="assets/pages/css/animate.css" rel="stylesheet">-->
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/jquery.fancybox.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/owl.carousel.css" rel="stylesheet">
+    <!-- Page level plugin styles END -->
+    <!-- Theme styles START -->
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/main.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/payment.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/components-md.min.css" rel="stylesheet">
+    <!--<link href="assets/pages/css/slider.css" rel="stylesheet">-->
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/layout.min.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/style.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/style-responsive.css" rel="stylesheet">
+    <!--<link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">-->
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/custom.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/toaster.css" rel="stylesheet">
+    <link href="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ng-table.min.css" rel="stylesheet">
+    <!-- Theme styles END -->
+    <script async="" src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/analytics.js.download"></script><script type="text/javascript">var appInsights = window.appInsights || function (config) { function i(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = "AuthenticatedUserContext", h = "start", c = "stop", l = "Track", a = l + "Event", v = l + "Page", y = u.createElement(o), r, f; y.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js"; u.getElementsByTagName(o)[0].parentNode.appendChild(y); try { t.cookie = u.cookie } catch (p) { } for (t.queue = [], t.version = "1.0", r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; r.length;) i("track" + r.pop()); return i("set" + s), i("clear" + s), i(h + a), i(c + a), i(h + v), i(c + v), i("flush"), config.disableExceptionTracking || (r = "onerror", i("_" + r), f = e[r], e[r] = function (config, i, u, e, o) { var s = f && f(config, i, u, e, o); return s !== !0 && t["_" + r](config, i, u, e, o), s }), t }({ instrumentationKey: "3062fa00-2d3f-43db-929f-4c47cf3303fe" }); window.appInsights = appInsights;</script><script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ai.0.js.download"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    </script>
+
+</head>
+<body ng-app="cloudsandbox.studentportal" ng-controller="AppController" class="corporate ng-scope" ng-style="{&#39;overflow-y&#39; : $root.overflow }" style="overflow-y: hidden;">
+    <!--<div ng-include="'App/Views/Shared/header.html'"></div>-->
+    <div>
+        <!-- ngIf: $root.showHeader -->
+    </div>
+    <!-- uiView: --><div ui-view="" class="ng-scope" style=""><!-- uiView: --><div class="main ng-scope" ui-view="" autoscroll="true" style=""><div class="git-doc-main-content ng-scope">
+    <div class="gitview">
+        <div class="labheader">
+            <div class="gitview-header-container">
+                <!-- ngIf: githubMaster.Name != null -->
+                <!-- ngIf: githubMaster.Name == null --><div class="gitview-header ng-binding ng-scope" ng-bind="githubMaster.EventName" role="heading" aria-level="1" ng-if="githubMaster.Name == null">Migrating SQL database to Azure</div><!-- end ngIf: githubMaster.Name == null -->
+                <!-- ngIf: EnvironmentStatus !== 'EndPage' --><div class="gitview-remaining-time-display ng-binding ng-scope" role="heading" aria-level="2" ng-if="EnvironmentStatus !== &#39;EndPage&#39;">15 hour(s), 54 minute(s) remaining</div><!-- end ngIf: EnvironmentStatus !== 'EndPage' -->
+                <a role="button" style="margin-top:4px;" href="https://manage.cloudlabs.ai//" aria-label="Navigate to docs file" ng-click="openDocumentInTab()" class="fa fa-external-link gitview-menu open-document-right ng-hide" ng-show="docActions"></a>
+                <!--<a href="" role="link" aria-label="Document" ><div class="glyphicon glyphicon-menu-hamburger gitview-menu" ng-click="toggleDocument()" ng-show="docActions"></div></a>-->
+                <!--<a href="" role="link" aria-label="Navigate to docs file" ng-click="openDocumentInTab()" class=" fa fa-external-link gitview-menu open-document-right" ng-show="docActions"></a>-->
+                <a href="https://manage.cloudlabs.ai//" style="margin-top:2px;" role="button" aria-label="Minimize" class="glyphicon glyphicon-minus gitview-menu ng-hide" ng-click="toggleDocument()" ng-show="docActions"></a>
+            </div>
+            <ul class="nav nav-tabs gitview-navigation-tabs" ng-hide="showSurvey">
+                <!--Lab Guide Tab-->
+                <li class="active">
+                    <a role="link" aria-label="Lab Guide" aria-expanded="true" href="https://manage.cloudlabs.ai//" data-toggle="tab" data-target="#labDoc" ng-click="heightAdjust(&#39;labDoc&#39;)">
+                        <!-- ngIf: EnvironmentStatus !='EndPage' --><span ng-if="EnvironmentStatus !=&#39;EndPage&#39;" class="ng-binding ng-scope">Lab Guide</span><!-- end ngIf: EnvironmentStatus !='EndPage' -->
+                        <!--<span ng-if="EnvironmentStatus =='EndPage'">Call To Action</span>-->
+                    </a>
+                </li>
+                <!--Environment Details Tab-->
+                <!-- ngIf: EnvironmentStatus !== 'EndPage' --><li ng-if="EnvironmentStatus !== &#39;EndPage&#39;" class="ng-scope">
+                    <a role="link" aria-label="Environment Detail" aria-expanded="false" href="https://manage.cloudlabs.ai//" data-toggle="tab" data-target="#labDetails" ng-click="heightAdjust(&#39;labDetails&#39;)">
+                        <span class="ng-binding">Environment Details</span>
+                    </a>
+                </li><!-- end ngIf: EnvironmentStatus !== 'EndPage' -->
+            </ul>
+            <div class="feedback-hero ng-hide" style="background-color:#3A72C6; margin-top:0px !important; height:42px;" ng-hide="!showSurvey">
+                <div class="row" style="margin:0px;">
+                    <div class="feedback-hero-content center-text" style="background-color:#3A72C6;color:white; margin-top:3px !important; ">
+                        <h3 style="color:white" class="ng-binding"></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" style="overflow: hidden scroll; height: 723px;" ng-style="{height:heightWithoutFooter}">
+            <!-- ngIf: showSurvey -->
+            <div class="tab-pane active in" id="labDoc">
+                <!-- ngIf: EnvironmentStatus !='EndPage' --><div ng-if="EnvironmentStatus !=&#39;EndPage&#39;" class="ng-scope">
+
+                    <div class="row git-doc-main-content" ng-hide="showSurvey">
+                        <div class="col-lg-12 col-md-12 col-sm-12 git-remove-passing">
+                            <div role="flatdoc" class="htmlCode" bind-html-compile="" aria-hidden="true">
+                                <!--<div class='header'>
+                            <div class='left'>
+                                <h1 role='flatdoc-title'></h1>
+                            </div>
+                        </div>-->
+                                <div role="flatdoc" class="content-root ng-scope" aria-hidden="true">
+                                    <!--<div class='menubar'>
+                                <div class='menu section' role='flatdoc-menu'></div>
+                            </div>-->
+                                    <div role="flatdoc-content" class="git-doc-content" aria-hidden="true"><p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ms-cloud-workshop.png" alt="Microsoft Cloud Workshops" title="Microsoft Cloud Workshops" style="max-width: 100%;"></p><div class="MCWHeader1">
+Migrating SQL databases to Azure
+</div><div class="MCWHeader2">
+Hands-on lab step-by-step guide
+</div><div class="MCWHeader3">
+June 2019
+</div><p>Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.</p><p>Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.</p><p>The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.</p><p>© 2019 Microsoft Corporation. All rights reserved.</p><p>Microsoft and the trademarks listed at <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx" tabindex="-1" target="_blank">https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx</a> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.</p><p><strong>Contents</strong></p><ul>
+<li>Migrating SQL databases to Azure hands-on lab step-by-step<ul>
+<li>Abstract and learning objectives</li>
+<li>Overview</li>
+<li>Solution architecture</li>
+<li>Requirements</li>
+<li>Exercise 1: Perform database assessments<ul>
+<li>Task 1: Restore the TailspinToys database on the SqlServer2008 VM</li>
+<li>Task 2: Perform assessment for migration to Azure SQL Database</li>
+<li>Task 3: Perform assessment for migration to Azure SQL Database Managed Instance</li>
+</ul>
+</li>
+<li>Exercise 2: Migrate the database to SQL MI<ul>
+<li>Task 1: Create an SMB network share on the SqlServer2008 VM</li>
+<li>Task 2: Change MSSQLSERVER service to run under sqlmiuser account</li>
+<li>Task 3: Create backup of TailspinToys database</li>
+<li>Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information</li>
+<li>Task 5: Create a service principal</li>
+<li>Task 6: Create and run an online data migration project</li>
+<li>Task 7: Perform migration cutover</li>
+<li>Task 8: Verify database and transaction log migration</li>
+</ul>
+</li>
+<li>Exercise 3: Update the web application to use the new SQL MI database<ul>
+<li>Task 1: Deploy the web app to Azure</li>
+<li>Task 2: Update App Service configuration</li>
+</ul>
+</li>
+<li>Exercise 4: Integrate App Service with the virtual network<ul>
+<li>Task 1: Set point-to-site addresses</li>
+<li>Task 2: Configure VNet integration with App Services</li>
+<li>Task 3: Open the web application</li>
+</ul>
+</li>
+<li>Exercise 5: Improve database security posture with Advanced Data Security<ul>
+<li>Task 1: Enable Advanced Data Security</li>
+<li>Task 2: Configure SQL Data Discovery and Classification</li>
+<li>Task 3: Review Advanced Data Security Vulnerability Assessment</li>
+</ul>
+</li>
+<li>Exercise 6: Enable Dynamic Data Masking<ul>
+<li>Task 1: Enable DDM on credit card numbers</li>
+<li>Task 2: Apply DDM to email addresses</li>
+</ul>
+</li>
+<li>Exercise 7: Use online secondary for read-only queries<ul>
+<li>Task 1: View Leaderboard report in TailspinToys web application</li>
+<li>Task 2: Update read only connection string</li>
+<li>Task 3: Reload Leaderboard report in the Tailspin Toys web app</li>
+<li>Task 1: Delete Azure resource groups</li>
+<li>Task 2: Delete the tailspin-toys service principal</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h1 id="migrating-sql-databases-to-azure-hands-on-lab-step-by-step">Migrating SQL databases to Azure hands-on lab step-by-step</h1><h2 id="abstract-and-learning-objectives">Abstract and learning objectives</h2><p>In this hands-on lab, you will implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Database Managed Instance (SQL MI). You will perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You will then migrate the customer’s on-premises gamer information web application and database into Azure, with minimal to no down-time. Finally, you will enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer’s application.</p><p>At the end of this hands-on lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.</p><h2 id="overview">Overview</h2><p>Tailspin Toys is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.</p><p>Adding online gameplay has greatly increased popularity of their games, but the rapid increase in demand for their services has made supporting the current setup problematic. To facilitate online gameplay, they host gaming services on-premises using rented hardware. For each game, their gaming services setup consists of three virtual machines running the gaming software and five game databases hosted on a single SQL Server 2008 R2 instance. In addition to the dedicated gaming VMs and databases, they also host authentication and gateway VMs and databases, which are shared by all their games. At its foundation, Tailspin Toys is a game development company, made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with their ever-increasing workload.</p><p>Tailspin Toys is hoping that migrating their services from on-premises to the cloud can help to alleviate some of their infrastructure management issues, while simultaneously helping them to refocus their efforts on delivering business value by releasing new and improved games. They are looking for a proof-of-concept (PoC) for migrating their gamer information web application and database into the cloud. They maintain their gamer information database, <code>TailspinToys</code>, on an on-premises SQL Server 2008 R2 database. This system is used by gamers to update their profiles, view leader boards, purchase game add-ons and more. Since this system helps to drive revenue, it is considered a business-critical application, and needs to be highly-available. They are aware that SQL Server 2008 R2 is approaching end of support, and are looking at options for migrating this database into Azure. They have read about some of the advanced security and performance tuning options that are available only in Azure and would prefer to a migrate the database into a platform-as-a-service (PaaS) offering, if possible. Tailspin Toys is using the Service Broker feature of SQL Server for messaging within the <code>TailspinToys</code> database. This functionality is being used for several critical processes, and they cannot afford to lose this capability when migrating their operations database to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the solution to use an alternative message broker.</p><h2 id="solution-architecture">Solution architecture</h2><p>Below is a diagram of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.</p><p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/preferred-solution-architecture.png" alt="This solution diagram includes a virtual network containing SQL MI in a isolated subnet, along with a JumpBox VM and Database Migration Service in a management subnet. The MI Subnet displays both the primary managed instance, along with a read-only replica, which is accessed by reports from the web app. The web app connects to SQL MI via a subnet gateway and point-to-site VPN. The web app is published to App Services using Visual Studio 2019. An online data migration is conducted from the on-premises SQL Server to SQL MI using the Azure Database Migration Service, which reads backup files from an SMB network share." title="Preferred Solution diagram" style="max-width: 100%;"></p><p>The solution begins with using the Microsoft Data Migration Assistant to perform assessments of feature parity and compatibility of the on-premises SQL Server 2008 R2 database against both Azure SQL Database (Azure SQL DB) and Azure SQL Database Managed Instance (SQL MI), with the goal of migrating the <code>TailspinToys</code> database into an Azure PaaS offering with minimal or no changes. After completing the assessments and reviewing the findings, the SQL Server 2008 R2 database is migrated into SQL MI using the Azure Database Migration Service’s online data migration option. This allows the database to be migrated with little to no downtime, by using a backup and transaction logs stored in an SMB network share.</p><p>The web app is deployed to an Azure App Service Web App using Visual Studio 2019. Once the database has been migrated and cutover, the <code>TailspinToysWeb</code> application is configured to talk to the SQL MI VNet through a virtual network gateway using point-to-site VPN, and its connection strings are updated to point to the new SQL MI database.</p><p>In SQL MI, several features of Azure SQL Database are examined. Advanced Data Security (ADS) is enabled and Data Discovery and Classification is used to better understand the data and potential compliance issues with data in the database. The ADS Vulnerability Assessment is used to identify potential security vulnerabilities and issues in the database, and those finding are used to mitigate one finding by enabling Transparent Data Encryption in the database. Dynamic Data Masking (DDM) is used to prevent sensitive data from appearing when querying the database. Finally, Read Scale-out is used to point reports on the Tailspin Toys web app to a read-only secondary, allowing reporting to occur without impacting the performance of the primary database.</p><h2 id="requirements">Requirements</h2><ul>
+<li>Microsoft Azure subscription must be pay-as-you-go or MSDN.<ul>
+<li>Trial subscriptions will not work.</li>
+<li>Rights to create an Azure Active Directory application and service principal and assign roles on your subscription.</li>
+</ul>
+</li>
+<li>A virtual machine configured with Visual Studio Community 2019 or higher (setup in the Before the hands-on lab exercises).</li>
+</ul><h2 id="exercise-1-perform-database-assessments">Exercise 1: Perform database assessments</h2><p>Duration: 30 minutes</p><p>In this exercise, you will use the Microsoft Data Migration Assistant (DMA) to perform assessments on the <code>TailspinToys</code> database. You will create two assessments, one for a migration to Azure SQL Database, and then a second for SQL MI. These assessments will provide reports about any feature parity and compatibility issues between the on-premises database and the Azure managed SQL database service options.</p><blockquote>
+<p>DMA helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. DMA recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server. To learn more, read the <a href="https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current" tabindex="-1" target="_blank">Data Migration Assistant documentation</a>.</p>
+</blockquote><h3 id="exercise-1-perform-database-assessments-task-1-restore-the-tailspintoys-database-on-the-sqlserver2008-vm">Task 1: Restore the TailspinToys database on the SqlServer2008 VM</h3><p>Before you begin the assessments, you need to restore a copy of the <code>TailspinToys</code> database in your SQL Server 2008 R2 instance. In this task, you will create an RDP connection to the SqlServer2008 VM and then restore the <code>TailspinToys</code> database onto the SQL Server 2008 R2 instance using a backup provided by Tailspin Toys.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, navigate to your <strong>SqlServer2008</strong> VM by selecting <strong>Resource groups</strong> from the left-hand navigation menu, selecting the <strong>ODL-migrate-sql-xxxxxx</strong> resource group, and selecting the <strong>SqlServer2008</strong> VM from the list of resources. On the SqlServer2008 Virtual Machine’s <strong>Overview</strong> blade, select <strong>Connect</strong> on the top menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/connect-sqlserver2008.png" alt="The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu." title="Connect to SqlServer2008 VM" style="max-width: 100%;"></p>
+</li>
+<li><p>On the Connect to virtual machine blade, select <strong>Download RDP File</strong>, then open the downloaded RDP file.</p>
+</li>
+<li><p>Select <strong>Connect</strong> on the Remote Desktop Connection dialog.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/remote-desktop-connection-sql-2008.png" alt="In the Remote Desktop Connection Dialog Box, the Connect button is highlighted." title="Remote Desktop Connection dialog" style="max-width: 100%;"></p>
+</li>
+<li><p>Enter the following credentials when prompted, and then select <strong>OK</strong>:</p>
+<ul>
+<li><strong>Username</strong>: sqlmiuser</li>
+<li><p><strong>Password</strong>: Password.1234567890</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/rdc-credentials-sql-2008.png" alt="The credentials specified above are entered into the Enter your credentials dialog." title="Enter your credentials" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Yes</strong> to connect, if prompted that the identity of the remote computer cannot be verified.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/remote-desktop-connection-identity-verification-sqlserver2008.png" alt="In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled." title="Remote Desktop Connection dialog" style="max-width: 100%;"></p>
+</li>
+<li><p>Once logged into the SqlServer2008 VM, <strong>download</strong> a <a href="https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak" tabindex="-1" target="_blank">backup of the TailspinToys database</a>, <strong>then you must rename this database file name such as TailspinToys+yourName: example: TailSpinToysJohn</strong> and save it to the <code>C:\</code> of the VM.</p>
+<p><strong>Note</strong>: Now your database file name sould not be <strong><em>TailspinToys</em></strong>. </p>
+</li>
+<li><p>Next, open <strong>Microsoft SQL Server Management Studio 17</strong> by entering “sql server” into the search bar in the Windows Start menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/start-menu-ssms-17.png" alt="SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results." title="Windows start menu search" style="max-width: 100%;"></p>
+</li>
+<li><p>In the SSMS <strong>Connect to Server</strong> dialog, enter <strong>SQLSERVER2008</strong> into the Server name box, ensure <strong>Windows Authentication</strong> is selected, and then select <strong>Connect</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-server-connect-to-server.png" alt="The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected." title="Connect to Server" style="max-width: 100%;"></p>
+</li>
+<li><p>Once connected, right-click <strong>Databases</strong> under SQLSERVER2008 in the Object Explorer, and then select <strong>Restore Database</strong> from the context menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-databases-restore.png" alt="In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted." title="SSMS Object Explorer" style="max-width: 100%;"></p>
+</li>
+<li><p>You will now restore the <code>TailspinToys</code> (your database name) database using the downloaded <code>TailspinToys.bak</code> file. On the <strong>General</strong> page of the Restore Database dialog, select <strong>Device</strong> under Source, and then select the Browse (…) button to the right of the Device box.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-restore-database-source.png" alt="Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted." title="Restore Database source" style="max-width: 100%;"></p>
+</li>
+<li><p>In the <strong>Select backup devices</strong> dialog that appears, select <strong>Add</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-restore-database-select-devices.png" alt="In the Select backup devices dialog, the Add button is highlighted." title="Select backup devices" style="max-width: 100%;"></p>
+</li>
+<li><p>In the <strong>Locate Backup File</strong> dialog, browse to the location you saved the downloaded <code>TailspinToys.bak</code> file, select that file, and then select <strong>OK</strong>.</p>
+</li>
+</ol><p><strong>NOTE</strong>: <strong>You must have unique database file name such as</strong> <strong><em>Tailspintoys+YourName</em></strong> as you renamed the database file name after downloading in <strong>Step 6</strong> <strong>so please make sure to use the same database name here as well</strong></p><p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-restore-database-locate-backup-file.png" alt="In the Location Backup File dialog, the TailspinToys.bak file is selected and highlighted." title="Locate Backup File" style="max-width: 100%;"></p><p>13.&nbsp;Select <strong>OK</strong> on the <strong>Select backup devices</strong> dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the <code>TailspinToys</code> database.</p><p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-restore-database.png" alt="The completed Restore Database dialog is displayed, with the TailSpinToys database specified as the target." title="Restore Database" style="max-width: 100%;"></p><p>14.&nbsp;Select <strong>OK</strong> to start the restore.</p><p>15.&nbsp;Select <strong>OK</strong> in the dialog when the database restore is complete.</p><p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-restore-database-success.png" alt="A dialog is displayed with a message that the database TailspinToys was restored successfully." title="Restored successfully" style="max-width: 100%;"></p><p>16.&nbsp;Next, you will execute a script in SSMS, which will reset the <code>sa</code> password, enable mixed mode authentication, enable Service broker, create the <code>WorkshopUser</code> account, and change the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting <strong>New Query</strong> in the SSMS toolbar.</p><p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-new-query.png" alt="The New Query button is highlighted in the SSMS toolbar." title="SSMS Toolbar" style="max-width: 100%;"></p><p>17.&nbsp;Copy and paste the SQL script below into the new query window:</p><pre><code class="lang-sql">   USE master;
+   GO
+
+   -- SET the sa password
+   ALTER LOGIN [sa] WITH PASSWORD=N<span class="string">'Password.<span class="number">1234567980</span>'</span>;
+   GO
+
+   -- Enable Service Broker on the database
+   ALTER DATABASE TailspinToys SET ENABLE_BROKER WITH ROLLBACK immediate;
+   GO
+
+   -- Enable Mixed Mode Authentication
+   EXEC xp_instance_regwrite N<span class="string">'HKEY_LOCAL_MACHINE'</span>,
+   N<span class="string">'Software\Microsoft\MSSQLServer\MSSQLServer'</span>, N<span class="string">'LoginMode'</span>, REG_DWORD, <span class="number">2</span>;
+   GO
+
+   -- Create a login and user named WorkshopUser
+   CREATE LOGIN WorkshopUser WITH PASSWORD = N<span class="string">'Password.<span class="number">1234567890</span>'</span>;
+   GO
+
+   EXEC sp_addsrvrolemember
+       @loginame = N<span class="string">'WorkshopUser'</span>,
+       @rolename = N<span class="string">'sysadmin'</span>;
+   GO
+
+   USE TailspinToys;
+   GO
+
+   IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N<span class="string">'WorkshopUser'</span>)
+   BEGIN
+       CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
+       EXEC sp_addrolemember N<span class="string">'db_datareader'</span>, N<span class="string">'WorkshopUser'</span>
+   END;
+   GO
+
+   -- Update the recovery model of the database to FULL
+   ALTER DATABASE TailspinToys SET RECOVERY FULL;
+   GO</code></pre><p>18.&nbsp;To run the script, select <strong>Execute</strong> from the SSMS toolbar.</p><p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-execute.png" alt="The Execute button is highlighted in the SSMS toolbar." title="SSMS Toolbar" style="max-width: 100%;"></p><p>19.&nbsp;For Mixed Mode Authentication and the new <code>sa</code> password to take effect, you must restart the SQL Server (MSSQLSERVER) Service on the SqlServer2008 VM. To do this, you can use SSMS. Right-click the SQLSERVER2008 instance in the SSMS Object Explorer, and then select <strong>Restart</strong> from the context menu.</p><p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-object-explorer-restart-sqlserver2008.png" alt="In the SSMS Object Explorer, the context menu for the SQLSERVER2008 instance is displayed, and Restart is highlighted." title="Object Explorer" style="max-width: 100%;"></p><p>20.&nbsp;When prompted about restarting the MSSQLSERVER service, select <strong>Yes</strong>. The service will take a few seconds to restart.</p><p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-restart-service.png" alt="The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service." title="Restart MSSQLSERVER service" style="max-width: 100%;"></p><h3 id="exercise-1-perform-database-assessments-task-2-perform-assessment-for-migration-to-azure-sql-database">Task 2: Perform assessment for migration to Azure SQL Database</h3><p>In this task, you will use the Microsoft Data Migration Assistant (DMA) to perform an assessment of the <code>TailspinToys</code> database against Azure SQL Database (Azure SQL DB). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.</p><ol>
+<li><p>On the SqlServer2008 VM, launch DMA from the Windows Start menu by typing “data migration” into the search bar, and then selecting <strong>Microsoft Data Migration Assistant</strong> in the search results.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/windows-start-menu-dma.png" alt="In the Windows Start menu, &quot;data migration&quot; is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results." title="Data Migration Assistant" style="max-width: 100%;"></p>
+</li>
+<li><p>In the DMA dialog, select <strong>+</strong> from the left-hand menu to create a new project.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-new.png" alt="The new project icon is highlighted in DMA." title="New DMA project" style="max-width: 100%;"></p>
+</li>
+<li><p>In the New project pane, set the following:</p>
+<ul>
+<li><strong>Project type</strong>: Select <strong>Assessment</strong></li>
+<li><strong>Project name</strong>: Enter <strong>ToAzureSqlDb</strong></li>
+<li><strong>Source server type</strong>: Select <strong>SQL Server</strong></li>
+<li><p><strong>Target server type</strong>: Select <strong>Azure SQL Database</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-new-project-to-azure-sql-db.png" alt="New project settings for doing an assessment of a migration from SQL Server to Azure SQL Database." title="New project settings" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Create</strong>.</p>
+</li>
+<li><p>On the <strong>Options</strong> screen, ensure <strong>Check database compatibility</strong> and <strong>Check feature parity</strong> are both checked, and then select <strong>Next</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-options.png" alt="Check database compatibility and check feature parity are checked on the Options screen." title="DMA options" style="max-width: 100%;"></p>
+</li>
+<li><p>On the <strong>Sources</strong> screen, enter the following into the <strong>Connect to a server</strong> dialog that appears on the right-hand side:</p>
+<ul>
+<li><strong>Server name</strong>: Enter <strong>SQLSERVER2008</strong>.</li>
+<li><strong>Authentication type</strong>: Select <strong>SQL Server Authentication</strong>.</li>
+<li><strong>Username</strong>: Enter <strong>WorkshopUser</strong></li>
+<li><strong>Password</strong>: Enter <strong>Password.1234567890</strong></li>
+<li><strong>Encrypt connection</strong>: Check this box.</li>
+<li><p><strong>Trust server certificate</strong>: Check this box.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-connect-to-a-server.png" alt="In the Connect to a server dialog, the values specified above are entered into the appropriate fields." title="Connect to a server" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Connect</strong>.</p>
+</li>
+<li><p>On the <strong>Add sources</strong> dialog that appears next, check the box for <strong>TailspinToys</strong> and select <strong>Add</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-add-sources.png" alt="The TailspinToys box is checked on the Add sources dialog." title="Add sources" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Start Assessment</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-start-assessment-to-azure-sql-db.png" alt="Start assessment" title="Start assessment" style="max-width: 100%;"></p>
+</li>
+<li><p>Review the assessment of ability to migrate to Azure SQL DB.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-feature-parity-service-broker-not-supported.png" alt="For a target platform of Azure SQL DB, feature parity shows two features which are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted." title="Database feature parity" style="max-width: 100%;"></p>
+<blockquote>
+<p>The DMA assessment for a migrating the <code>TailspinToys</code> database to a target platform of Azure SQL DB shows two features in use which are not supported. These features, cross-database references and Service broker, will prevent TailspinToys from being able to migrate to the Azure SQL DB PaaS offering without first making changes to their database.</p>
+</blockquote>
+</li>
+</ol><h3 id="exercise-1-perform-database-assessments-task-3-perform-assessment-for-migration-to-azure-sql-database-managed-instance">Task 3: Perform assessment for migration to Azure SQL Database Managed Instance</h3><p>With one PaaS offering ruled out due to feature parity, you will now perform a second assessment. In this task, you will use DMA to perform an assessment of the <code>TailspinToys</code> database against Azure SQL Database Managed Instance (SQL MI). The assessment will provide a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.</p><ol>
+<li><p>To get started, select <strong>+</strong> on the left-hand menu in DMA to create another new project.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-new.png" alt="The new project icon is highlighted in DMA." title="New DMA project" style="max-width: 100%;"></p>
+</li>
+<li><p>In the New project pane, set the following:</p>
+<ul>
+<li><strong>Project type</strong>: Select <strong>Assessment</strong></li>
+<li><strong>Project name</strong>: Enter <strong>ToSqlMi</strong></li>
+<li><strong>Source server type</strong>: Select <strong>SQL Server</strong>.</li>
+<li><p><strong>Target server type</strong>: Select <strong>Azure SQL Database Managed Instance</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-new-project-to-sql-mi.png" alt="New project settings for doing an assessment of a migration from SQL Server to Azure SQL Database Managed Instance." title="New project settings" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Create</strong>.</p>
+</li>
+<li><p>On the <strong>Options</strong> screen, ensure <strong>Check database compatibility</strong> and <strong>Check feature parity</strong> are both checked, and then select <strong>Next</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-options.png" alt="Check database compatibility and check feature parity are checked on the Options screen." title="DMA options" style="max-width: 100%;"></p>
+</li>
+<li><p>On the <strong>Sources</strong> screen, enter the following into the <strong>Connect to a server</strong> dialog that appears on the right-hand side:</p>
+<ul>
+<li><strong>Server name</strong>: Enter <strong>SQLSERVER2008</strong>.</li>
+<li><strong>Authentication type</strong>: Select <strong>SQL Server Authentication</strong>.</li>
+<li><strong>Username</strong>: Enter <strong>WorkshopUser</strong></li>
+<li><strong>Password</strong>: Enter <strong>Password.1234567890</strong></li>
+<li><strong>Encrypt connection</strong>: Check this box.</li>
+<li><p><strong>Trust server certificate</strong>: Check this box.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-connect-to-a-server.png" alt="In the Connect to a server dialog, the values specified above are entered into the appropriate fields." title="Connect to a server" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Connect</strong>.</p>
+</li>
+<li><p>On the <strong>Add sources</strong> dialog that appears next, check the box for <strong>TailspinToys</strong> and select <strong>Add</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-add-sources.png" alt="The TailspinToys box is checked on the Add sources dialog." title="Add sources" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Start Assessment</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-start-assessment-to-sql-mi.png" alt="Start assessment" title="Start assessment" style="max-width: 100%;"></p>
+</li>
+<li><p>Review the assessment of ability to migrate to Azure SQL Database Managed Instance.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dma-feature-parity-sql-mi.png" alt="For a target platform of Azure SQL Database Managed Instance, feature parity with PowerShell job step is listed." title="Database feature parity" style="max-width: 100%;"></p>
+<blockquote>
+<p><strong>Note</strong>: The assessment report for a migrating the <code>TailspinToys</code> database to a target platform of Azure SQL Database Managed Instance shows feature parity only with a PowerShell job step. The step listed is associated with a built-in SQL Server Agent Job, and it will not impact the migration of the <code>TailspinToys</code> database to SQL MI.</p>
+</blockquote>
+</li>
+<li><p>The database, including the cross-database references and Service broker features, can be migrated as is, providing the opportunity for TailspinToys to have a fully managed PaaS database running in Azure. Previously, their options for migrating a database using features, such as Service Broker, incompatible with Azure SQL Database, were to deploy the database to a virtual machine running in Azure (IaaS) or modify their database and applications to not use the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with near 100% compatibility, including the features that prevented them from using Azure SQL Database.</p>
+</li>
+</ol><h2 id="exercise-2-migrate-the-database-to-sql-mi">Exercise 2: Migrate the database to SQL MI</h2><p>Duration: 60 minutes</p><p>In this exercise, you will use the <a href="https://azure.microsoft.com/services/database-migration/" tabindex="-1" target="_blank">Azure Database Migration Service</a> (DMS) to migrate the <code>TailspinToys</code> database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers" tabindex="-1" target="_blank">Business Critical service tier</a>.</p><blockquote>
+<p>The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers" tabindex="-1" target="_blank">Managed Instance service tiers documentation</a>.</p>
+</blockquote><h3 id="exercise-2-migrate-the-database-to-sql-mi-task-1-create-an-smb-network-share-on-the-sqlserver2008-vm">Task 1: Create an SMB network share on the SqlServer2008 VM</h3><p>In this task, you will create a new SMB network share on the SqlServer2008 VM. This will be the folder used by DMS for retrieving backups of the <code>TailspinToys</code> database during the database migration process.</p><ol>
+<li><p>On the SqlServer2008 VM, open <strong>Windows Explorer</strong> by selecting its icon on the Windows Task bar.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/windows-task-bar.png" alt="The Windows Explorer icon is highlighted in the Windows Task Bar." title="Windows Task Bar" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Windows Explorer window, expand <strong>Computer</strong> in the tree view, select <strong>Windows (C:)</strong>, and then select <strong>New folder</strong> in the top menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/windows-explorer-new-folder.png" alt="In Windows Explorer, Windows (C:) is selected under Computer in the left-hand tree view, and New folder is highlighted in the top menu." title="Windows Explorer" style="max-width: 100%;"></p>
+</li>
+<li><p>Name the new folder <strong>dms-backups</strong>, then right-click the folder and select <strong>Share with</strong> and <strong>Specific people</strong> in the context menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/windows-explorer-folder-share-with.png" alt="In Windows Explorer, the context menu for the dms-backups folder is displayed, with Share with and Specific people highlighted." title="Windows Explorer" style="max-width: 100%;"></p>
+</li>
+<li><p>In the File Sharing dialog, ensure the <strong>sqlmiuser</strong> is listed with a <strong>Read/Write</strong> permission level, and then select <strong>Share</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/file-sharing.png" alt="In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write." title="File Sharing" style="max-width: 100%;"></p>
+</li>
+<li><p>In the <strong>Network discovery and file sharing</strong> dialog, select the default value of <strong>No, make the network that I am connected to a private network</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/network-discovery-and-file-sharing.png" alt="In the Network discovery and file sharing dialog, No, make the network that I am connected to a private network is highlighted." title="Network discovery and file sharing" style="max-width: 100%;"></p>
+</li>
+<li><p>Back on the File Sharing dialog, note the path of the shared folder, <code>\\SQLSERVER2008\dms-backups</code>, and select <strong>Done</strong> to complete the sharing process.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/file-sharing-done.png" alt="The Done button is highlighted on the File Sharing dialog." title="File Sharing" style="max-width: 100%;"></p>
+</li>
+</ol><h3 id="exercise-2-migrate-the-database-to-sql-mi-task-2-change-mssqlserver-service-to-run-under-sqlmiuser-account">Task 2: Change MSSQLSERVER service to run under sqlmiuser account</h3><p>In this task, you will use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) to the <code>sqlmiuser</code> account. This is done to ensure the SQL Server service has the appropriate permissions to write backups to the shared folder.</p><ol>
+<li><p>On your SqlServer2008 VM, select the <strong>Start menu</strong>, enter “sql configuration” into the search bar, and then select <strong>SQL Server Configuration Managed</strong> from the search results.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/windows-start-sql-configuration-manager.png" alt="In the Windows Start menu, &quot;sql configuration&quot; is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results." title="Windows search" style="max-width: 100%;"></p>
+<blockquote>
+<p><strong>Note</strong>: Be sure to choose <strong>SQL Server Configuration Manager</strong>, and not <strong>SQL Server 2017 Configuration Manager</strong>, which will not work for the installed SQL Server 2008 R2 database.</p>
+</blockquote>
+</li>
+<li><p>In the SQL Server Configuration Managed dialog, select <strong>SQL Server Services</strong> from the tree view on the left, then right-click <strong>SQL Server (MSSQLSERVER)</strong> in the list of services and select <strong>Properties</strong> from the context menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-server-configuration-manager-services.png" alt="SQL Server Services is selected and highlighted in the tree view of SQL Server Configuration Manager. In the Services pane, SQL Server (MSSQLSERVER) is selected and highlighted. Properties is highlighted in the context menu." title="SQL Server Configuration Manager" style="max-width: 100%;"></p>
+</li>
+<li><p>In the SQL Server (MSSQLSERVER) Properties dialog, select <strong>This account</strong> under Log on as, and enter the following:</p>
+<ul>
+<li><strong>Account name</strong>: <strong>sqlmiuser</strong></li>
+<li><p><strong>Password</strong>: <strong>Password.1234567890</strong></p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-server-service-properties.png" alt="In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered." title="SQL Server (MSSQLSERVER) Properties" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>OK</strong>.</p>
+</li>
+<li><p>Select <strong>Yes</strong> in the Confirm Account Change dialog.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/confirm-account-change.png" alt="The Yes button is highlighted in the Confirm Account Change dialog." title="Confirm Account Change" style="max-width: 100%;"></p>
+</li>
+<li><p>You will now see the <strong>Log On As</strong> value for the SQL Server (MSSQLSERVER) service changed to <code>./sqlmiuser</code>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-server-service.png" alt="In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted." title="SQL Server Services" style="max-width: 100%;"></p>
+</li>
+</ol><h3 id="exercise-2-migrate-the-database-to-sql-mi-task-3-create-backup-of-tailspintoys-database">Task 3: Create backup of TailspinToys database</h3><p>To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you will create a backup of the <code>TailspinToys</code> database using SSMS, and write it to the SMB network share you created in the previous task. The backup file needs to include a checksum, so you will add that during the backup steps.</p><ol>
+<li><p>On the SqlServer2008 VM, open <strong>Microsoft SQL Server Management Studio 17</strong> by entering “sql server” into the search bar in the Windows Start menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/start-menu-ssms-17.png" alt="SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results." title="Windows start menu search" style="max-width: 100%;"></p>
+</li>
+<li><p>In the SSMS <strong>Connect to Server</strong> dialog, enter <strong>SQLSERVER2008</strong> into the Server name box, ensure <strong>Windows Authentication</strong> is selected, and then select <strong>Connect</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-server-connect-to-server.png" alt="The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected." title="Connect to Server" style="max-width: 100%;"></p>
+</li>
+<li><p>Once connected, expand <strong>Databases</strong> under SQLSERVER2008 in the Object Explorer, and then right-click the <strong>TailspinToys</strong> database. In the context menu, select <strong>Tasks</strong> and then <strong>Back Up</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-backup.png" alt="In the SSMS Object Explorer, the context menu for the TailspinToys database is displayed, with Tasks and Back Up... highlighted." title="SSMS Backup" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Back UP Database dialog, you will see <code>C:\TailspinToys.bak</code> listed in the Destinations box. This is no longer needed, so select it, and then select <strong>Remove</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-back-up-database-general-remove.png" alt="In the General tab of the Back Up Database dialog, C:\TailspinToys.bak is selected and the Remove button is highlighted under destinations." style="max-width: 100%;"></p>
+</li>
+<li><p>Next, select <strong>Add</strong> to add the SMB network share as a backup destination.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-back-up-database-general.png" alt="In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations." title="Back Up Database" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Select Backup Destination dialog, select the Browse (…) button.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-select-backup-destination.png" alt="The Browse button is highlighted in the Select Backup Destination dialog." title="Select Backup Destination" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Location Database Files dialog, select the <code>C:\dms-backups</code> folder, enter <code>TailspinToys.bak</code> (<strong>Your database file name will be different, please make sure to use exact name</strong> into the File name field, and then select <strong>OK</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-locate-database-files.png" alt="In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field." title="Location Database Files" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>OK</strong> to close the Select Backup Destination dialog.</p>
+</li>
+<li><p>In the Back Up Database dialog, select the <strong>Media Options</strong> in the Select a page pane, and then set the following:</p>
+<ul>
+<li>Select <strong>Back up to the existing media set</strong> and then select <strong>Overwrite all existing backup sets</strong></li>
+<li><p>Under Reliability, check the box for <strong>Perform checksum before writing to media</strong>. This is require by DMS when using the backup to restore the database to SQL MI.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-back-up-database-media-options.png" alt="In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted." title="Back Up Database" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>OK</strong> to perform the backup.</p>
+</li>
+<li><p>You will receive a message when the backup is complete. Select <strong>OK</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-backup-complete.png" alt="Dialog displayed a message that the database backup was completed successfully." title="Backup complete" style="max-width: 100%;"></p>
+</li>
+</ol><h3 id="exercise-2-migrate-the-database-to-sql-mi-task-4-retrieve-sql-mi-and-sql-server-2008-vm-connection-information">Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information</h3><p>In this task, you will use the Azure Cloud shell to retrieve the information necessary to connect to your SQL MI and SqlServer2008 VM from DMS.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, select the Azure Cloud Shell icon from the top menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/cloud-shell-icon.png" alt="The Azure Cloud Shell icon is highlighted in the Azure portal&#39;s top menu." title="Azure Cloud Shell" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Cloud Shell window that opens at the bottom of your browser window, select <strong>PowerShell</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/cloud-shell-select-powershell.png" alt="In the Welcome to Azure Cloud Shell window, PowerShell is highlighted." title="Azure Cloud Shell" style="max-width: 100%;"></p>
+</li>
+<li><p>If prompted that you have no storage mounted, select the subscription you are using for this hands-on lab and select <strong>Show advanced settings</strong>.</p>
+<p>  <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/showadvancedsettings.png" alt="" style="max-width: 100%;"></p>
+</li>
+<li><p>Choose existing resource group <strong>ODL-migrate-sql-xxxxxx</strong> then in the next column enter the value for storage account name which should be unique and lowercase. Also for file share name enter any unique value such as 673683 and click on <strong>Create Storage</strong> </p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/createstorageaccount.png" alt="" style="max-width: 100%;"></p>
+</li>
+<li><p>After a moment, you will receive a message that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/cloud-shell-ps-azure-prompt.png" alt="In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed." title="Azure Cloud Shell" style="max-width: 100%;"></p>
+</li>
+<li><p>At the prompt, you will retrieve information about SQL MI in the <strong>SQLMI-Shared-RG</strong> resource group by entering the following PowerShell command, </p>
+<pre><code class="lang-powershell"> az sql mi list --resource-group SQLMI-Shared-RG</code></pre>
+</li>
+<li><p>Within the output of the above command, locate and copy the value of the <code>fullyQualifiedDomainName</code> property. Paste the value into a text editor, such as Notepad.exe, for later reference.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/cloud-shell-az-sql-mi-list-output.png" alt="The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted." title="Azure Cloud Shell" style="max-width: 100%;"></p>
+</li>
+<li><p>Next, you will enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which you will use to connect to the database on that server. Enter the following PowerShell command, <strong>replacing xxxxx</strong> with your unique identity number:</p>
+<pre><code class="lang-powershell"> az vm list-ip-addresses -g ODL-migrate-sql-xxxxxx -n SqlServer<span class="number">2008</span></code></pre>
+</li>
+<li><p>Within the output of the command above, locate and copy the value of the <code>ipAddress</code> property within the <code>publicIpAddresses</code> object. Paste the value into a text editor, such as Notepad.exe, for later reference.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/cloud-shell-az-vm-list-ip-addresses.png" alt="The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the publicIpAddress for the SqlServer2008 VM is highlighted." title="Azure Cloud Shell" style="max-width: 100%;"></p>
+</li>
+<li><p>Leave the Azure Cloud Shell open for the next task.</p>
+</li>
+</ol><h3 id="exercise-2-migrate-the-database-to-sql-mi-task-5-create-and-run-an-online-data-migration-project">Task 5: Create and run an online data migration project</h3><p>In this task, you will create a new online data migration project in DMS for the <code>TailspinToys</code> database.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, navigate to the Azure Database Migration Service by selecting <strong>Resource groups</strong> from the left-hand navigation menu, selecting the <strong>ODL-migrate-sql-xxxxx</strong> resource group, and then selecting the <strong>tailspin-dms</strong> Azure Database Migration Service in the list of resources.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/resource-group-dms-resource.png" alt="The tailspin-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group." title="Resources" style="max-width: 100%;"></p>
+</li>
+<li><p>On the Azure Database Migration Service blade, select <strong>+New Migration Project</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-add-new-migration-project.png" alt="On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar." title="Azure Database Migration Service New Project" style="max-width: 100%;"></p>
+</li>
+<li><p>On the New migration project blade, enter the following:</p>
+<ul>
+<li><strong>Project name</strong>: Enter <strong>OnPremToSqlMi</strong></li>
+<li><strong>Source server type</strong>: Select <strong>SQL Server</strong></li>
+<li><strong>Target server type</strong>: Select <strong>Azure SQL Database Managed Instance</strong></li>
+<li><p><strong>Choose type of activity</strong>: Select <strong>Online data migration</strong> and select <strong>Save</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-new-migration-project-blade.png" alt="The New migration project blade is displayed, with the values specified above entered into the appropriate fields." title="New migration project" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Create and run activity</strong>.</p>
+</li>
+<li><p>On the Migration Wizard <strong>Select source</strong> blade, enter the following:</p>
+<ul>
+<li><strong>Source SQL Server instance name</strong>: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, <code>13.66.228.107</code>.</li>
+<li><strong>Authentication type</strong>: Select SQL Authentication.</li>
+<li><strong>Username</strong>: Enter <strong>WorkshopUser</strong></li>
+<li><strong>Password</strong>: Enter <strong>Password.1234567890</strong></li>
+<li><p><strong>Connection properties</strong>: Check both Encrypt connection and Trust server certificate.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-select-source.png" alt="The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields." title="Migration Wizard Select source" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>On the Migration Wizard <strong>Select target</strong> blade, enter the following:</p>
+<ul>
+<li><strong>Application ID</strong>: Enter the <code>appId</code> value from the lab details page </li>
+<li><p><strong>Key</strong>: Enter the <code>password</code> value from the output of the `az ad sp create-for-rbac’ command you executed in the last task.</p>
+<p>   <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/labdetailspage.png" alt="" style="max-width: 100%;"></p>
+</li>
+<li><p><strong>Subscription</strong>: Select the subscription you are using for this hand-on lab.</p>
+</li>
+<li><strong>Target Azure SQL Managed Instance</strong>: Select the sqlmi-UNIQUEID instance.</li>
+<li><strong>SQL Username</strong>: Enter <strong>contosoadmin</strong></li>
+<li><p><strong>Password</strong>: Enter <strong>IAE5fAijit0w^rDM</strong></p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sqlmiconnection.png" alt="The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields." title="Migration Wizard Select target" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>On the Migration Wizard <strong>Select databases</strong> blade, select <code>TailspinToys</code>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-select-databases.png" alt="The Migration Wizard Select databases blade is displayed, with the TailspinToys database selected." title="Migration Wizard Select databases" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Save</strong>.</p>
+</li>
+<li><p>On the Migration Wizard <strong>Configure migration settings</strong> blade, enter the following configuration:</p>
+<ul>
+<li><strong>Network share location</strong>: Enter <code>\\SQLSERVER2008\dms-backups</code>. This is the path of the SMB network share you created during the before the hands-on lab exercises.</li>
+<li><strong>Windows User Azure Database Migration Service impersonates to upload files to Azure Storage</strong>: Enter <code>SQLSERVER2008\sqlmiuser</code></li>
+<li><strong>Password</strong>: Enter <strong>Password.1234567890</strong></li>
+<li><strong>Subscription containing storage account</strong>: Select the subscription you are using for this hands-on lab.</li>
+<li><strong>Storage account</strong>: Select the sqlmistoreUNIQUEID storage account.</li>
+</ul>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-configure-migration-settings.png" alt="The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields." title="Migration Wizard Configure migration settings" style="max-width: 100%;">.</p>
+</li>
+</ol><blockquote>
+<p><strong>Note</strong>:- <strong>If you face any issue here, such as “Migrating Settings Validation Error”</strong> Error details: Failed to authenticate file share \SQLSERVER2008\dms-backups Method failed with unexpected  error code 67. Then Please use <strong>IP Address of SQLServer2008 VM</strong> instead of Server Name to resolve the issue.  </p>
+</blockquote><ul>
+<li><p><strong>Windows User Azure Database Migration Service impersonates to upload files to Azure Storage</strong>: Enter <code>13.66.228.107\sqlmiuser</code></p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/servernameip.png" alt="" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Save</strong> on the <strong>Configure migration setting</strong> blade.</p>
+</li>
+<li><p>On the Migration Wizard <strong>Summary</strong> blade, enter the following:</p>
+<ul>
+<li><strong>Activity name</strong>: Enter TailspinToysMigration.</li>
+</ul>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-migration-summary.png" alt="The Migration Wizard summary blade is displayed, Sql2008ToSqlDatabase is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected." title="Migration Wizard Summary" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Run migration</strong>.</p>
+</li>
+<li><p>Monitor the migration on the status screen that appears. Select the refresh icon in the toolbar to retrieve the latest status.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-status-running.png" alt="On the Migration job blade, the Refresh button is highlighted, and a status of Full backup uploading is displayed and highlighted." title="Migration status" style="max-width: 100%;"></p>
+</li>
+<li><p>Continue selecting <strong>Refresh</strong> every 5-10 seconds, until you see the status change to <strong>Log files uploading</strong>. When that status appears, move on to the next task.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-status-log-files-uploading.png" alt="In the migration monitoring window, a status of Log files uploading is highlighted." title="Migration status" style="max-width: 100%;"></p>
+</li>
+</ul><h3 id="exercise-2-migrate-the-database-to-sql-mi-task-6-perform-migration-cutover">Task 6: Perform migration cutover</h3><p>Since you performed the migration as an “online data migration,” the migration wizard will continue to monitor the SMB network share for newly added log files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you will add a record to one of the database tables, backup the logs, and complete the migration of the <code>TailspinToys</code> database by cutting over to the SQL MI database.</p><ol>
+<li><p>In the migration status window in the Azure portal and select <strong>TailspinToys</strong> under database name to view further details about the database migration.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-database-name.png" alt="The TailspinToys database name is highlighted in the migration status window." title="Migration status" style="max-width: 100%;"></p>
+</li>
+<li><p>On the TailspinToys screen you will see a status of <strong>Restored</strong> for the <code>TailspinToys.bak</code> file.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-database-restored.png" alt="On the TailspinToys blade, a status of Restored is highlighted next to the TailspinToys.bak file in the list of active backup files." title="Migration Wizard" style="max-width: 100%;"></p>
+</li>
+<li><p>To demonstrate log shipping and how transactions made on the source database during the migration process will be added to the target SQL MI database, you will add a record to one of the database tables.</p>
+</li>
+<li><p>Return to SSMS on your SqlServer2008 VM and select <strong>New Query</strong> from the toolbar.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-new-query.png" alt="The New Query button is highlighted in the SSMS toolbar." title="SSMS Toolbar" style="max-width: 100%;"></p>
+</li>
+<li><p>Paste the following SQL script, which inserts a record into the <code>Game</code> table, into the new query window:</p>
+<pre><code class="lang-sql"> USE TailspinToys;
+ GO
+
+ INSERT [dbo].[Game] (Title, Description, Rating, IsOnlineMultiplayer)
+ VALUES (<span class="string">'Space Adventure'</span>, <span class="string">'Explore the universe with are newest online multiplayer gaming experience. Build your own rocket ships, and take off for the stars in an infinite open world adventure.'</span>, <span class="string">'T'</span>, <span class="number">1</span>)</code></pre>
+</li>
+<li><p>Execute the query by selecting <strong>Execute</strong> in the SSMS toolbar.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-execute.png" alt="The Execute button is highlighted in the SSMS toolbar." title="SSMS Toolbar" style="max-width: 100%;"></p>
+</li>
+<li><p>With the new record added to the <code>Games</code> table, you will now backup the transaction logs, which will be shipped to DMS. Select <strong>New Query</strong> again in the toolbar, and paste the following script into the new query window:</p>
+<pre><code class="lang-sql"> USE master;
+ GO
+
+ BACKUP LOG TailspinToys
+ TO DISK = <span class="string">'c:\dms-backups\TailspinToysLog.trn'</span>
+ WITH CHECKSUM
+ GO</code></pre>
+</li>
+<li><p>Execute the query by selecting <strong>Execute</strong> in the SSMS toolbar.</p>
+</li>
+<li><p>Return to the migration status page in the Azure portal. On the TailspinToys screen, select <strong>Refresh</strong> you should see the <strong>TailspinToysLog.trn</strong> file appear, with a status of <strong>Uploaded</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-transaction-log-uploaded.png" alt="On the TailspinToys blade, the Refresh button is highlighted. A status of Uploaded is highlighted next to the TailspinToysLog.trn file in the list of active backup files." title="Migration Wizard" style="max-width: 100%;"></p>
+<blockquote>
+<p><strong>Note</strong>: If you don’t see it the transaction logs entry, continue selecting Refresh every few seconds until it appears.</p>
+</blockquote>
+</li>
+<li><p>Once the transaction logs are uploaded, they need to be restored to the database. Select <strong>Refresh</strong> every 10-15 seconds until you see the status change to <strong>Restored</strong>, which can take a minute or two.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-transaction-log-restored.png" alt="A status of Restored is highlighted next to the TailspinToysLog.trn file in the list of active backup files." title="Migration Wizard" style="max-width: 100%;"></p>
+</li>
+<li><p>After verifying the transaction log status of <strong>Restored</strong>, select <strong>Start Cutover</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-start-cutover.png" alt="The Start Cutover button is displayed." title="DMS Migration Wizard" style="max-width: 100%;"></p>
+</li>
+<li><p>On the Complete cutover dialog, verify pending log backups is <code>0</code>, check Confirm, and select <strong>Apply</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-complete-cutover-apply.png" alt="In the Complete cutover dialog, a value of 0 is highlighted next to Pending log backups and the Confirm checkbox is checked." title="Migration Wizard" style="max-width: 100%;"></p>
+</li>
+<li><p>You will be given a progress bar below the Apply button in the Complete cutover dialog. When the migration is complete, you will see the status as <strong>Completed</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-complete-cutover-completed.png" alt="A status of Completed is displayed in the Complete cutover dialog." title="Migration Wizard" style="max-width: 100%;"></p>
+</li>
+<li><p>Close the Complete cutover dialog by selecting the “X” in the upper right corner of the dialog, and do the same thing for the TailspinToys blade. This will return you to the TailspinToysMigration blade. Select <strong>Refresh</strong>, and you should see a status of <strong>Completed</strong> from the TailspinToys database.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/dms-migration-wizard-status-complete.png" alt="On the Migration job blade, the status of Completed is highlighted" title="Migration with Completed status" style="max-width: 100%;"></p>
+</li>
+<li><p>You have now successfully migrated the <code>TailspinToys</code> database to Azure SQL Managed Instance.</p>
+</li>
+</ol><h3 id="exercise-2-migrate-the-database-to-sql-mi-task-7-verify-database-and-transaction-log-migration">Task 7: Verify database and transaction log migration</h3><p>In this task, you will connect to the SQL MI database using SSMS, and quickly verify the migration.</p><ol>
+<li><p>Return to SSMS on your SqlServer2008 VM, and then select <strong>Connect</strong> and <strong>Database Engine</strong> from the Object Explorer menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-object-explorer-connect.png" alt="In the SSMS Object Explorer, Connect is highlighted in the menu and Database Engine is highlighted in the Connect context menu." title="SSMS Connect" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Connect to Server dialog, enter the following:</p>
+<ul>
+<li><strong>Server name</strong>: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.</li>
+<li><strong>Authentication</strong>: Select <strong>SQL Server Authentication</strong>.</li>
+<li><strong>Login</strong>: Enter <strong>contosoadmin</strong></li>
+<li><strong>Password</strong>: Enter <strong>IAE5fAijit0w^rDM</strong></li>
+<li><p>Check the <strong>Remember password</strong> box.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sqlserverconnection.png" alt="The SQL managed instance details specified above are entered into the Connect to Server dialog." title="Connect to Server" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Connect</strong>.</p>
+</li>
+<li><p>You will see you SQL MI connection appear below the SQLSERVER2008 connection. Expand Databases the SQL MI connection and select the <code>TailspinToys</code> database.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-tailspintoys-database.png" alt="In the SSMS Object Explorer, the SQL MI connection is expanded and the TailspinToys database is highlighted and selected." title="SSMS Object Explorer" style="max-width: 100%;"></p>
+</li>
+<li><p>With the <code>TailspinToys</code> database selected, select <strong>New Query</strong> on the SSMS toolbar to open a new query window.</p>
+</li>
+<li><p>In the new query window, enter the following SQL script:</p>
+<pre><code class="lang-sql"> SELECT * FROM Game</code></pre>
+</li>
+<li><p>Select <strong>Execute</strong> on the SSMS toolbar to run the query. You will see the records contained in the <code>Game</code> table displayed, including the new <code>Space Adventure</code> you added after initiating the migration process.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-query-game-table.png" alt="In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted." title="SSMS Query" style="max-width: 100%;"></p>
+</li>
+<li><p>You are now done using the SqlServer2008 VM. Close any open windows and log off of the VM. You will use the JumpBox VM for the remaining tasks of this hands-on lab.</p>
+</li>
+</ol><h2 id="exercise-3-update-the-web-application-to-use-the-new-sql-mi-database">Exercise 3: Update the web application to use the new SQL MI database</h2><p>Duration: 30 minutes</p><p>With the <code>TailspinToys</code> database now running on SQL MI in Azure, the next step is to make the required modifications to the TailspinToys gamer information web application.</p><blockquote>
+<p><strong>Note</strong>: SQL Managed Instance has private IP address in its own VNet, so to connect an application you need to configure access to the VNet where Managed Instance is deployed. To learn more, read <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app" tabindex="-1" target="_blank">Connect your application to Azure SQL Database Managed Instance</a>.</p>
+</blockquote><h3 id="exercise-3-update-the-web-application-to-use-the-new-sql-mi-database-task-1-deploy-the-web-app-to-azure">Task 1: Deploy the web app to Azure</h3><p>In this task, you will create an RDP connection to the JumpBox VM, and then using Visual Studio on the JumpBox, deploy the <code>TailspinToysWeb</code> application into the App Service in Azure.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, select <strong>Resource groups</strong> in the Azure navigation pane, and select the <strong>ODL-migrate-sql-117629</strong> resource group from the list.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/resource-groups.png" alt="Resource groups is selected in the Azure navigation pane and the &quot;hands-on-lab-SUFFIX&quot; resource group is highlighted." title="Resource groups list" style="max-width: 100%;"></p>
+</li>
+<li><p>In the list of resources for your resource group, select the JumpBox VM.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/resource-group-resources-jumpbox.png" alt="The list of resources in the hands-on-lab-SUFFIX resource group are displayed, and JumpBox is highlighted." title="JumpBox in resource group list" style="max-width: 100%;"></p>
+</li>
+<li><p>On your JumpBox VM blade, select <strong>Connect</strong> from the top menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/connect-jumpbox.png" alt="The JumpBox VM blade is displayed, with the Connect button highlighted in the top menu." title="Connect to JumpBox VM" style="max-width: 100%;"></p>
+</li>
+<li><p>On the Connect to virtual machine blade, select <strong>Download RDP File</strong>, then open the downloaded RDP file.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/connect-to-virtual-machine.png" alt="The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted." title="Connect to virtual machine" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Connect</strong> on the Remote Desktop Connection dialog.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/remote-desktop-connection.png" alt="In the Remote Desktop Connection Dialog Box, the Connect button is highlighted." title="Remote Desktop Connection dialog" style="max-width: 100%;"></p>
+</li>
+<li><p>Enter the following credentials when prompted, and then select <strong>OK</strong>:</p>
+<ul>
+<li><strong>Username</strong>: <strong>sqlmiuser</strong></li>
+<li><p><strong>Password</strong>: <strong>Password.1234567890</strong></p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/rdc-credentials.png" alt="The credentials specified above are entered into the Enter your credentials dialog." title="Enter your credentials" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Yes</strong> to connect, if prompted that the identity of the remote computer cannot be verified.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/remote-desktop-connection-identity-verification-jumpbox.png" alt="In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled." title="Remote Desktop Connection dialog" style="max-width: 100%;"></p>
+</li>
+<li><p>Once logged in, download the <a href="https://github.com/microsoft/Migrating-SQL-databases-to-Azure/archive/master.zip" tabindex="-1" target="_blank">MCW Migrating SQL databases to Azure GitHub repo</a>.</p>
+</li>
+<li><p>If you receive a message that downloads are not allowed, select the Tools icon at the top right of the browser window, and then select <strong>Internet options</strong> from the context menu.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ie-tools-context-menu.png" alt="The Tools icon is highlighted in the Internet Explorer toolbar, and Internet Options is highlighted in the context menu." title="Internet Explorer" style="max-width: 100%;"></p>
+</li>
+<li><p>In the <strong>Internet Options</strong> dialog, select <strong>Custom level</strong> in the Security level for this zone box.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ie-internet-options.png" alt="The Custom level button is highlighted in the Internet Options dialog." title="Internet Options" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Security Settings - Internet Zone dialog, locate the <strong>Downloads</strong> settings and choose <strong>Enable</strong>, then select <strong>OK</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ie-security-settings-internet-zone.png" alt="The Downloads property is highlighted in the Security Settings dialog, and Enable is selected." title="Security Settings" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>OK</strong> on the Internet Options dialog, and then attempt the download again.</p>
+</li>
+<li><p>When prompted, choose to save the file and then select Open folder.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ie-download-open-folder.png" alt="The download bar is displayed in Internet Explorer, and Open folder is highlighted." title="Internet Explorer" style="max-width: 100%;"></p>
+</li>
+<li><p>And once it is download, extract the ZIP file to <code>C:\hands-on-lab</code>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/extract-compressed-zip.png" alt="In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field." title="Extract Compressed Zip" style="max-width: 100%;"></p>
+<blockquote>
+<p><strong>IMPORTANT</strong>: Ensure to use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a log file path.</p>
+</blockquote>
+</li>
+<li><p>Open the <code>C:\hands-on-lab</code> folder, and then drill down to <code>Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files</code>. In the <code>lab-files</code> folder, double-click <code>TailspinToysWeb.sln</code> to open the solution in Visual Studio.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/windows-explorer-tailspintoysweb.png" alt="The folder at the path specified above is displayed, and TailspinToys.sln is highlighted." title="Windows Explorer" style="max-width: 100%;"></p>
+</li>
+<li><p>If prompted about how you want to open the file, select <strong>Visual Studio 2019</strong> and then select <strong>OK</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/visual-studio-version-selector.png" alt="In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted." title="Visual Studio" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Sign in</strong> and enter your Azure account credentials when prompted.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/visual-studio-sign-in.png" alt="On the Visual Studio welcome screen, the Sign in button is highlighted." title="Visual Studio" style="max-width: 100%;"></p>
+</li>
+<li><p>At the security warning prompt, uncheck Ask me for every project in this solution, and then select <strong>OK</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/visual-studio-security-warning.png" alt="A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted." title="Visual Studio" style="max-width: 100%;"></p>
+</li>
+<li><p>Once logged into Visual Studio, right-click the <code>TailspinToysWeb</code> project in the SolutionExplorer, and then select <strong>Publish</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/visual-studio-project-publish.png" alt="In the Solution Explorer, the context menu for the TailspinToysWeb project is displayed and Publish is highlighted." title="Visual Studio" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Pick a publish target window, select <strong>App Service</strong>, choose <strong>Select Existing</strong> and then select <strong>Publish</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/visual-studio-pick-publish-target.png" alt="In the Pick a publish target dialog, App Service is selected and Select Existing is selected." title="Visual Studio" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Select Existing App Service dialog, select the subscription you are using for this hands-on lab, then expand the hands-on-lab-SUFFIX resource group folder and select the <strong>tailspintoysUNIQUEID</strong> App Service.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/visual-studio-select-existing-app-service.png" alt="The tailspintoysUNIQUEID App Service is selected in the list of existing App Services." title="Visual Studio" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>OK</strong>, which will begin the process of publishing the application to Azure.</p>
+</li>
+<li><p>When the publish completes, you will see a message in the Visual Studio Output page that the publish succeeded.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/visual-studio-output-publish-succeeded.png" alt="The Publish Succeeded message is displayed in the Visual Studio Output pane." title="Visual Studio" style="max-width: 100%;"></p>
+</li>
+<li><p>Visual Studio will launch a web browser and attempt to load the site. At this point, an error will be returned because the database connection strings have not been updated to point to the SQL MI database. You will take care of this in the next task.</p>
+</li>
+</ol><h3 id="exercise-3-update-the-web-application-to-use-the-new-sql-mi-database-task-2-update-app-service-configuration">Task 2: Update App Service configuration</h3><p>In this task, you will make updates to the TailspinToys gamer info web application to enable it to connect to and utilize the SQL MI database.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, select <strong>Resource groups</strong> from the left-hand menu, select the <strong>ODL-migrate-sql-xxxxxx</strong> resource group, and then select the <strong>tailspintoysUNIQUEID</strong> App Service from the list of resources.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/rg-app-service.png" alt="The tailspintoys App Service is highlighted in the list of resource group resources." title="Resource group" style="max-width: 100%;"></p>
+</li>
+<li><p>On the App Service blade, select <strong>Configuration</strong> under Settings on the left-hand side.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-configuration-menu.png" alt="The Configuration item is selected under Settings." title="Configuration" style="max-width: 100%;"></p>
+</li>
+<li><p>On the Configuration blade, locate the <strong>Connection strings</strong> section, and then select the Pencil (Edit) icon to the right of the <code>TailspinToysContext</code> connection string.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-configuration-connection-strings.png" alt="In the Connection string section, the pencil icon is highlighted to the right of the TailspinToysContext connection string." title="Connection Strings" style="max-width: 100%;"></p>
+</li>
+<li><p>The value of the connection string should look like:</p>
+<pre><code class="lang-sql"> Server=tcp:your-sqlmi-host-fqdn-value,<span class="number">1433</span>;Database=TailspinToys;User ID=contosoadmin;Password=IAE<span class="number">5</span>fAijit<span class="number">0</span>w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;</code></pre>
+</li>
+<li><p>In the Add/Edit connection string dialog, replace <code>your-sqlmi-host-fqdn-value</code> with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell. Also replace ‘User ID’ with <strong>contosoadmin</strong> and ‘Password’ with <strong>IAE5fAijit0w^rDM</strong></p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/webappcontextconnectionstring.png" alt="The your-sqlmi-host-fqdn-value string is highlighted in the connection string." title="Edit Connection String" style="max-width: 100%;"></p>
+</li>
+<li><p>The updated value should look similar to the following screenshot.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/updatedconnectionstring.png" alt="The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string." title="Connection string value" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Update</strong>.</p>
+</li>
+<li><p>Repeat steps 3 - 7, this time for the <code>TailspinToysReadOnlyContext</code> connection string.</p>
+</li>
+<li><p>Select <strong>Save</strong> at the top of the Configuration blade.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-configuration-save.png" alt="The save button on the Configuration blade is highlighted." title="Save" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Overview</strong> to the left of the Configuration blade to return to the overview blade of your App Service.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-overview-menu-item.png" alt="Overview is highlighted on the left-hand menu for App Service" title="Overview menu item" style="max-width: 100%;"></p>
+</li>
+<li><p>At this point, selecting the <strong>URL</strong> for the App Service on the Overview blade will still result in an error being return. This is because SQL Managed Instance has a private IP address in its own VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you will do in the next excise.</p>
+</li>
+</ol><h2 id="exercise-4-integrate-app-service-with-the-virtual-network">Exercise 4: Integrate App Service with the virtual network</h2><p>Duration: 15 minutes</p><p>In this exercise, you will Integrate your App Service with the virtual network that was created during the Before the hands-on lab exercises. The ARM template created a Gateway subnet on the VNet, as well as a Virtual Network Gateway. Both of these resources are required to integrate App Service, and connect to SQL MI.</p><h3 id="exercise-4-integrate-app-service-with-the-virtual-network-task-1-set-point-to-site-addresses">Task 1: Set point-to-site addresses</h3><p>In this task, you will configure the client address pool. This is a range of private IP addresses that you will specify below. Clients that connect over a Point-to-Site VPN dynamically receive an IP address from this range. You will use a private IP address range that does not overlap with the VNet you will connect to.</p><ol>
+<li><p>Navigate to the <strong>Hands-on-lab-VPN</strong> Virtual network gateway in the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a> by selecting it from the list of resources in the <strong>SQLMI-Shared-RG</strong> resource group.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/resource-group-vnet-gateway.png" alt="The Virtual network gateway resource is highlighted in the list of resources." title="Resources" style="max-width: 100%;"></p>
+</li>
+<li><p>On the virtual network gateway blade, select <strong>Point-to-site configuration</strong> under Settings in the left-hand menu, and then select <strong>Configure now</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/virtual-network-gateway-configure-point-to-site.png" alt="Point-to-site configuration is highlighted and selected in the left-hand menu. On the Point-to-site configuration blade, Configure now is highlighted." title="Virtual network gateway" style="max-width: 100%;"></p>
+</li>
+<li><p>On the <strong>Point-to-site</strong> configuration page, set the following configuration:</p>
+<blockquote>
+<p>Note: If you see that IP is already configured, you can skip this step. </p>
+</blockquote>
+<ul>
+<li><strong>Address pool</strong>: Add a private IP address range that you want to use. The address space must be in one of the following address blocks, but should not overlap the address space used by the VNet.<ul>
+<li><code>10.0.0.0/8</code> - This means an IP address range from 10.0.0.0 to 10.255.255.255</li>
+<li><code>172.16.0.0/12</code> - This means an IP address range from 172.16.0.0 to 172.31.255.255</li>
+<li><code>192.168.0.0/16</code> - This means an IP address range from 192.168.0.0 to 192.168.255.255</li>
+</ul>
+</li>
+<li><strong>Tunnel type</strong>: Select <strong>SSTP (SSL)</strong>.</li>
+<li><p><strong>Authentication type</strong>: Choose <strong>Azure certificate</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/virtual-network-gateway-point-to-site-configuration.png" alt="The values specified above are entered into the Point-to-site configuration form." title="Virtual network gateway" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Save</strong> to validate and save the settings. It will take 1 - 2 minutes for the save to finish.</p>
+</li>
+</ol><h3 id="exercise-4-integrate-app-service-with-the-virtual-network-task-2-configure-vnet-integration-with-app-services">Task 2: Configure VNet integration with App Services</h3><p>In this task, you will add the networking configuration to your App Service to enable communication with resources in the VNet.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, select <strong>Resource groups</strong> from the left-hand menu, select the <strong>ODL-migrate-sql-xxxxx</strong> resource group, and then select the <strong>tailspintoysUNIQUEID</strong> App Service from the list of resources.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/rg-app-service.png" alt="The tailspintoys App Service is highlighted in the list of resource group resources." title="Resource group" style="max-width: 100%;"></p>
+</li>
+<li><p>On the App Service blade, select <strong>Networking</strong> from the left-hand menu and then select <strong>Click here to configure</strong> under <strong>VNet Integration</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-networking.png" alt="On the App Service blade, Networking is selected in the left-hand menu and Click here to configure is highlighted under VNet Integration." title="App Service" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Add VNet</strong> on the VNet Configuration blade.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-vnet-configuration.png" alt="Add VNet is highlighted on the VNet Configuration blade." title="App Service" style="max-width: 100%;"></p>
+</li>
+<li><p>Select the <strong>hands-on-lab-SUFFIX-vnet</strong> in the Virtual Network dialog.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-vnet-configuration-add-vnet.png" alt="The hands-on-lab-SUFFIX-vnet** is highlighted." title="App Service" style="max-width: 100%;"></p>
+</li>
+<li><p>Within a few minutes, the VNet will be added and your App Service will be restarted to apply the changes. Select <strong>Refresh</strong> to see the details. You should see that the certificate status is Certificates in sync.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-vnet-details.png" alt="The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted." title="App Service" style="max-width: 100%;"></p>
+<blockquote>
+<p><strong>Note</strong>: In you receive a message adding the Virtual Network to Web App failed, select <strong>Disconnect</strong> on the VNet Configuration blade, and repeat steps 3 - 5 above.</p>
+</blockquote>
+</li>
+</ol><h3 id="exercise-4-integrate-app-service-with-the-virtual-network-task-3-open-the-web-application">Task 3: Open the web application</h3><p>In this task, you will verify your web application now loads, and you can see the home page of the web app.</p><ol>
+<li><p>Select <strong>Overview</strong> in the left-hand menu of your App Service, and select the <strong>URL</strong> of your App service to launch the website. This will open the URL in a browser window.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-url.png" alt="The App service URL is highlighted." title="App service URL" style="max-width: 100%;"></p>
+</li>
+<li><p>Verify that the web site and data is loaded correctly. The page should look similar to the following:</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/tailspin-toys-web-app.png" alt="Screenshot of the TailspinToys Operations Web App." title="TailspinToys Web" style="max-width: 100%;"></p>
+</li>
+</ol><blockquote>
+<p>That’s it. You were able to successfully connect your application to the new SQL MI database.</p>
+</blockquote><h2 id="exercise-5-improve-database-security-posture-with-advanced-data-security">Exercise 5: Improve database security posture with Advanced Data Security</h2><p>Duration: 30 minutes</p><p>In this exercise you will enable Advanced Data Security (ADS) on your SQL MI database, and explore some of the security benefits that come with running your database in Azure. <a href="https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security" tabindex="-1" target="_blank">SQL Database Advance Data Security</a> (ADS) provides advanced SQL security capabilities, including functionality for discovering and classifying sensitive data, surfacing and mitigating potential database vulnerabilities, and detecting anomalous activities that could indicate a threat to your database.</p><h3 id="exercise-5-improve-database-security-posture-with-advanced-data-security-task-1-enable-advanced-data-security">Task 1: Enable Advanced Data Security</h3><p>In this task, you will enable ADS for all databases on the Managed Instance.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, select <strong>Resource groups</strong> from the left-hand menu, select the <strong>SQLMI-Shared-RG</strong> resource group, and then select the <strong>TailspinToys</strong> Managed database resource from the list.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/resources-sql-mi-database.png" alt="The TailspinToys Managed Database is highlighted in the resources list." title="Resources" style="max-width: 100%;"></p>
+</li>
+<li><p>On the TailspinToys Managed database blade, select <strong>Advanced Data Security</strong> from the left-hand menu, under Security, and then select <strong>Enable Advanced Data Security on the managed instance</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/managed-database-ads.png" alt="In the Advanced Data Security blade of the Managed database, the Enable Advanced Data Security on the managed instance button is highlighted." title="Advanced Data Security" style="max-width: 100%;"></p>
+</li>
+<li><p>Within a few minutes, ADS will be enabled for all databases on the Managed Instance. You will see the three tiles on the Advanced Data Security blade become enabled when it has been enabled.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-panels.png" alt="The enabled tiles on the Advance Data Security blade are displayed." title="Advanced Data Security" style="max-width: 100%;"></p>
+</li>
+</ol><h3 id="exercise-5-improve-database-security-posture-with-advanced-data-security-task-2-configure-sql-data-discovery-and-classification">Task 2: Configure SQL Data Discovery and Classification</h3><p>In this task, you will look at the <a href="https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification?view=sql-server-2017" tabindex="-1" target="_blank">SQL Data Discovery and Classification</a> feature of Advanced Data Security. Data Discovery &amp; Classification introduces a new tool for discovering, classifying, labeling &amp; reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (business, financial, healthcare, etc.) can play a pivotal role in your organizational information protection stature.</p><blockquote>
+<p><strong>Note</strong>: This functionality is currently available <em>in Preview</em> for SQL MI through the Azure portal.</p>
+</blockquote><ol>
+<li><p>On the Advanced Data Security blade, select the <strong>Data Discovery &amp; Classification</strong> tile.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-pane.png" alt="The Data Discovery &amp; Classification tile is displayed." title="Advanced Data Security" style="max-width: 100%;"></p>
+</li>
+<li><p>In the <strong>Data Discovery &amp; Classification</strong> blade, select the info link with the message <strong>We have found 40 columns with classification recommendations</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-recommendations-link.png" alt="The recommendations link on the Data Discovery &amp; Classification blade is highlighted." title="Data Discovery &amp; Classification" style="max-width: 100%;"></p>
+</li>
+<li><p>Look over the list of recommendations to get a better understanding of the types of data and classifications are assigned, based on the built-in classification settings. In the list of classification recommendations, select the recommendation for the <strong>Sales - CreditCard - CardNumber</strong> field.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-recommendations-credit-card.png" alt="The CreditCard number recommendation is highlighted in the recommendations list." title="Data Discovery &amp; Classification" style="max-width: 100%;"></p>
+</li>
+<li><p>Due to the risk of exposing credit card information, Tailspin Toys would like a way to classify it as highly confidential, not just <strong>Confidential</strong>, as the recommendation suggests. To correct this, select <strong>+ Add classification</strong> at the top of the Data Discovery &amp; Classification blade.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-add-classification-button.png" alt="The +Add classification button is highlighted in the toolbar." title="Data Discovery &amp; Classification" style="max-width: 100%;"></p>
+</li>
+<li><p>Quickly expand the <strong>Sensitivity label</strong> field, and review the various built-in labels you can choose from. You can also add your own labels, should you desire.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-sensitivity-labels.png" alt="The list of built-in Sensitivity labels is displayed." title="Data Discovery &amp; Classification" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Add classification dialog, enter the following:</p>
+<ul>
+<li><strong>Schema name</strong>: Select Sales.</li>
+<li><strong>Table name</strong>: Select CreditCard.</li>
+<li><strong>Column name</strong>: Select CardNumber (nvarchar).</li>
+<li><strong>Information type</strong>: Select Credit Card.</li>
+<li><p><strong>Sensitivity level</strong>: Select Highly Confidential.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-add-classification.png" alt="The values specified above are entered into the Add classification dialog." title="Add classification" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>Select <strong>Add classification</strong>.</p>
+</li>
+<li><p>You will see the <strong>Sales - CreditCard - CardNumber</strong> field disappear from the recommendations list, and the number of recommendations drop by 1.</p>
+</li>
+<li><p>Other recommendations you can review are the <strong>HumanResources - Employee</strong> fields for <strong>NationIDNumber</strong> and <strong>BirthDate</strong>. Note that these have been flagged by the recommendation service as <strong>Confidential - GDPR</strong>. As Tailspin Toys maintains data about gamers from around the world, including Europe, having a tool which helps them discover data which may be relevant to GDPR compliance will be very helpful.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-recommendations-gdpr.png" alt="GDPR information is highlighted in the list of recommendations" title="Data Discovery &amp; Classification" style="max-width: 100%;"></p>
+</li>
+<li><p>Check the <strong>Select all</strong> check box at the top of the list to select all the remaining recommended classifications, and then select <strong>Accept selected recommendations</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-accept-recommendations.png" alt="All the recommended classifications are checked and the Accept selected recommendations button is highlighted." title="Data Discovery &amp; Classification" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Save</strong> on the toolbar of the Data Classification window. It may take several minutes for the save to complete.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-save.png" alt="Save the updates to the classified columns list." title="Save" style="max-width: 100%;"></p>
+<blockquote>
+<p><strong>Note</strong>: This feature is still in preview.  If you receive an error when saving, try returning to the Advanced Data Security blade, and selecting the Data Discovery &amp; Classification tile again to see the results.</p>
+</blockquote>
+</li>
+<li><p>When the save completes, select the <strong>Overview</strong> tab on the Data Discovery &amp; Classification blade to view a report with a full summary of the database classification state.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-data-discovery-and-classification-overview-report.png" alt="The View Report button is highlighted on the toolbar." title="View report" style="max-width: 100%;"></p>
+</li>
+</ol><h3 id="exercise-5-improve-database-security-posture-with-advanced-data-security-task-3-review-advanced-data-security-vulnerability-assessment">Task 3: Review Advanced Data Security Vulnerability Assessment</h3><p>In this task, you will review an assessment report generated by ADS for the <code>TailspinToys</code> database and take action to remediate one of the findings in the <code>TailspinToys</code> database. The <a href="https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment" tabindex="-1" target="_blank">SQL Vulnerability Assessment service</a> is a service that provides visibility into your security state, and includes actionable steps to resolve security issues, and enhance your database security.</p><ol>
+<li><p>Return to the <strong>Advanced Data Security</strong> blade for the <code>TailspinToys</code> Managed database and then select the <strong>Vulnerability Assessment</strong> tile.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ads-vulnerability-assessment-tile.png" alt="The Vulnerability tile is displayed." title="Advanced Data Security" style="max-width: 100%;"></p>
+</li>
+<li><p>On the Vulnerability Assessment blade, select <strong>Scan</strong> on the toolbar.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/vulnerability-assessment-scan.png" alt="Vulnerability assessment scan button." title="Scan" style="max-width: 100%;"></p>
+</li>
+<li><p>When the scan completes, you will see a dashboard, displaying the number of failing checks, passing checks, and a breakdown of the risk summary by severity level.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-mi-vulnerability-assessment-dashboard.png" alt="The Vulnerability Assessment dashboard is displayed." title="Vulnerability Assessment dashboard" style="max-width: 100%;"></p>
+<blockquote>
+<p><strong>Note</strong>: Scans are run on a schedule, so if you see a message that no vulnerabilities are found your database may not have been scanned yet. You will need to run a scan manually. To do this, select the <strong>Scan</strong> button on the toolbar, and follow any prompts to start a scan. This will take a minute or so to complete.</p>
+</blockquote>
+</li>
+<li><p>In the scan results, take a few minutes to browse both the Failed and Passed checks, and review the types of checks that are performed. In the <strong>Failed</strong> the list, locate the security check for <strong>Transparent data encryption</strong>. This check has an ID of <strong>VA1219</strong>.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-mi-vulnerability-assessment-failed-va1219.png" alt="The VA1219 finding for Transparent data encryption is highlighted." title="Vulnerability assessment" style="max-width: 100%;"></p>
+</li>
+<li><p>Select the <strong>VA1219</strong> finding to view the detailed description.</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-mi-vulnerability-assessment-failed-va1219-details.png" alt="The details of the VA1219 - Transparent data encryption should be enabled finding are displayed with the description, impact, and remediation fields highlighted." title="Vulnerability Assessment" style="max-width: 100%;"></p>
+<blockquote>
+<p>The details for each finding provide more insight into the reason for the finding. Of note are the fields describing the finding, the impact of the recommended settings, and details on remediation for the finding.</p>
+</blockquote>
+</li>
+<li><p>You will now act on the recommendation remediation steps for the finding, and enable <a href="https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql" tabindex="-1" target="_blank">Transparent Data Encryption</a> for the <code>TailspinToys</code> database. To accomplish this, you will switch over to using SSMS on your JumpBox VM for the next few steps.</p>
+<blockquote>
+<p><strong>Note</strong>: Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.</p>
+</blockquote>
+</li>
+<li><p>On your JumpBox VM, open Microsoft SQL Server Management Studio 18 from the Start menu, and enter the following information in the <strong>Connect to Server</strong> dialog.</p>
+<blockquote>
+<p><strong>Note</strong>: If you face any problem with opening Microsoft SQL Server Management Studio 18, then download the same from this link: <a href="https://go.microsoft.com/fwlink/?linkid=2099720" tabindex="-1" target="_blank">https://go.microsoft.com/fwlink/?linkid=2099720</a> and install. </p>
+</blockquote>
+<ul>
+<li><strong>Server name</strong>: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.</li>
+<li><strong>Authentication</strong>: Select SQL Server Authentication.</li>
+<li><strong>Login</strong>: Enter <strong>contosoadmin</strong></li>
+<li><strong>Password</strong>: Enter <strong>IAE5fAijit0w^rDM</strong></li>
+<li><p>Check the <strong>Remember password</strong> box.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sqlserverconnection.png" alt="The SQL managed instance details specified above are entered into the Connect to Server dialog." title="Connect to Server" style="max-width: 100%;"></p>
+</li>
+</ul>
+</li>
+<li><p>In SSMS, select <strong>New Query</strong> from the toolbar, paste the following SQL script into the new query window.</p>
+<pre><code class="lang-sql"> ALTER DATABASE [TailspinToys] SET ENCRYPTION ON</code></pre>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-enable-tde.png" alt="A new query window is displayed, with the script above pasted into it." title="New query" style="max-width: 100%;"></p>
+<blockquote>
+<p>You turn transparent data encryption on and off on the database level. To enable transparent data encryption on a database in Azure SQL Managed Instance use must use T-SQL.</p>
+</blockquote>
+</li>
+<li><p>Select <strong>Execute</strong> from the SSMS toolbar. After a few seconds, you will see a message that the “Commands completed successfully.”</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-enable-tde-success.png" alt="The Execute button is highlighted on the SSMS toolbar, and the Commands completed successfully message is highlighted in the output window." title="Execute" style="max-width: 100%;"></p>
+</li>
+<li><p>You can verify the encryption state and view information the associated encryption keys by using the <a href="https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql" tabindex="-1" target="_blank">sys.dm_database_encryption_keys view</a>. Select <strong>New Query</strong> on the SSMS toolbar again, and paste the following query into the new query window:</p>
+<pre><code class="lang-sql">SELECT * FROM sys.dm_database_encryption_keys</code></pre>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-database-encryption-keys.png" alt="The query above is pasted into a new query window in SSMS." title="New query" style="max-width: 100%;"></p>
+</li>
+<li><p>Select <strong>Execute</strong> from the SSMS toolbar. You will see two records in the Results window, which provide information about the encryption state and keys used for encryption.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-database-encryption-keys-results.png" alt="The Execute button on the SSMS toolbar is highlighted, and in the Results pane the two records about the encryption state and keys for the TailspinToys database are highlighted." title="Results" style="max-width: 100%;"></p>
+<blockquote>
+<p>By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.</p>
+</blockquote>
+</li>
+<li><p>Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the <code>TailspinToys</code> managed database. On the toolbar, select <strong>Scan</strong> to start a new assessment of the database.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/vulnerability-assessment-scan.png" alt="Vulnerability assessment scan button." title="Scan" style="max-width: 100%;"></p>
+</li>
+<li><p>When the scan completes, select the <strong>Failed</strong> tab, enter <strong>VA1219</strong> into the search filter box, and observe that the previous failure is no longer in the Failed list.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-mi-vulnerability-assessment-failed-filter-va1219.png" alt="The Failed tab is highlighted and VA1219 is entered into the search filter. The list displays no results." title="Failed" style="max-width: 100%;"></p>
+</li>
+<li><p>Now, select the <strong>Passed</strong> tab, and observe the <strong>VA1219</strong> check is listed with a status of <strong>PASS</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/sql-mi-vulnerability-assessment-passed-va1219.png" alt="The Passed tab is highlighted and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results." title="Passed" style="max-width: 100%;"></p>
+<blockquote>
+<p>Using the SQL Vulnerability Assessment, it is simple to identify and remediate potential database vulnerabilities, allowing you to proactively improve your database security.</p>
+</blockquote>
+</li>
+</ol><h2 id="exercise-6-enable-dynamic-data-masking">Exercise 6: Enable Dynamic Data Masking</h2><p>Duration: 15 minutes</p><p>In this exercise, you will enable <a href="https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started" tabindex="-1" target="_blank">Dynamic Data Masking</a> (DDM) on credit card numbers in the <code>TailspinToys</code> database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It’s a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.</p><blockquote>
+<p>For example, a service representative at a call center may identify callers by several digits of their credit card number, but those data items should not be fully exposed to the service representative. A masking rule can be defined that masks all but the last four digits of any credit card number in the result set of any query. As another example, an appropriate data mask can be defined to protect personally identifiable information (PII) data, so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.</p>
+</blockquote><h3 id="exercise-6-enable-dynamic-data-masking-task-1-enable-ddm-on-credit-card-numbers">Task 1: Enable DDM on credit card numbers</h3><p>When inspecting the data in the <code>TailspinToys</code> database using the ADS Data Discovery &amp; Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you will take another step to product this information by enabling DDM on the <code>CardNumber</code> field in the <code>CreditCard</code> table. This will prevent queries against that table from returning the full credit card number.</p><ol>
+<li><p>On your JumpBox VM, return to the SQL Server Management Studio (SSMS) window you opened previously.</p>
+</li>
+<li><p>Expand <strong>Tables</strong> under the <strong>TailspinToys</strong> database and locate the <code>Sales.CreditCard</code> table. Expand the table columns and observe that there is a column named <code>CardNumber</code>. Right-click the table, and choose <strong>Select Top 1000 Rows</strong> from the context menu.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-credit-card-table-select.png" alt="The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table." title="Select Top 1000 Rows" style="max-width: 100%;"></p>
+</li>
+<li><p>In the query window that opens, review the Results, including the <code>CardNumber</code> field. Notice it is displayed in plain text, making the data available to anyone with access to query the database.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-credit-card-table-select-results.png" alt="Plain text credit card numbers are highlighted in the query results." title="Results" style="max-width: 100%;"></p>
+</li>
+<li><p>To be able to test the mask being applied to the <code>CardNumber</code> field, you will first create a user in the database that will be used for testing the masked field. In SSMS, select <strong>New Query</strong> and paste the following SQL script into the new query window:</p>
+<pre><code class="lang-sql">USE [TailspinToys];
+GO
+
+CREATE USER DDMUser WITHOUT LOGIN;
+GRANT SELECT ON [Sales].[CreditCard] TO DDMUser;</code></pre>
+<blockquote>
+<p>The SQL script above creates a new user in the database named <code>DDMUser</code>, and grants that user <code>SELECT</code> rights on the <code>Sales.CreditCard</code> table.</p>
+</blockquote>
+</li>
+<li><p>Select <strong>Execute</strong> from the SSMS toolbar to run the query. You will get a message that the commands completed successfully in the Messages pane.</p>
+</li>
+<li><p>With the new user created, run a quick query to observe the results. Select <strong>New Query</strong> again, and paste the following into the new query window.</p>
+<pre><code class="lang-sql">USE [TailspinToys];
+GO
+
+EXECUTE AS USER = <span class="string">'DDMUser'</span>;
+SELECT * FROM [Sales].[CreditCard];
+REVERT;</code></pre>
+</li>
+<li><p>Select <strong>Execute</strong> from the toolbar, and examine the Results pane. Notice the credit card number, as above, is visible in clear text.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-ddm-results-unmasked.png" alt="The credit card number is unmasked in the query results." title="Query results" style="max-width: 100%;"></p>
+</li>
+<li><p>You will now apply DDM on the <code>CardNumber</code> field to prevent it from being viewed in query results. Select <strong>New Query</strong> from the SSMS toolbar and paste the following query into the query window to apply a mask to the <code>CardNumber</code> field, and select <strong>Execute</strong>.</p>
+<pre><code class="lang-sql">USE [TailspinToys];
+GO
+
+ALTER TABLE [Sales].[CreditCard]
+ALTER COLUMN [CardNumber] NVARCHAR(<span class="number">25</span>) MASKED WITH (FUNCTION = <span class="string">'partial(<span class="number">0</span>,<span class="string">"xxx-xxx-xxx-"</span>,<span class="number">4</span>)'</span>)</code></pre>
+</li>
+<li><p>Run the <code>SELECT</code> query you opened in step 6 above again, and observe the results. Specifically inspect the output in the <code>CardNumber</code> field. For reference the query is below.</p>
+<pre><code class="lang-sql"> USE [TailspinToys];
+ GO
+
+ EXECUTE AS USER = <span class="string">'DDMUser'</span>;
+ SELECT * FROM [Sales].[CreditCard];
+ REVERT;</code></pre>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ssms-sql-mi-ddm-results-masked.png" alt="The credit card number is masked in the query results." title="Query results" style="max-width: 100%;"></p>
+<blockquote>
+<p>The <code>CardNumber</code> is now displayed using the mask applied to it, so only the last four digits of the card number are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It’s a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.</p>
+</blockquote>
+</li>
+</ol><h3 id="exercise-6-enable-dynamic-data-masking-task-2-apply-ddm-to-email-addresses">Task 2: Apply DDM to email addresses</h3><p>From the findings of the Data Discovery &amp; Classification report in ADS, you saw that email addresses are labeled Confidential. In this task, you will use one of the built-in functions for making email addresses using DDM to help protect this information.</p><ol>
+<li><p>For this, you will target the <code>LoginEmail</code> field in the <code>[dbo].[Gamer]</code> table. Open a new query window and execute the following script:</p>
+<pre><code class="lang-sql"> USE [TailspinToys];
+ GO
+
+ SELECT TOP(<span class="number">100</span>) * FROM [dbo].[Gamer]</code></pre>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ddm-select-gamer-results.png" alt="In the query results, full email addresses are visible." title="Query results" style="max-width: 100%;"></p>
+</li>
+<li><p>Now, as you did above, you will grant the <code>DDMUser</code> you created above <code>SELECT</code> rights on the [dbo].[Gamer]. In a new query window and enter the following script, and then select <strong>Execute</strong>:</p>
+<pre><code class="lang-sql">USE [TailspinToys];
+GO
+
+GRANT SELECT ON [dbo].[Gamer] TO DDMUser;</code></pre>
+</li>
+<li><p>Next, apply DDM on the <code>LoginEmail</code> field to prevent it from being viewed in full in query results. Select <strong>New Query</strong> from the SSMS toolbar and paste the following query into the query window to apply a mask to the <code>LoginEmail</code> field, and then select <strong>Execute</strong>.</p>
+<pre><code class="lang-sql">USE [TailspinToys];
+GO
+
+ALTER TABLE [dbo].[Gamer]
+ALTER COLUMN [LoginEmail] NVARCHAR(<span class="number">250</span>) MASKED WITH (FUNCTION = <span class="string">'Email()'</span>);</code></pre>
+<blockquote>
+<p><strong>Note</strong>: Observe the use of the built-in <code>Email()</code> masking function above. This is one of several pre-defined masks available in SQL Server databases.</p>
+</blockquote>
+</li>
+<li><p>Run the <code>SELECT</code> query below, and observe the results. Specifically inspect the output in the <code>LoginEmail</code> field. For reference the query is below.</p>
+<pre><code class="lang-sql"> USE [TailspinToys];
+ GO
+
+ EXECUTE AS USER = <span class="string">'DDMUser'</span>;
+ SELECT * FROM [dbo].[Gamer];
+ REVERT;</code></pre>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ddm-select-gamer-results-masked.png" alt="The email addresses are now masked in the query results." title="Query results" style="max-width: 100%;"></p>
+</li>
+</ol><h2 id="exercise-7-use-online-secondary-for-read-only-queries">Exercise 7: Use online secondary for read-only queries</h2><p>Duration: 15 minutes</p><p>In this exercise, you will look at how you can use the automatically created online secondary for reporting, without feeling the impacts of a heavy transactional load on the primary database. Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. Using <a href="https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out" tabindex="-1" target="_blank"><strong>Read Scale-Out</strong></a> allows you to load balance Azure SQL Database read-only workloads using the capacity of one read-only replica.</p><h3 id="exercise-7-use-online-secondary-for-read-only-queries-task-1-view-leaderboard-report-in-tailspintoys-web-application">Task 1: View Leaderboard report in TailspinToys web application</h3><p>In this task, you will open a web report using the web application you deployed to your App Service.</p><ol>
+<li><p>In the <a href="https://portal.azure.com/" tabindex="-1" target="_blank">Azure portal</a>, select <strong>Resource groups</strong> from the left-hand menu, and then select the resource group named <strong>hands-on-lab-SUFFIX</strong>.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/resource-groups.png" alt="The hands-on-lab-SUFFIX resource group is selected." title="Resource groups" style="max-width: 100%;"></p>
+</li>
+<li><p>In the hands-on-lab-SUFFIX resource group, select the <strong>tailspintoysUNIQUEID</strong> App Service from the list of resources.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/rg-app-service.png" alt="The App Service resource is selected from the list of resources in the hands-on-lab-SUFFIX resource group." title="hands-on-lab-SUFFIX resource group" style="max-width: 100%;"></p>
+</li>
+<li><p>On the App Service overview blade, select the <strong>URL</strong> to open the web application in a browser window.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-url.png" alt="The App service URL is highlighted." title="App service URL" style="max-width: 100%;"></p>
+</li>
+<li><p>In the TailspinToys web app, select <strong>Leaderboard</strong> from the menu.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/tailspin-toys-leaderboard-read-write.png" alt="READ_WRITE is highlighted on the Leaderboard page." title="TailspinToys Web App" style="max-width: 100%;"></p>
+<blockquote>
+<p>Note the <code>READ_WRITE</code> string on the page. This is the output from reading the <code>Updateability</code> property associated with the <code>ApplicationIntent</code> option on the target database. This can be retrieved using the SQL query <code>SELECT DATABASEPROPERTYEX(DB_NAME(), "Updateability")</code>.</p>
+</blockquote>
+</li>
+</ol><h3 id="exercise-7-use-online-secondary-for-read-only-queries-task-2-update-read-only-connection-string">Task 2: Update read only connection string</h3><p>In this task, you will enable Read Scale-Out for the <code>TailspinToys</code>database, using the <code>ApplicationIntent</code> option in the connection string. This option dictates whether the connection is routed to the write replica or to a read-only replica. Specifically, if the <code>ApplicationIntent</code> value is <code>ReadWrite</code> (the default value), the connection will be directed to the database’s read-write replica. If the <code>ApplicationIntent</code> value is <code>ReadOnly</code>, the connection is routed to a read-only replica.</p><ol>
+<li><p>Return to the App Service blade in the Azure portal and select <strong>Configuration</strong> under Settings on the left-hand side.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-configuration-menu.png" alt="The Configuration item is selected under Settings." title="Configuration" style="max-width: 100%;"></p>
+</li>
+<li><p>On the Configuration blade, scroll down and locate the connection string named <code>TailspinToysReadOnlyContext</code> within the <strong>Connection strings</strong> section, and select the Pencil (edit) icon on the right.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-configuration-connection-strings-read-only.png" alt="The edit icon next to the read-only connection string is highlighted." title="Connection strings" style="max-width: 100%;"></p>
+</li>
+<li><p>In the Add/Edit connection string dialog, select the <strong>Value</strong> for the <code>TailspinToysReadOnlyContext</code> and paste the following parameter to end of the connection string.</p>
+<pre><code class="lang-sql">ApplicationIntent=ReadOnly;</code></pre>
+</li>
+<li><p>The <code>TailspinToysReadOnlyContext</code> connection string should now look something like the following:</p>
+<pre><code class="lang-sql">Server=tcp:sqlmi-abcmxwzksiqoo.<span class="number">15</span>b<span class="number">8611394</span>c<span class="number">5</span>.database.windows.net,<span class="number">1433</span>;Database=TailspinToys;User ID=contosoadmin;Password=IAE<span class="number">5</span>fAijit<span class="number">0</span>w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;</code></pre>
+</li>
+<li><p>Select <strong>Update</strong>.</p>
+</li>
+<li><p>Select <strong>Save</strong> at the top of the Configuration blade.</p>
+<p><img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-service-configuration-save.png" alt="The save button on the Application settings blade is highlighted." title="Save" style="max-width: 100%;"></p>
+</li>
+</ol><h3 id="exercise-7-use-online-secondary-for-read-only-queries-task-3-reload-leaderboard-report-in-the-tailspin-toys-web-app">Task 3: Reload Leaderboard report in the Tailspin Toys web app</h3><p>In this task, you will refresh the Leaderboard report in the Tailspin Toys web app, and observe the result.</p><ol>
+<li><p>Return to the TailspinToys gamer information website you opened previously, and refresh the <strong>Leaderboard</strong> page. The page should now look similar to the following:</p>
+<p> <img src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/tailspin-toys-leaderboard-read-only.png" alt="READ_ONLY is highlighted on the Reports page." title="TailspinToys Web App" style="max-width: 100%;"></p>
+<blockquote>
+<p>Notice the <code>updateability</code> option is now displaying as <code>READ_ONLY</code>. With a simple addition to your database connection string, you are able to send read-only queries to the online secondary of your SQL MI Business critical database, allowing you to load-balance read-only workloads using the capacity of one read-only replica. The SQL MI Business Critical cluster has built-in Read Scale-Out capability that provides free-of charge built-in read-only node that can be used to run read-only queries that should not affect performance of your primary workload.</p>
+</blockquote>
+</li>
+</ol><h2 id="after-the-hands-on-lab">After the hands-on lab</h2><p>Duration: 10 minutes</p><p>In this exercise, you will de-provision all Azure resources that were created in support of this hands-on lab.</p><h3 id="after-the-hands-on-lab-task-1-delete-azure-resource-groups">Task 1: Delete Azure resource groups</h3><ol>
+<li>In the Azure portal, select <strong>Resource groups</strong> from the left-hand menu, and locate and delete the <strong>hands-on-lab-SUFFIX</strong> following resource group.</li>
+</ol><h3 id="after-the-hands-on-lab-task-2-delete-the-tailspin-toys-service-principal">Task 2: Delete the tailspin-toys service principal</h3><ol>
+<li><p>In the Azure portal, select <strong>Azure Active Directory</strong> and then select <strong>App registrations</strong>.</p>
+</li>
+<li><p>Select the <strong>tailspin-toys</strong> application, and select <strong>Delete</strong> on the application blade.</p>
+</li>
+</ol><p>You should follow all steps provided <em>after</em> attending the Hands-on lab.</p></div>
+                                </div>
+                            </div>
+                            <!--<div>{{pages.length}}</div>
+                    <div>{{getHubFiles.length}}</div>
+                    <div ng-repeat="page1 in pages track by $index">
+                        <div>{{page1.id}}</div>
+                        <div bind-html-compile="page1.pageHtml">
+
+                        </div>
+                        <div>{{page1.taskModels.length}}</div>
+                    </div>-->
+                        </div>
+
+                    </div>
+                    <!--Footer-->
+                    <div class="footer-fixed" ng-style="{width:docWidth}" style="width: 100%;">
+                        <div>
+                            <div class="flex">
+                                <div class="container">
+                                    <div class="row">
+                                        <!-- ngIf: getHubFiles.length >1 --><div class="col ng-scope" ng-if="getHubFiles.length &gt;1" style="float: left; width: 34%; border: 1px solid rgb(0, 103, 184);">
+                                            <!-- ngIf: !firstpage --><a role="link" aria-label="Previous" href="https://manage.cloudlabs.ai//" ng-if="!firstpage" class="btn btn-primary git-doc-Previous ng-binding ng-scope" ng-click="pageNavigation(&#39;Previous&#39;)" ng-hide="showSurvey" style=""><i alt="" role="img" aria-label="img" aria-hidden="true" class="fa fa-arrow-left"></i>Previous</a><!-- end ngIf: !firstpage -->
+                                        </div><!-- end ngIf: getHubFiles.length >1 -->
+                                        <div class="col" style="float:left; width:36%; text-align:center">
+                                            <!-- ngIf: attendeLabDetails.SurveyGuid!= null && !showSurvey && getHubFiles.length >=1 -->
+                                        </div>
+                                        <!-- ngIf: !lastpage -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<a ng-hide="firstpage" class="btn btn-primary git-doc-Previous" ng-click="pageNavigation('Previous')"><i class="fa fa-arrow-left" aria-hidden="true"></i>Previous</a>
+                    <a ng-if="!lastpage" class="btn btn-primary  git-doc-next" ng-click="pageNavigation('Next')"><i class="fa fa-arrow-right"></i>Next</a>
+                    <a ng-if="lastpage && githubMaster.IsTrial" class="btn btn-primary red git-doc-next" ng-click="loadEndPage()"><i class="fa fa-trash"></i>End</a>-->
+                        </div>
+                        <!-- ngIf: getHubFiles.length == 1 && githubMaster.IsTrial -->
+                    </div>
+                    <!--Hidden footer for survey  -->
+                    <!-- ngIf: showSurvey -->
+                    <!-- Footer End -->
+                </div><!-- end ngIf: EnvironmentStatus !='EndPage' -->
+                <!-- ngIf: EnvironmentStatus =='EndPage' -->
+            </div>
+            <div class="tab-pane fade" id="labDetails">
+                <!-- ngIf: EnvironmentStatus == 'Deleting' || EnvironmentStatus == 'Deleted' || EnvironmentStatus =='Already Deleted' -->
+
+                <!-- ngIf: EnvironmentStatus == 'Succeeded' --><div ng-if="EnvironmentStatus == &#39;Succeeded&#39;" class="ng-scope" style="">
+                    <!-- ngIf: attendeLabDetails.CloudPlatformId == 1 --><div ng-if="attendeLabDetails.CloudPlatformId == 1" ng-hide="githubMaster.DoNotSendCloudCredentials || githubMaster.AllowExistingAD" class="row ng-scope">
+                        <p class="col-md-12"><strong><u class="ng-binding">Azure Credentials</u></strong></p>
+                        <p style="padding-left:15px;" ng-hide="modeOfOperation == &#39;AzurePassUserDetails&#39;" translate="INSTRUCTION_AZURE_LOGIN" class="ng-scope">Here are your credentials to login to <a role="link" aria-label="Microsoft Azure Portal" href="https://portal.azure.com/" target="_blank">Microsoft Azure</a> and access the On Demand Lab </p>
+                        <!--Username-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3 ng-binding">Username</label>
+                            <div class="col-md-9" style="padding-bottom:10px;">
+                                <div class="col-md-11 col-xs-10">
+                                    <input type="text" role="textbox" value="odl_user_118768@cloudlabsaioutlook.onmicrosoft.com" class="form-control" id="txtAADEmail" disabled="" aria-label="odl_user_118768@cloudlabsaioutlook.onmicrosoft.com">
+                                </div>
+                                <div class="col-md-1 col-xs-2 padding-left-0">
+                                    <a role="button" class="ng-isolate-scope" href="https://manage.cloudlabs.ai//" aria-label="Click to copyUsername" title="Click to copy" ngclipboard="" data-clipboard-text="odl_user_118768@cloudlabsaioutlook.onmicrosoft.com" ng-click="confirmCopy()">
+                                        <i role="img" aria-hidden="true" aria-label="img" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Password-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3 ng-binding">Password</label>
+                            <div class="col-md-9" style="padding-bottom:10px;">
+                                <div class="col-md-11 col-xs-10">
+                                    <input type="text" role="textbox" value="bnsv43KNJ*DA" class="form-control" id="txtAzurePassword" disabled="" aria-label="bnsv43KNJ*DA">
+                                </div>
+                                <div class="col-md-1 col-xs-2 padding-left-0">
+                                    <a role="button" class="ng-isolate-scope" href="https://manage.cloudlabs.ai//" aria-label="Click to copy Password" title="Click to copy" ngclipboard="" data-clipboard-text="bnsv43KNJ*DA" ng-click="confirmCopy()">
+                                        <i role="img" aria-hidden="true" aria-label="img" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end ngIf: attendeLabDetails.CloudPlatformId == 1 -->
+                    <!--Service Proncipal Azure-->
+                    <!-- ngIf: attendeLabDetails.AADSPAppId && attendeLabDetails.CloudPlatformId == 1 && !smallScreen -->
+                    <!-- Small Service Principal-->
+                    <!-- ngIf: attendeLabDetails.AADSPAppId && attendeLabDetails.CloudPlatformId == 1 && smallScreen -->
+                    <!--Licenses-->
+                    <!-- ngIf: attendeLabDetails.Licenses.length > 0 -->
+                    <!--Environment Details-->
+                    <!-- ngIf: attendeLabDetails.DeploymentOutputValues.length > 0 --><div ng-if="attendeLabDetails.DeploymentOutputValues.length &gt; 0" class="row ng-scope">
+                        <span class="col-md-12" style="padding:15px;"><strong><u class="ng-binding"> Environment Details</u></strong></span>
+                        <!-- ngRepeat: rg in attendeLabDetails.DeploymentOutputValues --><div ng-repeat="rg in attendeLabDetails.DeploymentOutputValues" class="ng-scope">
+                            <!-- ngIf: attendeLabDetails.CloudPlatformId == 1 --><span ng-if="attendeLabDetails.CloudPlatformId == 1" class="col-md-12 ng-scope" style="padding-bottom:10px;"><strong class="ng-binding">Resource Group  : ODL-migrate-sql-118768</strong></span><!-- end ngIf: attendeLabDetails.CloudPlatformId == 1 -->
+                            <!-- ngRepeat: row in rg.OutputValues --><div ng-repeat="row in rg.OutputValues" class="ng-scope">
+                                <div class="col-md-12" style="padding:0px;">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-3 col-sm-12 col-xs-12" ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;col-md-12&#39; : &#39;col-md-3 col-sm-12 col-xs-12&#39;" style="word-wrap:break-word" title="vm Admin Username">VM Admin Username</label>
+                                        <div ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;&#39; : &#39;col-md-9 col-sm-12 col-xs-12&#39;" style="padding-bottom:10px;" class="col-md-9 col-sm-12 col-xs-12">
+                                            <div class="col-md-11 col-xs-10">
+                                                <input type="text" role="textbox" ng-model="row.Value" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" aria-label="sqlmiuser" disabled="" title="sqlmiuser">
+                                            </div>
+                                            <div class="col-md-1 col-xs-2 padding-left-0">
+                                                <a class="ng-isolate-scope" role="button" aria-label="Click to copyVM Admin Username" href="https://manage.cloudlabs.ai//" title="Click to copy" ngclipboard="" data-clipboard-text="sqlmiuser" ng-click="confirmCopy()">
+                                                    <i role="img" aria-label="img" aria-hidden="true" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: row in rg.OutputValues --><div ng-repeat="row in rg.OutputValues" class="ng-scope">
+                                <div class="col-md-12" style="padding:0px;">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-3 col-sm-12 col-xs-12" ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;col-md-12&#39; : &#39;col-md-3 col-sm-12 col-xs-12&#39;" style="word-wrap:break-word" title="vm Admin Password">VM Admin Password</label>
+                                        <div ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;&#39; : &#39;col-md-9 col-sm-12 col-xs-12&#39;" style="padding-bottom:10px;" class="col-md-9 col-sm-12 col-xs-12">
+                                            <div class="col-md-11 col-xs-10">
+                                                <input type="text" role="textbox" ng-model="row.Value" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" aria-label="Password.1234567890" disabled="" title="Password.1234567890">
+                                            </div>
+                                            <div class="col-md-1 col-xs-2 padding-left-0">
+                                                <a class="ng-isolate-scope" role="button" aria-label="Click to copyVM Admin Password" href="https://manage.cloudlabs.ai//" title="Click to copy" ngclipboard="" data-clipboard-text="Password.1234567890" ng-click="confirmCopy()">
+                                                    <i role="img" aria-label="img" aria-hidden="true" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: row in rg.OutputValues --><div ng-repeat="row in rg.OutputValues" class="ng-scope">
+                                <div class="col-md-12" style="padding:0px;">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-3 col-sm-12 col-xs-12" ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;col-md-12&#39; : &#39;col-md-3 col-sm-12 col-xs-12&#39;" style="word-wrap:break-word" title="spn Name ">Spn Name </label>
+                                        <div ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;&#39; : &#39;col-md-9 col-sm-12 col-xs-12&#39;" style="padding-bottom:10px;" class="col-md-9 col-sm-12 col-xs-12">
+                                            <div class="col-md-11 col-xs-10">
+                                                <input type="text" role="textbox" ng-model="row.Value" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" aria-label="Migrating-sql-database-SP" disabled="" title="Migrating-sql-database-SP">
+                                            </div>
+                                            <div class="col-md-1 col-xs-2 padding-left-0">
+                                                <a class="ng-isolate-scope" role="button" aria-label="Click to copySpn Name " href="https://manage.cloudlabs.ai//" title="Click to copy" ngclipboard="" data-clipboard-text="Migrating-sql-database-SP" ng-click="confirmCopy()">
+                                                    <i role="img" aria-label="img" aria-hidden="true" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: row in rg.OutputValues --><div ng-repeat="row in rg.OutputValues" class="ng-scope">
+                                <div class="col-md-12" style="padding:0px;">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-3 col-sm-12 col-xs-12" ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;col-md-12&#39; : &#39;col-md-3 col-sm-12 col-xs-12&#39;" style="word-wrap:break-word" title="spn Application ID ">Spn Application ID </label>
+                                        <div ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;&#39; : &#39;col-md-9 col-sm-12 col-xs-12&#39;" style="padding-bottom:10px;" class="col-md-9 col-sm-12 col-xs-12">
+                                            <div class="col-md-11 col-xs-10">
+                                                <input type="text" role="textbox" ng-model="row.Value" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" aria-label="6640f41b-db49-4d65-9ffb-2a32652600da" disabled="" title="6640f41b-db49-4d65-9ffb-2a32652600da">
+                                            </div>
+                                            <div class="col-md-1 col-xs-2 padding-left-0">
+                                                <a class="ng-isolate-scope" role="button" aria-label="Click to copySpn Application ID " href="https://manage.cloudlabs.ai//" title="Click to copy" ngclipboard="" data-clipboard-text="6640f41b-db49-4d65-9ffb-2a32652600da" ng-click="confirmCopy()">
+                                                    <i role="img" aria-label="img" aria-hidden="true" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: row in rg.OutputValues --><div ng-repeat="row in rg.OutputValues" class="ng-scope">
+                                <div class="col-md-12" style="padding:0px;">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-3 col-sm-12 col-xs-12" ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;col-md-12&#39; : &#39;col-md-3 col-sm-12 col-xs-12&#39;" style="word-wrap:break-word" title="spn Secret Key">Spn Secret Key</label>
+                                        <div ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;&#39; : &#39;col-md-9 col-sm-12 col-xs-12&#39;" style="padding-bottom:10px;" class="col-md-9 col-sm-12 col-xs-12">
+                                            <div class="col-md-11 col-xs-10">
+                                                <input type="text" role="textbox" ng-model="row.Value" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" aria-label="0rd9=a@g9B8YVIX@uUrJbg:3j/nUMgS3" disabled="" title="0rd9=a@g9B8YVIX@uUrJbg:3j/nUMgS3">
+                                            </div>
+                                            <div class="col-md-1 col-xs-2 padding-left-0">
+                                                <a class="ng-isolate-scope" role="button" aria-label="Click to copySpn Secret Key" href="https://manage.cloudlabs.ai//" title="Click to copy" ngclipboard="" data-clipboard-text="0rd9=a@g9B8YVIX@uUrJbg:3j/nUMgS3" ng-click="confirmCopy()">
+                                                    <i role="img" aria-label="img" aria-hidden="true" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: row in rg.OutputValues --><div ng-repeat="row in rg.OutputValues" class="ng-scope">
+                                <div class="col-md-12" style="padding:0px;">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-3 col-sm-12 col-xs-12" ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;col-md-12&#39; : &#39;col-md-3 col-sm-12 col-xs-12&#39;" style="word-wrap:break-word" title="sql MI Username">SQL MI Username</label>
+                                        <div ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;&#39; : &#39;col-md-9 col-sm-12 col-xs-12&#39;" style="padding-bottom:10px;" class="col-md-9 col-sm-12 col-xs-12">
+                                            <div class="col-md-11 col-xs-10">
+                                                <input type="text" role="textbox" ng-model="row.Value" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" aria-label="contosoadmin" disabled="" title="contosoadmin">
+                                            </div>
+                                            <div class="col-md-1 col-xs-2 padding-left-0">
+                                                <a class="ng-isolate-scope" role="button" aria-label="Click to copySQL MI Username" href="https://manage.cloudlabs.ai//" title="Click to copy" ngclipboard="" data-clipboard-text="contosoadmin" ng-click="confirmCopy()">
+                                                    <i role="img" aria-label="img" aria-hidden="true" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: row in rg.OutputValues --><div ng-repeat="row in rg.OutputValues" class="ng-scope">
+                                <div class="col-md-12" style="padding:0px;">
+                                    <div class="form-group">
+                                        <label class="control-label ng-binding col-md-3 col-sm-12 col-xs-12" ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;col-md-12&#39; : &#39;col-md-3 col-sm-12 col-xs-12&#39;" style="word-wrap:break-word" title="sql MI Password">SQL MI Password</label>
+                                        <div ng-class="currentState === &#39;main.gitDoc&#39; ? &#39;&#39; : &#39;col-md-9 col-sm-12 col-xs-12&#39;" style="padding-bottom:10px;" class="col-md-9 col-sm-12 col-xs-12">
+                                            <div class="col-md-11 col-xs-10">
+                                                <input type="text" role="textbox" ng-model="row.Value" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" aria-label="IAE5fAijit0w^rDM" disabled="" title="IAE5fAijit0w^rDM">
+                                            </div>
+                                            <div class="col-md-1 col-xs-2 padding-left-0">
+                                                <a class="ng-isolate-scope" role="button" aria-label="Click to copySQL MI Password" href="https://manage.cloudlabs.ai//" title="Click to copy" ngclipboard="" data-clipboard-text="IAE5fAijit0w^rDM" ng-click="confirmCopy()">
+                                                    <i role="img" aria-label="img" aria-hidden="true" alt="" class="fa fa-copy" style="font-size:150%;padding-top:8px"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end ngRepeat: row in rg.OutputValues -->
+                        </div><!-- end ngRepeat: rg in attendeLabDetails.DeploymentOutputValues -->
+                    </div><!-- end ngIf: attendeLabDetails.DeploymentOutputValues.length > 0 -->
+                    <br>
+                </div><!-- end ngIf: EnvironmentStatus == 'Succeeded' -->
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+<style class="ng-scope">
+    .gitview-header-container a[role="button"] {
+        text-shadow: none;
+        color: white;
+    }
+        .gitview-header-container a[role="button"] :focus, a[role="button"] :hover, a[role="button"] :active {
+            text-shadow: none;
+            
+        }
+        .gitview-header-container a[role="button"]:focus{
+            border: 2px dashed #FFFFFF !important;
+        }   
+
+    .right {
+        text-align: right /* only needed for the table version */
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .flex a[role="button"] {
+        color: #FFFFFF;
+    }
+
+    .flex a[role="button"]:hover, a[role="button"] :focus {
+        color: #FFFFFF;
+    }
+
+    .gitview-menu a[role="button"]:hover, a[role="button"] :focus {
+        color: #FFFFFF;
+    }
+   
+    .center {
+    text-align: center !important;
+    margin:0px;
+    }
+</style></div></div>
+
+    <!-- ngIf: $root.showfooter -->
+    <div id="toast-container" ng-class="[config.position, config.animation]" toaster-options="{&#39;timeout&#39;: { &#39;toast-warning&#39;: 150000,&#39;toast-success&#39;:150000,&#39;toast-info&#39;:150000 , &#39;toast-error&#39;: 0 }, &#39;position-class&#39;: &#39;toast-bottom-right&#39;, &#39;close-button&#39;:true}" class="ng-scope toast-bottom-right"><!-- ngRepeat: toaster in toasters --></div>
+
+    <script type="text/javascript" src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/saved_resource"></script>
+    <script>
+        Stripe.setPublishableKey('pk_test_IX5sLzyjNC6050Ap4PZ3ZwsJ');
+    </script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/jquery.min.js.download" type="text/javascript"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-cookies.min.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-animate.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-route.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-ui-router.min.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/adal.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/adal-angular.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-busy.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/toaster.min.js.download"></script>
+    <!--<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>-->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/clipboard.min.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ngclipboard.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-bind-html-compile.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-cookies.min.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-translate.min.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-translate-loader-static-files.min.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-translate-loader-url.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-translate-interpolation-messageformat.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-translate-storage-cookie.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-translate-storage-local.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-translate-handler-log.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/tmhDynamicLocale.min.js.download"></script>
+    <!--<script src="Scripts/Toaster/notifier-1.0.js"></script>-->
+    <!--<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.13/js/adal.min.js"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.13/js/adal-angular.min.js"></script>-->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/loading-bar.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-modal-service.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/moment.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-moment.min.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-payments.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ng-table.min.js.download"></script>
+    <!--<script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/legacy.js'></script>
+    <script src='https://cdn.rawgit.com/rstacruz/flatdoc/v0.9.0/flatdoc.js'></script>-->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/legacy.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/flatdoc.js.download"></script>
+    <!--Reference the SignalR library. -->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/jquery.signalR-2.4.0.js.download"></script>
+    <!--Reference the autogenerated SignalR hub script. -->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/hubs"></script>
+
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/client.settings"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-def.js.download"></script>
+    <!--<script src="App/app-constants.js"></script>-->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/app-init.js.download"></script>
+    <!--<script src="App/directives.js?v=20191008"></script>-->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/route-config.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/DataService.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/notifier-1.0.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/HeaderController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/MainController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/EventController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/QuestionDirective.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/smooth-scroll.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/resizer.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-pageslide-directive.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/FeedbackController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ProfileController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/PartnerprofileController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ErrorController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/UnregisterController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/TestDriveController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/PaymentController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/OnDemandController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/ChannelController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/CalendarTrackController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/PrivateSubscriptionController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/InstructorQuizController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/AttendeeQuizController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/EmailConfirmationController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/GitDocGeneratorController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/MockExamController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/LearningPathController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/LabGuideShortcutController.js.download"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/jquery-migrate.min.js.download" type="text/javascript"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/bootstrap.min.js.download" type="text/javascript"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/back-to-top.js.download" type="text/javascript"></script>
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-filter.min.js.download"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/jquery.fancybox.pack.js.download" type="text/javascript"></script><!-- pop up -->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/owl.carousel.min.js.download" type="text/javascript"></script><!-- slider for products -->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/layout.js.download" type="text/javascript"></script>
+    <!--<script src="assets/layout.js" type="text/javascript"></script>-->
+    <!--<script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>-->
+    <script src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/angular-appinsights.js.download" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Layout.init();
+            Layout.initOWL();
+            // Layout.initTwitter();
+            //Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+            //Layout.initNavScrolling();
+        });
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+
+
+
+<iframe name="stripeXDM_default543344_provider" id="stripeXDM_default543344_provider" aria-hidden="true" src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/channel.html" frameborder="0" style="position: absolute; top: -2000px; left: 0px;"></iframe><div id="topcontrol" title="Scroll Back to Top" style="position: fixed; bottom: 10px; right: 10px; opacity: 0; cursor: pointer;"><img role="img" aria-hidden="true" src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/up.png" alt="Scroll Back to Top" style="width:40px; height:40px"> </div><iframe src="./CloudLabs AI Become Cloud Expert with Hands on Labs_files/outer.html" frameborder="0" allowtransparency="true" scrolling="no" tabindex="-1" aria-hidden="true" style="width: 1px !important; height: 1px !important; position: fixed !important; visibility: hidden !important; pointer-events: none !important;"></iframe></body></html>

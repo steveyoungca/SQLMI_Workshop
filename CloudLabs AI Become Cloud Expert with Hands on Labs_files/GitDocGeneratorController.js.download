@@ -1,0 +1,826 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .controller('GitDocGeneratorController', GitDocGeneratorController);
+
+    GitDocGeneratorController.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$window', '$location', '$sce', '$interval', '$timeout', 'notifier', 'DataService', '$http', 'appConstant', 'serviceEndpoint', 'adalAuthenticationService', 'ModalService', 'ngTableParams', '$compile', '$filter', '$cookies'];
+
+    function GitDocGeneratorController($scope, $rootScope, $state, $stateParams, $window, $location, $sce, $interval, $timeout, notifier, DataService, $http, appConstant, serviceEndpoint, adalService, ModalService, ngTableParams, $compile, $filter, $cookies) {
+        $rootScope.showHeader = false;
+        $rootScope.showfooter = false;
+        $rootScope.overflow = "hidden";
+        $scope.height = $window.innerHeight;
+        $scope.heightWithoutFooter = $window.innerHeight - 173;
+        $scope.SelectedTestDriveUniqueName = $stateParams.testdriveId;
+        $scope.voucherCode = $stateParams.userInviteLink;
+        $scope.vmLaunchURLId = $stateParams.vmLaunchURL;
+        $scope.attendeLabDetails = {};
+        $scope.minutes = 0;
+        $scope.hours = 0;
+        $scope.docWidth = "100%";
+        $scope.smallScreen = false;
+        $scope.VirtualMachines = [];
+        $scope.showDocuemnt = true;
+        $scope.EnvironmentStatus = "InProgress";
+        $scope.currentState = $state.current.name;
+        $scope.navigationAnalytics = {};
+        $scope.IsAttendeeVisitedSurvey = false;
+        $scope.style = true;
+        $scope.labDetailsScroll = 0;
+        $scope.environmentScroll = 0;
+        $scope.labDocScroll = 0;
+        $scope.maximizeButton = true;
+        var toSend = {};
+        var vm = this;
+        var obj = {}, temp = [], i;
+        //if ($state.current.name === 'main.gitDoc') {
+        //    $scope.hideLabGuide = ["5b926a02-98a6-4dae-93c5-dc2d7354ef8f", "9888fb6f-f278-4d50-bea2-180cb53be218", "1ddbef68-762b-4f9b-85bc-4aff78c9a3a0", "b3ca4df9-c531-4001-9b30-2152780df348", "135e8183-ffc2-4e1b-b0e5-3b58db9549a7", "976beb0e-6d87-4633-aaa3-f7d381b349d5", "fea2a186-51f7-4c76-a73c-439e7b48a7a4"]
+        //    angular.forEach($scope.hideLabGuide, function (value) {
+        //        if (value === $scope.SelectedTestDriveUniqueName) {
+        //            $scope.showDocuemnt = false;
+        //            $scope.maximizeButton = false;
+                    //var newTabUrl = '/#/labguide/' + $scope.SelectedTestDriveUniqueName + '/' + $scope.voucherCode;
+        //            //$window.open(newTabUrl, '_blank');
+        //        }
+        //    });
+        //}
+        $(document).on('flatdoc:ready', function (e) {
+            e.stopImmediatePropagation();
+            var code = $("div.htmlCode").html();
+            console.log(code.length);
+            if (code !== "") {
+                $("div.htmlCode").empty();
+                code = code.replace('<inject key="AzureAdUserEmail"></inject>', $scope.username);
+                code = code.replace('<inject key="AzureAdUserPassword"></inject>', $scope.password);
+                //code = code.replace(/\.\.\//g, $scope.githubMaster.ImagePath);
+                $("div.htmlCode").append(code);
+                console.log(code.length);
+                $("div.htmlCode img").css({ 'max-width': '100%' });
+                $("div.htmlCode a").attr("tabindex", "-1");
+                $("div.htmlCode p:contains('title:')").hide();
+                $("#-redirect_from-labsvstscontinuousdeploymentindexhtm").hide();
+                // Replace Image URLs
+                var prefixURL = $scope.selectedPage.RawFilePath.substring(0, $scope.selectedPage.RawFilePath.lastIndexOf("/"));
+                $("div.htmlCode img").each(function () {
+                    var url = $(this).attr('src');
+                    if (url.indexOf('../') === 0) {
+                        prefixURL = prefixURL.substring(0, prefixURL.lastIndexOf("/") + 1);
+                        $(this).attr("src", url.replace('../', prefixURL));
+                    }
+                    else if (url.includes('./') || !url.includes('https://')) {
+                        prefixURL = $scope.selectedPage.RawFilePath.substring(0, $scope.selectedPage.RawFilePath.lastIndexOf("/") + 1);
+                        if (url.includes('./')) {
+                            $(this).attr("src", url.replace('./', prefixURL));
+                        }
+                        else {
+                            $(this).attr("src", prefixURL + url);
+                        }
+                    }
+                });
+
+                // Modify <a> tag hrefs pointing to section
+                if ($scope.githubMaster.BaseURL !== undefined && $scope.githubMaster.BaseURL !== null) {
+                    var rawFileBaseURL = $scope.selectedPage !== null && $scope.selectedPage.RawFileBaseURL !== null ? $scope.selectedPage.RawFileBaseURL : $scope.githubMaster.BaseURL;
+                    var baseURL = rawFileBaseURL !== null ? rawFileBaseURL : $scope.githubMaster.BaseURL;
+                    var subBaseURL1 = baseURL.substring(0, rawFileBaseURL.lastIndexOf("/"));
+                    var subBaseURL2 = subBaseURL1.substring(0, subBaseURL1.lastIndexOf("/"));
+                    $("div.htmlCode a").each(function () {
+                        var url = $(this).attr('href');
+                        if (url.startsWith('/') === false && url.includes('http') === false) {
+                            $(this).attr("href", baseURL + '/' + url);
+                        }
+
+                        if (url.includes('./')) {
+                            $(this).attr("href", url.replace('./', subBaseURL1 + '/'));
+                        }
+
+                        if (url.includes('../')) {
+                            $(this).attr("href", url.replace('../', subBaseURL2 + '/'));
+                        }
+                    });
+                }
+                //$("div.htmlCode a").each(function () {
+                //    $(this).attr('ng-click', 'scrollTo('+id+')');
+                //}); 
+                $("div.htmlCode a").each(function () {
+                    var url = $(this).attr('href');
+                    if (url.startsWith('#')) {
+                        $(this).attr("target", "_self");
+                        $(this).attr('ng-click', 'scrollTo(' + id + ')');
+                    } else {
+                        $(this).attr("target", "_blank");
+                    }
+                });
+                var h1ID;
+                $("div.htmlCode h1").each(function () {
+                    h1ID = $(this).attr('id');
+
+                });
+                $("div.htmlCode h2").each(function () {
+                    var h2ID = $(this).attr('id');
+                    var head = h2ID.replace(h1ID + '-', '');
+                    $(this).attr("id", h2ID.replace(h2ID, head));
+                });
+                $("div.htmlCode h3").each(function () {
+                    var h3ID = $(this).attr('id');
+                    var head = h3ID.replace(h1ID + '-', '');
+                    $(this).attr("id", h3ID.replace(h3ID, head));
+                });
+
+                // Self page navigation
+                $scope.scrollTo = function (id) {
+                    $location.hash(id);
+                    console.log($location.hash());
+                    $anchorScroll();
+                };
+                // Ends
+
+                //var orderList = $("ol");
+                //angular.forEach(orderList, function (element) {
+                //    var liList = $(element).children("li");
+                //    if (liList.length > 0) {
+                //        var outerHtml = "";
+                //        angular.forEach(liList, function (childElement) {
+                //            count++;
+                //            var taskStepModel = { Id: count, IsSelected: false };
+                //            $scope.page.taskModels.push(taskStepModel);
+                //            var selectedValue = count - 1;
+                //            var innerHtml = "<div class='md-ol-item'><div class='md-checkbox'><label class='container-checkbox' for='gitCheckBox_" + count + "'><input id='gitCheckBox_" + count + "' type='checkbox' ng-model='page.taskModels[" + selectedValue + "].IsSelected' data-progress='10' ng-change='checkedStatusChange()'></input><span class='checkmark'></span></label></div><li>";
+
+                //            innerHtml = innerHtml + childElement.innerHTML + "</li></div>";
+                //            outerHtml = outerHtml + innerHtml;
+
+                //        });
+
+                //        $(element).empty();
+                //        angular.element(element).append($compile(outerHtml)($scope));
+                //    }
+                //    else {
+                //        $scope.isValidLoad = false;
+                //    }
+
+                //});
+            }
+            //if ($scope.isValidLoad) {
+            //    var finalHtml = $("div.htmlCode").html();
+            //    ////$("div.htmlCode").empty();
+            //    $scope.pages[$scope.pageCount].pageHtml = finalHtml;
+            //    $scope.pages[$scope.pageCount].taskModels = $scope.page.taskModels;
+            //    //$scope.pages.push($scope.page);
+            //    $scope.pageCount++;
+            //}
+
+        });
+
+        $(document).on('flatdoc:error', function (e, err) {
+            e.stopImmediatePropagation();
+            console.log("error");
+        });
+
+        $scope.saveContinuousResponse = function (questionId, answerId) {
+            //if ($scope.attendeLabDetails.Questions.Type == "rating") {
+            $http.post(appConstant.apiRoot + serviceEndpoint.response + '/SaveQuestionresponse?pollid=' + $scope.pollData.data.Id + '&questionId=' + questionId + '&voucherCode=' + $scope.voucherCode + '&answer=' + answerId).then(function (response) {
+            });
+        };
+
+        $scope.getpolldata = function () {
+            $http.get(appConstant.apiRoot + serviceEndpoint.poll + '?uid=' + $scope.attendeLabDetails.SurveyGuid)
+                .then(function (response) {
+                    toSend['PollId'] = response.Id;
+                    $scope.pollData = response;
+                    $scope.questionModel = response.data.Questions;
+                    $rootScope.showSurvey = true;
+                    $scope.IsAttendeeVisitedSurvey = true;
+                    if ($scope.questionModel !== undefined && $scope.questionModel !== null && $scope.questionModel.length > 0) {
+                        var firstQuestionId = $scope.questionModel[0].Id;
+                        var questionElements = $('input[name="' + firstQuestionId + '"]');
+                    }
+                    $timeout($rootScope.getfocus, 500);
+                    $scope.heightAdjust('survey');
+                    $scope.labDocScroll = scrollHeight;
+
+                });
+
+        };
+
+        $rootScope.getfocus = function () {
+            angular.element('input[name="' + $scope.questionModel[0].Id + '"]').first().focus();
+        };
+
+        // Submit Data action for labguide page
+
+        $scope.submitSurveyResponse = function (source) {
+            temp = [];
+            var temp2, flag = 0;
+            //NOTE: split checkbox answers
+            for (var key in obj) {
+                $scope.questionModel.filter(function (question) {
+                    if (question.Type === 'checkbox' && question.Id === key) {
+                        temp2 = [];
+                        temp2 = obj[key].split(',');
+                        for (i = 0; i < temp2.length; i++) {
+                            temp.push({ 'QuestionId': key, 'Answer': temp2[i], 'QuestionType': 'checkbox' });
+                            flag = 1;
+                        }
+                    }
+                });
+                if (flag === 0) {
+                    temp.push({ 'QuestionId': key, 'Answer': obj[key] });
+                }
+                else {
+                    flag = 0;
+                }
+            }
+
+            //NOTE: Check whether any question was left unanswered. If unanaswered, include that question with no answer part.
+            for (i = 0; i < $scope.questionModel.length; i++) {
+                if (!obj.hasOwnProperty($scope.questionModel[i].Id)) {
+                    temp.push({ 'QuestionId': $scope.questionModel[i].Id, 'Answer': "" });
+                }
+            }
+            toSend['Responses'] = temp;
+            $http.post(appConstant.apiRoot + serviceEndpoint.response + '/UpdatePollResponse?pollid=' + $scope.pollData.data.Id + '&voucherCode=' + $scope.voucherCode, toSend).then(function (response) {
+                ModalService.showModal({
+                    templateUrl: '../app/views/shared/successModal.html',
+                    controller: "ModalController",
+                    inputs: {
+                        title: "Success",
+                        description: "Thank you for taking the survey!",
+                        failureButtonText: "",
+                        successButtonText: "OK"
+                    }
+                }).then(function (modal) {
+                    modal.element.modal();
+                    modal.close.then(function (result) {
+                        if (source === "labguidepage") {
+                            $rootScope.showSurvey = false;
+                        }
+                        else {
+                            $rootScope.showHeader = true;
+                            $rootScope.showfooter = true;
+                            $state.go("main.home");
+                        }
+                    });
+                });
+            })
+                .catch(function () {
+                    ModalService.showModal({
+                        templateUrl: '../app/views/shared/successModal.html',
+                        controller: "ModalController",
+                        inputs: {
+                            title: "Failed",
+                            description: "We ran into some unexpected trouble. Please try again later.",
+                            failureButtonText: "Cancel",
+                            successButtonText: "OK"
+                        }
+                    }).then(function (modal) {
+                        modal.element.modal();
+                        modal.close.then(function (result) {
+                            if (result === "Yes")
+                                $state.go("main.home");
+                        });
+                    });
+                });
+        };
+
+        $scope.selectedVal = function (qID, value) {
+            temp = [];
+            if (qID) {
+                // Continuous Saving of response (Rating Question)
+                $scope.questionModel.filter(function (question) {
+                    if (question.Type === 'rating' && question.Id == qID) {
+                        $scope.saveContinuousResponse(qID, value);
+                    }
+                });
+
+                $scope.questionModel.filter(function (question) {
+                    if (question.Type === 'text' && question.Id === qID) {
+                        if (value !== undefined && value !== "") {
+                            $scope.saveContinuousResponse(qID, value);
+                        }
+                    }
+                });
+
+                //TODO: Optimise for when question is of type checkbox
+                //NOTE: Store checkbox answers as one comma separated string 
+                $scope.questionModel.filter(function (question) {
+                    if (question.Type === 'radio' && question.Id === qID) {
+                        $scope.saveContinuousResponse(qID, value);
+                    }
+                });
+
+                $scope.questionModel.filter(function (question) {
+
+                    if (question.Type === 'checkbox' && question.Id === qID) {
+                        temp = value.filter(function (val) {
+                            return val.selected;
+                        });
+                    }
+                });
+                if (temp.length > 0) {
+                    value = [];
+                    for (i = 0; i < temp.length; i++) {
+                        value.push(temp[i].Id);
+                    }
+                    value = value.join(',');
+                }
+                temp = [];
+                obj[qID] = value;
+            }
+        };
+
+        $scope.loadVirtualMachines = function () {
+            $http.get(appConstant.apiRoot + '/api/AttendeeTestDrive/GetVirtualMachines/' + $scope.voucherCode).then(function (response) {
+                $scope.VirtualMachines = response.data;
+                angular.forEach($scope.VirtualMachines, function (vm) {
+                    if (vm.VMLaunchURL !== null) {
+                        $scope.rdpSRC = $sce.trustAsResourceUrl(vm.VMLaunchURL);
+                        return;
+                    }
+                });
+            });
+        };
+
+        $scope.docActions = false;
+
+        if ($state.current.name === 'main.gitDoc') {
+            $scope.docActions = true;
+            $scope.docWidth = "33.333333%";
+            $scope.smallScreen = true;
+        }
+
+        $scope.toggleDocument = function () {
+            $scope.showDocuemnt = !$scope.showDocuemnt;
+            if ($scope.showDocuemnt) {
+                $scope.loadMDFile();
+                SetScrollFunction();
+                $scope.handleGoTop();
+            }
+
+            //var iframeHtml = $window.parent.frames["iframeRDP"].contentWindow || $window.parent.frames["iframeRDP"].contentDocument;
+            //////$window.parent.frames["iframeRDP"].contentWindow.location.reload(true);
+            //////$window.parent.frames["iframeRDP"].src = "javascript:void(0)";
+            //$timeout(function () {
+            //    $window.parent.frames["iframeRDP"].src = $scope.rdpSRC;
+            //}, 5000);
+        };
+
+        $scope.openDocumentInTab = function () {
+            $scope.showDocuemnt = false;
+            $scope.smallScreen = false;
+            var newTabUrl = '/#/labguide/' + $scope.SelectedTestDriveUniqueName + '/' + $scope.voucherCode;
+            $window.open(newTabUrl, '_blank');
+        };
+
+        $scope.onIframeMouseOver = function () {
+            var activeElement = $window.document.activeElement;
+            var iframeObject = $window.parent.frames["iframeRDP"].contentWindow || $window.parent.frames["iframeRDP"].contentDocument;
+            iframeObject.focus();
+        };
+
+        $scope.pages = [];
+        $scope.pageCount = 0;
+        $scope.loadMDFile = function () {
+            var count = 0;
+            $scope.page = {
+                id: $scope.pageCount, pageHtml: "", taskModels: []
+            };
+            $scope.pages.push($scope.page);
+            $scope.isValidLoad = true;
+            if ($scope.selectedPage !== undefined && $scope.selectedPage !== null) {
+                console.log($scope.selectedPage.RawFilePath);
+                Flatdoc.run({
+                    fetcher: Flatdoc.file($scope.selectedPage.RawFilePath)
+                });
+            }
+        };
+
+        $scope.getHubFiles = [];
+        $scope.githubMaster = {};
+        $scope.getGitHubFiles = function () {
+            $rootScope.selectedLanguage = $cookies.get('CURRENT_LANGUAGE');
+            $http.get(appConstant.apiRoot + '/api/GitHubDoc/GetGitHubMaster/' + $scope.SelectedTestDriveUniqueName + '/' + $scope.voucherCode + '/' + $rootScope.selectedLanguage)
+                .then(function (response) {
+                    $scope.githubMaster = response.data;
+                    $scope.getHubFiles = $scope.githubMaster.Files;
+                    if ($scope.getHubFiles.length > 0) {
+                        $scope.selectedPage = $scope.getHubFiles[0];
+                    }
+                    $scope.navigationAnalytics.VoucherCode = $scope.voucherCode;
+                    $scope.navigationAnalytics.TotalPages = $scope.getHubFiles.length;
+
+                    if ($state.current.name === 'main.labtrial') {
+                        $scope.loadLabTrialEndPage();
+                    }
+                    else {
+                        createLabGuideNavigationAnalytics();
+                        $scope.loadMDFile();
+                    }
+
+                }, function errorCallback(response) {
+                    var errorMessage = response.status + response.statusText + response.data;
+                    $scope.githubMaster = { Name: errorMessage };
+                });
+        };
+
+        $scope.pageNavigation = function (usage) {
+            if (usage === "Next") {
+                $scope.handleGoTop();
+                $scope.firstpage = false;
+                $scope.currentPageCount = $scope.currentPageCount + 1;
+                if ($scope.currentPageCount === $scope.getHubFiles.length - 1) {
+                    $scope.lastpage = true;
+                }
+
+                createLabGuideNavigationAnalytics();
+            }
+            else if (usage === "Previous") {
+                
+                $scope.currentPageCount = $scope.currentPageCount - 1;
+                $scope.lastpage = false;
+                if ($scope.currentPageCount === 0) {
+                    $scope.firstpage = true;
+                }
+            }
+
+            if ($scope.currentPageCount < $scope.getHubFiles.length) {
+
+                $scope.selectedPage = $scope.getHubFiles[$scope.currentPageCount];
+            }
+            else {
+                $scope.selectedPage = $scope.getHubFiles[0];
+            }
+
+            $scope.loadMDFile();
+        };
+
+        $scope.loadLabViewDetails = function () {
+            $http.get(appConstant.apiRoot + serviceEndpoint.attendeeTestDrive + '/GetLabViewDetails/' + $scope.SelectedTestDriveUniqueName + '/' + $scope.voucherCode)
+                .then(function (response) {
+                    $scope.attendeLabDetails = response.data;
+                    $scope.EnvironmentStatus = $scope.attendeLabDetails.DeploymentStatus;
+
+                    if ($state.current.name === 'main.feedbacks') {
+                        $scope.getpolldata();
+                    }
+
+                    $scope.username = $scope.attendeLabDetails.AADEmail;
+                    $scope.password = $scope.attendeLabDetails.TempPassword;
+                    if ($scope.EnvironmentStatus === undefined || $scope.EnvironmentStatus === null) {
+                        $scope.EnvironmentStatus = "Deleted";
+                        var marginTopCal = $window.innerHeight / 2;
+                        if ($state.current.name === 'main.gitDoc') {
+                            marginTopCal = (marginTopCal - 57.5) + "px";
+                        }
+                        else {
+                            marginTopCal = (marginTopCal - 210) + "px";
+                        }
+
+                        $scope.deploymentEndStype = { "margin-top": marginTopCal };
+                        if ($state.current.name === 'main.labtrial') {
+                            $scope.EnvironmentStatus = "EndPage";
+                        }
+                    }
+
+                    //$http.get(appConstant.apiRoot + serviceEndpoint.poll + '?uid=' + $scope.attendeLabDetails.SurveyGuid)
+                    //    .then(function (response) {
+                    //        toSend['PollId'] = response.Id;
+                    //        $scope.pollData = response;
+                    //        $scope.questionModel = response.data.Questions;
+                    //    });
+
+                    //if ($scope.attendeLabDetails.VMLaunchURL !== undefined && $scope.attendeLabDetails.VMLaunchURL !== null && $scope.attendeLabDetails.VMLaunchURL.length > 0) {
+                    //    $scope.rdpSRC = $sce.trustAsResourceUrl($scope.attendeLabDetails.VMLaunchURL[0].LaunchURL);
+                    //}
+
+                    if ($scope.attendeLabDetails.StartTime !== undefined && $scope.attendeLabDetails.StartTime !== null && $scope.attendeLabDetails.Duration !== undefined && $scope.attendeLabDetails.Duration !== null) {
+                        getRemainingDuration($scope.attendeLabDetails.StartTime, $scope.attendeLabDetails.Duration);
+                    }
+
+                    if ($scope.vmLaunchURLId !== undefined && $scope.vmLaunchURLId !== null) {
+                        getVMLaunchURL();
+                    }
+
+                }, function errorCallback(response) {
+
+                });
+        };
+
+        function getVMLaunchURL() {
+            $http.get(appConstant.apiRoot + '/api/AttendeeTestDrive/GetVMLaunchURL/' + $scope.vmLaunchURLId)
+                .then(function (response) {
+                    $scope.rdpSRC = $sce.trustAsResourceUrl(response.data);
+                });
+        }
+
+        $scope.loadLabViewDetails();
+
+        $scope.confirmCopy = function () {
+            notifier.notify($filter('translate')("MESSAGE_COPIED"));
+        };
+
+        //Scroll to top
+        $scope.handleGoTop = function () {
+            var offset = 300;
+            var duration = 5;
+
+            if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {  // ios supported
+                $(window).bind("touchend touchcancel touchleave", function (e) {
+                    if ($(this).scrollTop() > offset) {
+                        $('.git-doc-next').fadeIn(duration);
+                    } else {
+                        $('.git-doc-next').fadeOut(duration);
+                    }
+                });
+            } else {  // general 
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > offset) {
+                        $('.git-doc-next').fadeIn(duration);
+                    } else {
+                        $('.git-doc-next').fadeOut(duration);
+                    }
+                    
+                });
+            }
+
+               $('.tab-content').animate({ scrollTop: 0 }, duration);
+        };
+        //Scroll to top close  
+        var height;
+        var footer;
+        var check;
+        $scope.handleContentHeight = function () {
+            var windowHeight = $window.innerHeight;
+            var container = $('.tab-content');
+            footer = $('.footer-fixed').outerHeight();
+            var header = $('.labheader').outerHeight();
+            height = windowHeight - (header + footer);
+            container.css('height', height);
+        };
+        $timeout(function () {
+            $scope.handleContentHeight();
+        }, 3000);
+        var appWindow = angular.element($window);
+        appWindow.bind('resize', function () {
+            console.log('Resized your browser');
+            $timeout($scope.handleContentHeight(), 5000);
+        });
+
+         $scope.heightAdjust = function (tab) {          
+             if (tab === 'labDetails') {
+                 $scope.labDetailsScroll = scrollHeight;
+                 $('.tab-content').animate({ scrollTop: $scope.environmentScroll});
+                $scope.heightWithoutFooter = height + footer;
+                $scope.handleContentHeight();
+            }
+            else if (tab === 'survey') {
+                $scope.handleContentHeight();
+                $scope.heightWithoutFooter = height;
+            }
+            else if (tab === 'labDoc')
+             {
+                $scope.environmentScroll = scrollHeight;
+                 $('.tab-content').animate({ scrollTop: $scope.labDetailsScroll});
+                $scope.handleContentHeight();
+                 if (footer === 0) {
+                    
+                    $scope.heightWithoutFooter = height - 55;
+                 }
+                 else if (footer === 20) {
+                     $scope.heightWithoutFooter = height - 35;
+                 }
+                 else if (height > 545)
+                {
+                    $scope.heightWithoutFooter = height - height * 5/100;
+                }
+                else {
+                    $scope.heightWithoutFooter = height;
+
+                }
+
+            }
+            else {
+                if ($scope.EnvironmentStatus !== "EndPage") {
+                    $scope.heightWithoutFooter = height;
+                }
+                else {
+                    $scope.heightWithoutFooter = height;
+                }
+            }
+        };
+
+        $scope.loadEndPage = function () {
+            $scope.deallocateEnvironment();
+        };
+
+        $scope.loadLabTrialEndPage = function () {
+            $scope.EnvironmentStatus = "EndPage";
+            $scope.selectedPage.RawFilePath = $scope.githubMaster.TrialEndPageURL;
+            $scope.loadMDFile();
+            $scope.heightWithoutFooter = $window.innerHeight;
+        };
+
+        $scope.onExit = function (event) {
+            var customMessage = "";
+            if ($scope.githubMaster.IsTrial && $scope.EnvironmentStatus !== "EndPage") {
+
+                var labTrialEndPageURL = appConstant.studentPortalUrl + '/#/labtrial/' + $scope.SelectedTestDriveUniqueName + '/' + $scope.voucherCode;
+                $window.open(labTrialEndPageURL, "_blank");
+                customMessage = "Please check the Call to action page.";
+                if (typeof event === 'undefined') {
+                    event = window.event;
+                }
+
+                if (event) {
+                    event.returnValue = customMessage;
+                }
+
+                return customMessage;
+            }
+            else if ($scope.attendeLabDetails !== undefined && $scope.attendeLabDetails !== null && $scope.attendeLabDetails.SurveyGuid !== null && $scope.IsAttendeeVisitedSurvey === false) {
+                customMessage = "Please Take Survey";
+                if (typeof event === 'undefined') {
+                    event = window.event;
+                }
+
+                if (event) {
+                    /* event.returnValue =*/
+                    $window.open(appConstant.studentPortalUrl + '#/feedbacks/' + $scope.SelectedTestDriveUniqueName + '/' + $scope.voucherCode, '_blank');
+                }
+
+                return customMessage;
+            }
+        };
+
+        $window.onbeforeunload = $scope.onExit;
+
+        $scope.BackToLabGuide = function () {
+            $scope.heightAdjust('labDoc');
+            $('.tab-content').animate({ scrollTop: $scope.labDocScroll});
+            $rootScope.showSurvey = false;
+        };
+
+        $scope.deallocateEnvironment = function () {
+            var labTrialEndPageURL = appConstant.studentPortalUrl + '/#/labtrial/' + $scope.SelectedTestDriveUniqueName + '/' + $scope.voucherCode;
+            if ($scope.attendeLabDetails !== undefined && $scope.attendeLabDetails !== null && $scope.attendeLabDetails.InternalId !== undefined && $scope.attendeLabDetails.InternalId !== null) {
+                ModalService.showModal({
+                    templateUrl: '../app/views/shared/modal.html',
+                    controller: "ModalController",
+                    inputs: {
+                        title: "Danger",
+                        description: "Proceeding with this action will start deallocating your resources, ending your Trial Lab. This action cannot be undone. Are you sure you want to proceed?",
+                        failureButtonText: "Cancel",
+                        successButtonText: "OK"
+                    }
+                }).then(function (modal) {
+                    modal.element.modal();
+                    modal.close.then(function (result) {
+                        if (result === 'Yes') {
+                            $scope.loadLabTrialEndPage();
+                            $http.get(appConstant.apiRoot + '/api/AttendeeTestDrive/CompleteTestDrive/' + encodeURIComponent($scope.attendeLabDetails.InternalId))
+                                .then(function (response) {
+
+                                });
+                        }
+                    });
+                });
+                ////$window.open(labTrialEndPageURL, "_self");
+
+            }
+            else {
+                $window.open(labTrialEndPageURL, "_self");
+            }
+        };
+
+
+
+        $scope.firstpage = true;
+        $scope.currentPageCount = 0;
+        $scope.lastpage = false;
+
+
+        angular.element(document).ready(function () {
+            $scope.getGitHubFiles();
+            if ($scope.getHubFiles.length > 0) {
+                $scope.selectedPage = $scope.getHubFiles[0];
+            }
+        });
+
+        function createLabGuideNavigationAnalytics() {
+            $scope.navigationAnalytics.VisitedPageNumber = $scope.currentPageCount + 1;
+            $http.post(appConstant.apiRoot + '/api/GitHubDoc/CreateNavigationAnalytics', $scope.navigationAnalytics)
+                .then(function (response) {
+
+                });
+        }
+
+        function getRemainingDuration(startTime, actualDuration) {
+            var start = moment.utc(startTime, "YYYY-MM-DD HH:mm:ss");
+            var current = moment.utc(new Date(), "HH:mm");
+            var duration = moment.duration(current.diff(start));
+
+            actualDuration = moment.duration(actualDuration, 'hours');
+            var remainingDuration = actualDuration.subtract(duration);
+            $scope.day = parseInt(remainingDuration.asDays());
+            //$scope.day = remainingDuration.get('days')
+            $scope.hours = remainingDuration.get('hours');
+            if ($scope.day > 0) {
+                var daysHours = $scope.day * 24;
+                $scope.hours = daysHours + $scope.hours;
+            }
+            $scope.minutes = remainingDuration.get('minutes');
+            countdown();
+        }
+      
+        SetScrollFunction();
+
+        var countDown;
+
+        function countdown() {
+            countDown = $timeout(function () {
+                $scope.minutes--;
+
+                if ($scope.minutes < 0) {
+                    $scope.minutes = 59;
+                    $scope.hours--;
+
+                    if ($scope.hours < 0) {
+                        stopTimerFunc();
+                    }
+                }
+
+                countdown();
+            }, 60000);
+        }
+
+        var timerStop = true;
+
+        function stopTimerFunc() {
+            if (timerStop) {
+                $timeout.cancel(countDown);
+                $scope.minutes = 0;
+                $scope.hours = 0;
+                $scope.EnvironmentStatus = "Deleting";
+                //stopTimer = false;
+            }
+        }
+        // Scroll restoration after navigate to the next page and come back
+        var scrollHeight;
+        var scrollSetting;
+        function SetScrollFunction() {
+            scrollSetting = $timeout(function () {
+                var tabContent = angular.element($(".tab-content"));
+                if (tabContent.length > 0) {
+                    tabContent.bind('scroll', function () {
+                        scrollHeight = $(".tab-content").scrollTop();
+                    });
+                    stopScrollSetting();
+                }
+                else {
+                    SetScrollFunction();
+                }
+            }, 1000);
+        }
+
+        function stopScrollSetting() {
+            $timeout.cancel(scrollSetting);
+        }
+
+        function reload() {
+            $scope.loadMDFile();
+        }
+
+        var docLodedValidation;
+        var count = 0;
+        function validatedocloaded() {
+            docLodedValidation = $timeout(function () {
+                count++;
+                var docContent = angular.element($("[role='flatdoc-content']"));
+                if (docContent.length > 0) {
+                    var htmlContent = docContent.html();
+                    if (htmlContent === "") {
+                        reload();
+                    }
+                    else {
+                        stopValidation();
+                    }
+                }
+                else {
+                    if (count < 10) {
+                        validatedocloaded();
+                    }
+                    else {
+                        stopValidation();
+                    }
+                }
+            }, 10000);
+        }
+
+        validatedocloaded();
+
+        function stopValidation() {
+            $timeout.cancel(docLodedValidation);
+        }
+    }
+})();

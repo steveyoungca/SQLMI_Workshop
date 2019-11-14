@@ -1,0 +1,415 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .controller('MockExamController', MockExamController);
+
+    MockExamController.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$window', '$location', '$sce', '$interval', '$timeout', 'notifier', 'DataService', '$http', 'appConstant', 'serviceEndpoint', 'adalAuthenticationService', 'ModalService', 'ngTableParams'];
+
+    /// <summary>
+    /// Controller for mock exam page.
+    /// </summary>
+    function MockExamController($scope, $rootScope, $state, $stateParams, $window, $location, $sce, $interval, $timeout, notifier, DataService, $http, appConstant, serviceEndpoint, adalService, ModalService, ngTableParams) {
+        $rootScope.showHeader = false;
+        $rootScope.showfooter = false;
+        $scope.height = $window.innerHeight;
+        $scope.open = false;
+        $scope.SelectedUserInviteLink = $stateParams.userInviteLink;
+        $scope.SelectedExamUniqueName = $stateParams.examId;
+        $scope.ExamMode = "TitlePage";
+        $scope.SwitchQuestion = true;
+        $scope.CurrentValues = {};
+        $scope.totalQuestions = 0;
+        $scope.SubmissionId = null;
+        $scope.tabValue = 'question';
+        var isPolling = false;
+        var polling;
+        $scope.seconds = 0;
+        $scope.minutes = 0;
+        $scope.hours = 0;
+        $scope.splitScreen = false;
+
+        if ($scope.SelectedExamUniqueName === undefined || $scope.SelectedExamUniqueName === null || $scope.SelectedUserInviteLink === undefined || $scope.SelectedUserInviteLink === null) {
+            notifier.notifyError("Invalid URL");
+            $state.go('main.home');
+        }
+
+        $http.get(appConstant.apiRoot + '/api/MockExam/GetMockExamByUid?uid=' + $scope.SelectedExamUniqueName + '&inviteLink=' + $scope.SelectedUserInviteLink)
+            .then(function (response) {
+                if (response.data === null) {
+                    notifier.notifyError("Invalid URL");
+                    $state.go('main.home');
+                }
+                else {
+                    $scope.MockExam = response.data;
+                    $scope.Sections = $scope.MockExam.Sections;
+                    for (var i = 0; i < $scope.Sections.length; i++) {
+                        $scope.totalQuestions = $scope.totalQuestions + $scope.Sections[i].Questions.length;
+                    }
+
+                    $scope.hours = parseInt($scope.MockExam.Duration / 60);
+                    $scope.minutes = $scope.MockExam.Duration % 60;
+                    //$scope.getResult();
+                }
+            },
+                function () {
+                    notifier.notifyError("Invalid URL");
+                    $state.go('main.home');
+                });
+
+        $scope.startExam = function () {
+            $http.get(appConstant.apiRoot + '/api/MockExam/CheckUserAttendedExam?examId=' + $scope.MockExam.Id + '&inviteLink=' + $scope.SelectedUserInviteLink)
+                .then(function (response) {
+                    if (response.data === true) {
+                        notifier.notifyError("User already took this exam. Please re-register to attend the exam again");
+                    }
+                    else {
+                        $scope.CurrentSection = $scope.Sections[0];
+                        $scope.CurrentSection.Instruction = $sce.trustAsHtml($scope.CurrentSection.Instruction);
+                        $scope.CurrentValues.CurrentSectionNumber = 1;
+                        //$scope.CurrentSection.Questions = $scope.Sections[0].Questions;
+                        $scope.CurrentQuestion = $scope.CurrentSection.Questions[0];
+                        $scope.CurrentValues.CurrentQuestionNumber = 1;
+                        $scope.CurrentValues.CurrentSectionQuestionNumber = 1;
+                        $scope.CurrentValues.CurrentSectionLastQuestionNumber = $scope.CurrentSection.Questions.length;
+
+                        if ($scope.CurrentSection.TypeId === 2 || $scope.CurrentSection.TypeId === 3) {
+                            deployOnDemandLabForUser();
+                        }
+
+                        $scope.ExamMode = "Instruction";
+                        countdown();
+                    }
+                },
+                    function () {
+                        notifier.notifyError("Invalid URL");
+                    });
+        };
+
+        $scope.StartSection = function () {
+             // Case Study
+            if ($scope.CurrentSection.TypeId === 4) {
+                $http.get(appConstant.apiRoot + '/api/MockExam/GetCaseStudy?sectionId=' + $scope.CurrentSection.Id).
+                    then(function (response) {
+                        $scope.CurrentCaseStudySteps = response.data;
+                        $scope.ExamMode = "InProgress";
+                    });
+            }
+            else {
+                $scope.ExamMode = "InProgress";
+                if ($scope.CurrentSection.TypeId === 2 || $scope.CurrentSection.TypeId === 3) {
+                    $scope.splitScreen = true;
+                }
+            }
+        };
+
+        $scope.previousQuestion = function () {
+            $scope.CurrentSection.Questions[$scope.CurrentValues.CurrentSectionQuestionNumber - 1] = $scope.CurrentQuestion;
+            $scope.CurrentQuestion = $scope.CurrentSection.Questions[$scope.CurrentValues.CurrentSectionQuestionNumber - 2];
+            $scope.CurrentValues.CurrentQuestionNumber = $scope.CurrentValues.CurrentQuestionNumber - 1;
+            $scope.CurrentValues.CurrentSectionQuestionNumber = $scope.CurrentValues.CurrentSectionQuestionNumber - 1;
+        };
+
+        $scope.nextQuestion = function () {
+            $scope.CurrentSection.Questions[$scope.CurrentValues.CurrentSectionQuestionNumber - 1] = $scope.CurrentQuestion;
+            $scope.CurrentQuestion = $scope.CurrentSection.Questions[$scope.CurrentValues.CurrentSectionQuestionNumber];
+            $scope.CurrentValues.CurrentQuestionNumber = $scope.CurrentValues.CurrentQuestionNumber + 1;
+            $scope.CurrentValues.CurrentSectionQuestionNumber = $scope.CurrentValues.CurrentSectionQuestionNumber + 1;
+        };
+
+        $scope.MockExamResponse = {};
+        $scope.MockExamResponse.Responses = [];
+        var temp = [];
+
+        $scope.submitSectionResponse = function () {
+            ModalService.showModal({
+                templateUrl: '../app/views/shared/modal.html',
+                controller: "ModalController",
+                inputs: {
+                    title: "Are you sure you want to continue with this action?",
+                    description: "Warning: This action will submit the answers for this section. Are you sure you want to proceed?",
+                    failureButtonText: "Cancel",
+                    successButtonText: "OK"
+                }
+            }).then(function (modal) {
+                modal.element.modal();
+                modal.close.then(function (result) {
+                    if (result === 'Yes') {
+                        $scope.MockExamResponse = { PollId: $scope.MockExam.Id, InviteLink: $scope.SelectedUserInviteLink, PollType: 'mockexam', SubmissionInternalId: $scope.SubmissionId };
+                        for (var i = 0; i < $scope.CurrentSection.Questions.length; i++) {
+                            if ($scope.CurrentSection.TypeId === 2) {
+                                temp.push({ 'QuestionId': $scope.CurrentSection.Questions[i].Id, 'AnswerId': null });
+                            }
+                            else {
+                                if ($scope.CurrentSection.Questions[i].Type === 'radio') {
+                                    if ($scope.CurrentSection.Questions[i].Response !== undefined) {
+                                        for (var j = 0; j < $scope.CurrentSection.Questions[i].Options.length; j++) {
+                                            if ($scope.CurrentSection.Questions[i].Options[j].Id === parseInt($scope.CurrentSection.Questions[i].Response)) {
+                                                temp.push({ 'QuestionId': $scope.CurrentSection.Questions[i].Id, 'AnswerId': $scope.CurrentSection.Questions[i].Options[j].Id });
+                                            }
+                                        }
+                                    }
+                                    //else {
+                                    //    temp.push({ 'QuestionId': $scope.CurrentSection.Questions[i].Id, 'AnswerId': 0 });
+                                    //}
+                                }
+                                else if ($scope.CurrentSection.Questions[i].Type === 'checkbox') {
+                                    for (var j = 0; j < $scope.CurrentSection.Questions[i].Options.length; j++) {
+                                        if ($scope.CurrentSection.Questions[i].Options[j].selected !== undefined && $scope.CurrentSection.Questions[i].Options[j].selected === true) {
+                                            temp.push({ 'QuestionId': $scope.CurrentSection.Questions[i].Id, 'AnswerId': $scope.CurrentSection.Questions[i].Options[j].Id });
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        $scope.MockExamResponse.Responses = temp;
+                        var url = appConstant.apiRoot + '/api/Response?pollId=' + $scope.MockExamResponse.PollId;
+                        if ($scope.CurrentSection.TypeId === 2) {
+                            url = appConstant.apiRoot + '/api/MockExam/CreateLabTaskResponse?inviteLink=' + $scope.SelectedUserInviteLink;
+                        }
+
+                        //Save Response
+                        $http.post(url, $scope.MockExamResponse)
+                            .then(function (response) {
+                                $scope.SubmissionId = response.data.SubmissionInternalId;
+                                $scope.splitScreen = false;
+                                temp = [];
+
+                                if ($scope.CurrentValues.CurrentSectionNumber !== $scope.Sections.length) {
+                                    $scope.CurrentSection = $scope.Sections[$scope.CurrentValues.CurrentSectionNumber];
+                                    $scope.CurrentSection.Instruction = $sce.trustAsHtml($scope.CurrentSection.Instruction);
+                                    //$scope.CurrentSection.Questions = $scope.Sections[$scope.CurrentValues.CurrentSectionNumber].Questions;
+                                    $scope.CurrentQuestion = $scope.CurrentSection.Questions[0];
+                                    $scope.CurrentValues.CurrentSectionNumber = $scope.CurrentValues.CurrentSectionNumber + 1;
+                                    $scope.CurrentValues.CurrentSectionQuestionNumber = 1;
+                                    $scope.CurrentValues.CurrentQuestionNumber = $scope.CurrentValues.CurrentSectionLastQuestionNumber + 1;
+                                    $scope.CurrentValues.CurrentSectionLastQuestionNumber = $scope.CurrentValues.CurrentQuestionNumber + $scope.CurrentSection.Questions.length - 1;
+                                    
+                                    $scope.ExamMode = "Instruction";
+                                    if ($scope.CurrentSection.TypeId === 2 || $scope.CurrentSection.TypeId === 3) {
+                                        deployOnDemandLabForUser();
+                                    }
+                                }
+                                else {
+                                    endExam();
+                                }
+                            })
+                            .catch(function (ex) {
+                                notifier.notifyError("Failed to save the request!");
+                            });
+                    }
+                });
+            });
+        };
+
+        function endExam() {
+            $scope.splitScreen = false;
+            $scope.ExamMode = "End";
+
+            $http.put(appConstant.apiRoot + '/api/MockExam/EvaluatePerformanceLabTestTasks?examId=' + $scope.MockExam.Id + '&inviteLink=' + $scope.SelectedUserInviteLink + '&submissionId=' + $scope.SubmissionId)
+                .then(function (response) {
+                    $scope.enableResultButton = true;
+                })
+                .catch(function (ex) {
+                    notifier.notifyError("Failed to evaluate performance lab tests!");
+                });
+        }
+        
+        $scope.getResult = function () {
+            $http.get(appConstant.apiRoot + '/api/MockExam/GetMockExamResult?examGuid=' + $scope.SelectedExamUniqueName + '&inviteLink=' + $scope.SelectedUserInviteLink + '&submissionId=' + $scope.SubmissionId)
+                .then(function (response) {
+                    $scope.ExamResult = response.data;
+                    $scope.ExamMode = "Result";
+                });
+        };
+
+        $scope.toggleScreen = function () {
+            $scope.open = !$scope.open;
+        };
+
+        $scope.confirmCopy = function () {
+            notifier.notify("Copied to clipboard");
+        };
+
+        var countDownTimer;
+        function countdown() {
+            countDownTimer = $timeout(function () {
+                $scope.seconds--;
+
+                if ($scope.seconds < 0) {
+                    $scope.seconds = 59;
+                    $scope.minutes--;
+
+                    if ($scope.minutes < 0) {
+                        $scope.minutes = 59;
+                        $scope.hours--;
+
+                        if ($scope.hours < 0) {
+                            //  Stop Exam
+                            endExam();
+                        }
+                    }
+                }
+                countdown();
+            }, 1000);
+        };
+
+        function deployOnDemandLabForUser() {
+            $scope.modeOfOperation = 'Initiation';
+            var url = appConstant.apiRoot + '/api/AttendeeTestDrive/InitiateDeployment/' + encodeURIComponent($scope.MockExam.EventInternalId);
+            if ($scope.SelectedUserInviteLink !== null || $scope.SelectedUserInviteLink !== undefined)
+                url = url + '/' + $scope.SelectedUserInviteLink;
+
+            $http.get(url)
+                .then(function (response) {
+                    $scope.DeployedInstance = response.data;
+                    if (response.data.Result !== null && response.data.Result.ErrorMessage !== undefined && response.data.Result.ErrorMessage === "Lab already completed") {
+                        $scope.modeOfOperation = 'Deployed';
+                    }
+                    else {
+                        $scope.modeOfOperation = 'Initiation';
+                        if (response.data.DeploymentStatus === "Succeeded") {
+                            $scope.modeOfOperation = 'In-Progress';
+                            $scope.loadVirtualMachines();
+                            //$scope.rdpSRC = $sce.trustAsResourceUrl("https://remote.cloudlabsqa.net/guacamole?uri=rdp:%2F%2Fdemouser:demopassword1!@104.42.74.89:3389%2F%3Fsecurity%3Dany%26ignore-cert%3Dtrue%26disable-audio%3Dtrue");
+                            //angular.forEach($scope.VirtualMachines, function (value) {
+                            //    if (value.VMLaunchURL !== null) {
+                            //        $scope.rdpSRC = $sce.trustAsResourceUrl(value.VMLaunchURL);
+                            //        return;
+                            //    }
+                            //});
+
+                            stopPolling();
+                        }
+                        else if (response.data.DeploymentStatus === "Policy failed after deployment succeeded") {
+                            $scope.modeOfOperation = 'Policy_Failed_After_Deployment';
+                        }
+                        else if (response.data.DeploymentStatus === "Failed") {
+                            $scope.modeOfOperation = 'Failed';
+                        }
+                        else if (response.data.DeploymentStatus === "Deleting") {
+                            $scope.modeOfOperation = 'Deallocating';
+                        }
+                        else if (response.data.DeploymentStatus === "Deleted") {
+                            $scope.modeOfOperation = 'Deallocated';
+                        }
+                        else {
+                            startPolling();
+                            $scope.modeOfOperation = 'Initiation';
+                        }
+                    }
+                })
+                .catch(function (ex) {
+                    //console.log(ex);
+                    if (ex.data.ErrorDetail === "Lab already completed") {
+                        $scope.modeOfOperation = 'Deployed';
+                    }
+                    else {
+                        $scope.error = ex.data.ErrorDetail;
+                        $scope.modeOfOperation = 'Failed';
+                    }
+                });
+        };
+
+        function startPolling() {
+            if (!isPolling) {
+                isPolling = true;
+                polling = $interval(deployOnDemandLabForUser, appConstant.pollIntervalInMinutes * 60000);
+            }
+        }
+
+        function stopPolling() {
+            if (isPolling) {
+                $interval.cancel(polling);
+                isPolling = false;
+            }
+        }
+
+        $scope.done = function () {
+            $http.get(appConstant.apiRoot + '/api/AttendeeTestDrive/CompleteTestDrive/' + encodeURIComponent($scope.DeployedInstance.InternalId))
+                .then(function (response) {
+                    if (response) {
+                        $scope.modeOfOperation = 'Deallocated';
+                    }
+                });
+
+            $state.go('main.home');
+        };
+
+        $scope.loadVirtualMachines = function () {
+            $http.get(appConstant.apiRoot + '/api/AttendeeTestDrive/GetVirtualMachines/' + $scope.SelectedUserInviteLink).then(function (response) {
+                $scope.VirtualMachines = response.data;
+                angular.forEach($scope.VirtualMachines, function (value) {
+                    if (value.VMLaunchURL !== null) {
+                        $scope.rdpSRC = $sce.trustAsResourceUrl(value.VMLaunchURL);
+                        return;
+                    }
+                });
+            });
+        };
+
+        $scope.expandFlag = false;
+        $scope.loadCaseStudyMaterial = function (step, source) {
+            $('li.active').removeClass('active');
+            $(this).addClass('active');
+            if (source === 'substep') {
+                $scope.expandTab();
+            }
+            else {
+                $scope.collapseTab();
+            }
+            
+            $scope.selectedPage = step;
+            $scope.loadMDFile();
+        };
+
+        $scope.expandTab = function () {
+            $scope.expandFlag = true;
+        };
+
+        $scope.collapseTab = function () {
+            $scope.expandFlag = false;
+        };
+
+        $scope.loadMDFile = function () {
+            $scope.isValidLoad = true;
+            if ($scope.selectedPage !== undefined && $scope.selectedPage !== null) {
+                Flatdoc.run({
+                    fetcher: Flatdoc.file($scope.selectedPage.RawFilePath)
+                });
+
+                $(document).on('flatdoc:ready', function (e) {
+                    e.stopImmediatePropagation();
+                    var code = $("div.htmlCode").html();
+                    if (code !== "") {
+                        $("div.htmlCode").empty();
+                        $("div.htmlCode").append(code);
+                        $("div.htmlCode img").css({ 'max-width': '100%' });
+                        $("div.htmlCode a").attr("target", "_blank");
+                        $("div.htmlCode p:contains('title:')").hide();
+                        $("#-redirect_from-labsvstscontinuousdeploymentindexhtm").hide();
+                        // Replace Image URLs
+                        var prefixURL = $scope.selectedPage.RawFilePath.substring(0, $scope.selectedPage.RawFilePath.lastIndexOf("/"));
+                        $("div.htmlCode img").each(function () {
+                            var url = $(this).attr('src');
+                            if (url.includes('../')) {
+                                prefixURL = prefixURL.substring(0, prefixURL.lastIndexOf("/") + 1);
+                                $(this).attr("src", url.replace('../', prefixURL));
+                            }
+                            else if (url.includes('./') || !url.includes('https://')) {
+                                prefixURL = $scope.selectedPage.RawFilePath.substring(0, $scope.selectedPage.RawFilePath.lastIndexOf("/") + 1);
+                                if (url.includes('./')) {
+                                    $(this).attr("src", url.replace('./', prefixURL));
+                                }
+                                else {
+                                    $(this).attr("src", prefixURL + url);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        };
+    }
+})();

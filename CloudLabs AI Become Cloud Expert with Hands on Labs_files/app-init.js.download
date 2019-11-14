@@ -1,0 +1,197 @@
+﻿(function () {
+    'use strict';
+
+    angular.module('cloudsandbox.studentportal')
+        .config(['$httpProvider', 'adalAuthenticationServiceProvider', 'cfpLoadingBarProvider', 'appConstant', 'insightsProvider', '$translateProvider', 'tmhDynamicLocaleProvider', function ($httpProvider, adalProvider, cfpLoadingBarProvider, appConstant, insightsProvider, $translateProvider, tmhDynamicLocaleProvider) {
+            cfpLoadingBarProvider.includeBar = true;
+            cfpLoadingBarProvider.includeSpinner = false;
+            adalProvider.init(
+                {
+                    instance: 'https://login.microsoftonline.com/',
+                    tenant: 'common', //'351bf0bf-59bc-4662-8cbe-499855225eab',
+                    clientId: appConstant.clientID, //from AppConstants
+                    extraQueryParameter: 'nux=1',//&prompt=consent',
+                    //    cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
+                },
+                $httpProvider
+            );
+            insightsProvider.start(appConstant.instrumentationKey);
+
+            $translateProvider.useStaticFilesLoader({
+                prefix: 'locale/locale-',
+                suffix: '.json?v=20190627'
+            });
+
+            $translateProvider.preferredLanguage('en-us');
+            $translateProvider.useCookieStorage();
+            $translateProvider.useMissingTranslationHandlerLog();
+            $translateProvider.fallbackLanguage('en-us');
+            tmhDynamicLocaleProvider.localeLocationPattern('/Scripts/i18n/angular-locale_{{locale}}.js');
+            tmhDynamicLocaleProvider.defaultLocale('en-us');
+            tmhDynamicLocaleProvider.useCookieStorage();
+        }])
+        .run(["$rootScope", "$state", "$translate", "tmhDynamicLocale", "$cookies", "$location", function ($rootScope, $state, $translate, tmhDynamicLocale, $cookies, $location) {
+            $rootScope.showPageHeading = true;
+            $rootScope.$on('$stateChangeStart', function (e, toState, toParams
+                , fromState, fromParams) {
+                if (toState.name === "main.testdrive" || toState.name === "main.testdriveuser") {
+                    $rootScope.showPageHeading = false;
+                }
+            });
+
+            $rootScope.dropdownChangeLanguage = function (language, key, imgkey, selectedTranslateKey) {
+                $rootScope.setLanguage(language, key, imgkey, selectedTranslateKey, true);
+            }
+
+            $rootScope.selectedLanguage = $cookies.get('CL_STP_CURRENT_LANGUAGE');
+            $rootScope.selectedLanguagekey = $cookies.get('CL_STP_NG_TRANSLATE_LANG_KEY');
+            $rootScope.imgName = $cookies.get('CL_STP_CURRENT_IMG_KEY');
+            $rootScope.setLanguage = function (language, key, imgkey, selectedTranslateKey, reloadWindow) {
+                $translate.use(key);
+                tmhDynamicLocale.set(key);
+                $rootScope.selectedLanguage = language;
+                $rootScope.selectedLanguagekey = key;
+                $rootScope.selectedTranslateKey = selectedTranslateKey;//$filter('translate')(languageKey);
+                $rootScope.imgName = imgkey;
+                $cookies.put('CL_STP_NG_TRANSLATE_LANG_KEY', $rootScope.selectedLanguagekey);
+                $cookies.put('CL_STP_CURRENT_LANGUAGE', $rootScope.selectedLanguage);
+                $cookies.put('CL_STP_CURRENT_IMG_KEY', $rootScope.imgName);
+
+                if (reloadWindow !== undefined && reloadWindow !== null && reloadWindow === true) {
+                    window.location.reload();
+                }
+            };
+
+            //// Change language via query string
+            var queryParamLanguage = $location.search().lang;
+            if (queryParamLanguage != undefined || queryParamLanguage != null) {
+                if (queryParamLanguage == 'en' && $cookies.get('CL_STP_CURRENT_LANGUAGE') != 'English') {
+                    $rootScope.setLanguage('English', 'en-us', 'us.png', 'BUTTON_LANG_EN', true);
+                }
+                if (queryParamLanguage == 'es' && $cookies.get('CL_STP_CURRENT_LANGUAGE') != 'Spanish') {
+                    $rootScope.setLanguage('Spanish', 'es', 'es.png', 'BUTTON_LANG_ES', true);
+                }
+            }
+            //// Set default language(English) if query parameter is empty
+            if ((queryParamLanguage == undefined || queryParamLanguage == null) && ($cookies.get('CL_STP_CURRENT_LANGUAGE') == null || $cookies.get('CL_STP_CURRENT_LANGUAGE') == undefined)) {
+                $rootScope.setLanguage('English', 'en-us', 'us.png', 'BUTTON_LANG_EN', false);
+            }
+        }])
+        .controller('AppController', ['$scope', '$location', '$state', '$rootScope', '$window', 'insights', 'appConstant', function ($scope, $location, $state, $rootScope, $window, insights, appConstant) {
+            $scope.constant = appConstant;
+            $rootScope.showHeader = true;
+            $rootScope.showfooter = true;
+            $rootScope.overflow = "scroll";
+            $scope.copyrightYear = new Date();
+            $window.ga('create', appConstant.googleKey, 'auto');
+            // track pageview on state change
+            $rootScope.$on('$stateChangeSuccess', function (event) {
+                if (appConstant.analyticsEnabled !== "False") {
+                    $window.ga('send', 'pageview', $location.$$url);
+                    insights.trackPageView($location.$$url);
+                }
+            });
+
+            $rootScope.handleContentHeight = function () {
+                var windowHeight = $window.innerHeight;
+                var container = $('.home-content');
+                var event = $('.events');
+                var header = $('.sub-header').outerHeight();
+                var footer = $('.main-footer').outerHeight();
+                var height = windowHeight - (header + footer);
+                container.css('min-height', height);
+                event.css('min-height', height);
+            };
+            var appWindow = angular.element($window);
+            appWindow.bind('resize', function () {
+                $rootScope.handleContentHeight();
+            });
+        }])
+        .controller('ModalController', function ($scope, title, description, failureButtonText, successButtonText, close) {
+            $scope.title = title;
+            $scope.description = description;
+            $scope.success = successButtonText;
+            $scope.failure = failureButtonText;
+            $scope.close = function (result) {
+                close(result, 500); // close, but give 500ms for bootstrap to animate
+            };
+
+            $scope.closeValidationWindow = function (result, IsSubmitted) {
+                result.IsSubmitted = IsSubmitted;
+                close(result, 500); // close, but give 500ms for bootstrap to animate
+            };
+
+        })
+        .controller('TicketModalController', function ($scope, $http, appConstant, title, workshopId, close) {
+            $scope.title = title;
+            $scope.selected = false;
+
+            $http.get(appConstant.apiRoot + '/api/WSTickets/Tickets?workshopId=' + workshopId)
+                .then(function (response) {
+                    initTicketSelected(response.data);
+                    $scope.workshopTicketsData = response.data;
+                });
+
+            $scope.selectTicket = function (ticket) {
+                initTicketSelected($scope.workshopTicketsData);
+                ticket.IsSelected = true;
+                $scope.selected = true;
+            }
+
+            function initTicketSelected(tickets) {
+                for (var i = 0; i < tickets.length; i++) {
+                    tickets[i].IsSelected = false;
+                }
+            }
+
+            $scope.close = function (result) {
+                close(result, 500); // close, but give 500ms for bootstrap to animate
+            };
+
+            $scope.submit = function () {
+                for (var i = 0; i < $scope.workshopTicketsData.length; i++) {
+                    if ($scope.workshopTicketsData[i].IsSelected)
+                        close($scope.workshopTicketsData[i], 500);
+                }
+            }
+        })
+        .filter('PascalConverter', function () {
+            return function (input) {
+                var abbrevationSet = ["SP", "VM", "DNS", "CCSE", "CCSA", "SQL", "VSX", "CDH", "AML", "SSH", "ADV"];
+                var splitString = input.split(" ");
+                var word = splitString[0];
+
+                if (/[A-Z]/.test(word)) {
+                    var temp = [];
+                    var position = 0;
+                    for (var i = 0; i < word.length; i++) {
+                        if (/[A-Z]/.test(word[i]) && /[a-z]/.test(word[i - 1])) {
+                            temp.push(word.slice(position, i));
+                            position = i;
+                        }
+                    }
+
+                    temp.push(word.slice(position, word.length));
+
+                    for (var i = 0; i < temp.length; i++) {
+                        if (abbrevationSet.indexOf(temp[i].toUpperCase()) !== -1)
+                            temp[i] = temp[i].toUpperCase();
+                    }
+
+                    temp[0] = temp[0].charAt(0).toUpperCase() + temp[0].slice(1);
+
+                    word = temp.join('');
+                }
+                else {
+                    if (abbrevationSet.indexOf(word.toUpperCase()) !== -1)
+                        word = word.toUpperCase();
+
+                    word = word.charAt(0).toUpperCase() + word.slice(1);
+                }
+
+                splitString[0] = word;
+                return splitString.join(" ");
+            };
+        });
+})();
+

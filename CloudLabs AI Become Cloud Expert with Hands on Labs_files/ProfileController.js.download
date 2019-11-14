@@ -1,0 +1,36 @@
+﻿angular.module('cloudsandbox.studentportal').controller('ProfileController', ['$rootScope', '$scope', '$http', '$state', 'serviceEndpoint', '$stateParams', 'DataService', '$location', function ($rootScope, $scope, $http, $state, serviceEndpoint, $stateParams, DataService, $location) {
+    $scope.$on('$viewContentLoaded', function () {
+        var vm = this;
+        var validfrom, dates, validuntil, instructors = [], i;
+
+        /// <summary>
+        /// Controls instructor page
+        /// </summary>
+        $scope.showRecog = true;
+        var instructorUniqueId = $location.absUrl().split('instructor/')[1];
+        DataService.getInstructor(instructorUniqueId).then(function (response) {
+            if (response != null) {
+                if (response.ProfileImageUrl == null || response.ProfileImageUrl == "")
+                    response.ProfileImageUrl = '../../assets/img/dummy-profile-pic.jpg';
+                $scope.profile = response;
+                dates = $scope.profile.Recognitions;
+                if (dates[0].Id == null)
+                    $scope.showRecog = false;
+
+                for (var i = 0; i < dates.length; i++) {
+                    validfrom = $scope.profile.Recognitions[i].ValidFrom
+                    $scope.from = moment(validfrom).format('MMMM Do YYYY');
+                    $scope.profile.Recognitions[i].ValidFrom = $scope.from;
+                    validuntil = $scope.profile.Recognitions[i].ValidUntil
+                    $scope.until = moment(validuntil).format('MMMM Do YYYY');
+                    $scope.profile.Recognitions[i].ValidUntil = $scope.until;
+                }
+            }
+            else
+            {
+                $state.go('main.error');
+            }
+        });
+
+    });
+}]);

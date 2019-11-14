@@ -1,0 +1,51 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .controller('EmailConfirmationController', EmailConfirmationController);
+
+    EmailConfirmationController.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$window', 'notifier', 'DataService', '$http', 'appConstant', 'serviceEndpoint'];
+
+    /// <summary>
+    /// Controller for email confirmation.
+    /// </summary>
+    function EmailConfirmationController($scope, $rootScope, $state, $stateParams, $window, notifier, DataService, $http, appConstant, serviceEndpoint) {
+
+        if ($state.params.confirmationUid === null || $state.params.emailType === null) {
+            $state.go("main.home");
+        }
+
+        $scope.responseReceived = false;
+
+        // Update Confirmation
+        $http.put(appConstant.apiRoot + '/api/CalendarTracks/UpdateTrackScheduleEmailConfirmation?confirmationGuid=' + $state.params.confirmationUid + '&emailType=' + $state.params.emailType)
+            .then(function (response) {
+                $http.get(appConstant.apiRoot + '/api/CalendarTracks/GetEmailConfirmationPage?confirmationGuid=' + $state.params.confirmationUid)
+                    .then(function (response) {
+                        $scope.responseReceived = true;
+                        $scope.ConfimationPage = response.data;
+                        $scope.LabSchedule = response.data.Schedule;
+                        $scope.startTime = new Date(0, 0, 0, $scope.LabSchedule.StartTime / 100, $scope.LabSchedule.StartTime % 100, 0, 0);
+                        notifier.notify("Thanks for your confirmation!");
+                    }, function () {
+                        $state.go("main.home");
+                    });
+            }, function () {
+                notifier.notifyError("Invalid URL");
+                $state.go("main.home");
+            });
+
+        $scope.confirmCopy = function () {
+            notifier.notify("Copied to clipboard");
+        };
+
+        $scope.goToSupportBridge = function () {
+            $window.open($scope.LabSchedule.SupportBridgeUrl, '_blank');
+        };
+
+        $scope.goToLabDetails = function () {
+            var reportURL = appConstant.powerBiPortalURL + "/#/home/reports/" + $scope.LabSchedule.EventUniqueName;
+            $window.open(reportURL, '_blank');
+        };
+    }
+})();

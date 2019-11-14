@@ -1,0 +1,33 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .controller('UnregisterController', UnregisterController);
+
+    UnregisterController.$inject = ['$scope', '$state', '$location', '$http', 'appConstant', 'serviceEndpoint'];
+    /// <summary>
+    /// Controls un-registration, comms with the API to show status
+    /// </summary>
+    function UnregisterController($scope, $state, $location, $http, appConstant, serviceEndpoint) {
+        var vm = this;
+        var data = $location.absUrl().split('?')[1];
+        $scope.ReturnToState = "main.home";
+        if (data) {
+            $http.put(appConstant.apiRoot + serviceEndpoint.workshopUser + '/UnRegisterViaEmailLink?data=' + data)
+            .then(function (response) {
+                if (response.data[0] === "duplicate")
+                    $scope.ActionToFix = "You have already cancelled your registration to " + response.data[1] + " from Microsoft Azure Training.";
+                else {
+                    $scope.ActionToFix = "Your request to unregister from Microsoft Azure Training on " + response.data[1] + " was successfully processed.";
+                }
+            })
+            .catch(function (ex) {
+                $scope.ActionToFix = "We're sorry! We faced some difficulty processing your request. Please try again.";
+            });
+        }
+        else {
+            $state.go("main.home");
+        }
+    }
+
+})();

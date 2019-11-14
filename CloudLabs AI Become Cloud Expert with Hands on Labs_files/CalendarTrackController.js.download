@@ -1,0 +1,102 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .controller('CalendarTrackController', CalendarTrackController);
+
+    CalendarTrackController.$inject = ['$scope', '$state', '$window', '$stateParams', '$location', '$sce', 'notifier', 'DataService', '$http', 'appConstant', 'serviceEndpoint', 'adalAuthenticationService', 'ModalService'];
+
+    function CalendarTrackController($scope, $state, $window, $stateParams, $location, $sce, notifier, DataService, $http, appConstant, serviceEndpoint, adalService, ModalService) {
+        $scope.CurrentTrack = {};
+        $scope.showCalendarTrackContent = false;
+        $scope.CalendarUniqueName = $stateParams.trackUniqueName;
+        $scope.searchLocation = '';
+        if (window.location.href.lastIndexOf('=') != -1) {
+            $scope.searchLocation = window.location.href.substr(window.location.href.lastIndexOf('=') + 1);
+        }
+        $scope.schedules = {};
+
+        if ($scope.CalendarUniqueName != null) {
+            getCalendarTrackData();
+        }
+        else {
+            getAllSchedules();
+        }
+
+        // Set search value
+        if ($scope.searchLocation != null) {
+            $scope.searchFlag = $scope.searchLocation;
+        }
+
+        // Get all schedules
+        function getAllSchedules() {
+            $http.get(appConstant.apiRoot + serviceEndpoint.calendarTrack + '/GetAllSchedules?location=' + $scope.searchLocation)
+                .then(function (response) {
+                    $scope.totalSchedules = response.data.length;
+                    $scope.schedules = response.data;
+                    for (var i = 0; i < $scope.totalSchedules; i++){
+                        $scope.schedules[i].Collapse = false;
+                    }
+                });
+        }
+
+        // manage icon in accordian
+        $scope.showMinusIcon = function (Id) {
+            for (var i = 0; i < $scope.totalSchedules; i++) {
+                if ($scope.schedules[i].Id == Id) {
+                    $scope.schedules[i].Collapse = !$scope.schedules[i].Collapse;
+                }
+                else{
+                    $scope.schedules[i].Collapse = false;
+                }
+            }
+        }
+
+        // Go to specific track
+        $scope.goToTrack = function (TrackUniqueName) {
+            var url = "/#/schedule/" + TrackUniqueName;
+            $scope.CalendarUniqueName = TrackUniqueName;
+            $window.open(url, '_self');
+            getCalendarTrackData();
+        }
+
+        // Get single calendar track
+        function getCalendarTrackData() {
+            $http.get(appConstant.apiRoot + serviceEndpoint.calendarTrack + '/GetCalendarTrackByUniqueName/' + $scope.CalendarUniqueName).then(function (response) {
+                $scope.CurrentTrack = response.data;
+                $scope.CurrentTrack.Description = $sce.trustAsHtml($scope.CurrentTrack.Description);
+                $scope.showCalendarTrackContent = true;
+            });
+        }
+
+        var today = new Date;
+        $scope.dateFilter = function (row) {
+           
+            if (row.Date >= moment(today).format('YYYY-MM-DD'))
+            {
+                return row;
+            }
+        }
+
+        $scope.shareToFacebook = function () {
+            var eventUrl = encodeURIComponent($location.absUrl());
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + eventUrl, '_blank', 'toolbar=0, location=0, directories=0, status=0, scrollbars=0, resizable=0, copyhistory=0, menuBar=0, width=640, height=480'); return (false);
+        }
+
+        $scope.shareToTwitter = function () {
+            var eventUrl = encodeURIComponent($location.absUrl());
+            var eventName = encodeURIComponent('Check out this hands-on lab - ' + $scope.CurrentTrack.Title + ' at');
+            //var url = "https://twitter.com/home?status=" + eventName + "%20" + eventUrl;
+            var twurl = "https://twitter.com/intent/tweet?url=" + eventUrl + "&text=" + eventName + "&hashtags=LearnItAll,DoItAll";;
+
+            window.open(twurl, '_blank', 'toolbar=0, location=0, directories=0, status=0, scrollbars=0, resizable=0, copyhistory=0, menuBar=0, width=640, height=480'); return (false);
+        }
+
+        $scope.shareToLinkedIn = function () {
+            var eventUrl = encodeURIComponent($location.absUrl());
+            var eventName = encodeURIComponent($scope.CurrentTrack.Title);
+            var url = "https://www.linkedin.com/shareArticle?mini=true&url=" + eventUrl + "&title=" + eventName + "&summary=Microsoft%20Cloud%20Workshops,%20from%20Spektra%20Systems&source=";
+            window.open(url, '_blank', 'toolbar=0, location=0, directories=0, status=0, scrollbars=0, resizable=0, copyhistory=0, menuBar=0, width=640, height=480'); return (false);
+        }
+    }
+})();

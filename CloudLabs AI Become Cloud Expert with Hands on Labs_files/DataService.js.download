@@ -1,0 +1,241 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .factory('DataService', DataService);
+
+    DataService.$inject = ['moment', 'appConstant', 'serviceEndpoint', '$http'];
+
+    function DataService(moment, appConstant, serviceEndpoint, $http) {
+        var i, obj, temp;
+        var workshops = [], instructors = [], testdrives=[];
+
+        function initInstructors() {
+            return $http.get(appConstant.apiRoot + serviceEndpoint.instructors)
+            .then(function (response) {
+                instructors = [];
+                for (i = 0; i < response.data.length; i++) {
+                    obj = {};
+                    obj["Id"] = response.data[i].Id;
+                    obj["Name"] = response.data[i].FirstName + '-' + response.data[i].LastName;
+                    instructors.push(obj);
+                }
+                return instructors;
+            })
+            .catch(function (error) {
+                console.log("Error: ");
+                console.log(error);
+            });
+        }
+
+        function getInstructor(id) {
+            return $http.get(appConstant.apiRoot + serviceEndpoint.instructor + id)
+            .then(function (response) {
+                return response.data;
+            })
+            .catch(function (error) {
+                console.log("Error: ");
+                console.log(error);
+            });
+        }
+
+        function getPoll(id) {
+            return $http.get(appConstant.apiRoot + serviceEndpoint.poll + '?uid=' + id)
+            .then(function (response) {
+                return response.data;
+            })
+            .catch(function (error) {
+                throw error;
+            })
+        }
+
+        function sendResponse(data) {
+            
+            return $http.post(appConstant.apiRoot + '/api/Response?PollId=' + data.PollId, data)
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (response) {
+                console.log("Error");
+                console.log(response);
+            })
+        }
+
+        function getAllWorkshops()
+        {
+            return $http.get(appConstant.apiRoot + serviceEndpoint.workshop)
+                .then(function (response) {
+                    return transformWorkshopEvents(response.data);
+                });
+        }
+
+        function transformWorkshopEvents(rawWorkshopsData) {
+            workshops = [];
+            for (i = 0; i < rawWorkshopsData.length; i++) {
+                obj = {};
+                obj["Name"] = rawWorkshopsData[i].Title;
+                obj["Uid"] = rawWorkshopsData[i].Uid;
+                obj["Sponsor"] = rawWorkshopsData[i].SponsorName;
+                obj["Date"] = rawWorkshopsData[i].StartDate;
+                obj["StartDate"] = moment(rawWorkshopsData[i].StartDate).format('D');
+                obj["StartMonth"] = moment(rawWorkshopsData[i].StartDate).format('MMMM');
+                obj["StartTime"] = formatTime(rawWorkshopsData[i].StartTime);
+                obj["EndTime"] = formatTime(rawWorkshopsData[i].EndTime);
+                obj["EventType"] = rawWorkshopsData[i].LocationType;
+                obj["TimeZone"] = rawWorkshopsData[i].TimeZone;
+                obj["EventState"] = rawWorkshopsData[i].EventState;
+                obj["LocationType"] = rawWorkshopsData[i].LocationType;
+                obj["UniqueName"] = rawWorkshopsData[i].UniqueName;
+                if (rawWorkshopsData[i].LocationType == 2) {
+                    temp = JSON.parse(rawWorkshopsData[i].Location);
+                    var addressFields = [];
+                    if (temp.address1 !== null) { addressFields.push(temp.address1); }
+                    if (temp.address2 !== null) { addressFields.push(temp.address2); }
+                    if (temp.city !== null) { addressFields.push(temp.city); }
+                    if (temp.state !== null) { addressFields.push(temp.state); }
+                    if (temp.country !== null) { addressFields.push(temp.country); }
+                    if (temp.zip !== null) { addressFields.push(temp.zip); }
+                    obj["Location"] = addressFields.join(' ');
+                }
+                else
+                    obj["Location"] = rawWorkshopsData[i].Location;
+
+                var today = new Date;
+                var todayformat = moment(today).format('YYYY-MM-DD');
+                if (obj["Date"] >= todayformat && obj["EventState"] != "Completed") {
+                    workshops.push(obj);
+                }
+            }
+            localStorage.setItem("workshops", JSON.stringify(workshops));
+            return workshops;
+        }
+
+        function getWorkshopData(uId) {
+            return $http.get(appConstant.apiRoot + serviceEndpoint.workshop + "?uniqueName=" + uId)
+                        .then(function (response) {
+                            obj = {};
+                            obj["Id"] = response.data.Id;
+                            obj["InternalId"] = response.data.InternalId;
+                            obj["Title"] = response.data.Title;
+                            obj["SponsorName"] = response.data.SponsorName;
+                            obj["ContactEmail"] = response.data.ContactEmail;
+                            obj["Description"] = response.data.Description;
+                            obj["Date"] = response.data.StartDate;
+                            obj["StartDate"] = moment(response.data.StartDate).format('D');
+                            obj["StartMonth"] = moment(response.data.StartDate).format('MMMM');
+                            obj["StartTime"] = formatTime(response.data.StartTime);
+                            obj["EndTime"] = formatTime(response.data.EndTime);
+                            obj["LocationType"] = response.data.LocationType;
+                            obj["TimeZone"] = response.data.TimeZone;
+                            obj["IsMaxCountReach"] = response.data.IsMaxCountReach;
+                            obj["IsMaxWaitlistCountReach"] = response.data.IsMaxWaitlistCountReach;
+                            obj["EventState"] = response.data.StatusId;
+                            obj["SupportSocialSignup"] = response.data.AllowPersonalEmailAddressesForRegistration;
+                            obj["IsPaid"] = response.data.IsPaid;
+                            obj["Notes"] = response.data.AdditionalNotes;
+                            obj["Language"] = response.data.Language;
+                            obj["EventBannerText"] = response.data.CustomTitle;
+                            obj["PartnerName"] = response.data.PartnerName;
+                            obj["PartnerLogo"] = response.data.PartnerLogo;
+                            obj["CustomPrivacyUrl"] = response.data.CustomPrivacyUrl;
+                            obj["CustomPrivacyStatement"] = response.data.CustomPrivacyStatement;
+                            obj["PublicName"] = response.data.PublicName;
+                            obj["UniqueName"] = response.data.UniqueName;
+                            obj["Tags"] = response.data.Tags;
+                            if (response.data.LocationType == 2) {
+                                temp = JSON.parse(response.data.Location);
+                                var addressFields = [];
+                                if (temp.address1 !== null) { addressFields.push(temp.address1); }
+                                if (temp.address2 !== null) { addressFields.push(temp.address2); }
+                                if (temp.city !== null) { addressFields.push(temp.city); }
+                                if (temp.state !== null) { addressFields.push(temp.state); }
+                                if (temp.country !== null) { addressFields.push(temp.country); }
+                                if (temp.zip !== null) { addressFields.push(temp.zip); }
+                                obj["Location"] = addressFields.join(' ');
+                            }
+                            else
+                                obj["Location"] = response.data.Location;
+                            return $http.get(appConstant.apiRoot + serviceEndpoint.instructors + '/GetInstructorsByEventId/' + response.data.Id)
+                             .then(function (response) {
+                                 instructors = response.data;
+                            for (var j = 0; j < instructors.length; j++) {
+                                if (response.data.InstructorId == instructors[j].Id) {
+                                    obj["Instructor"] = instructors[j].FirstName + ' ' + instructors[j].LastName;
+                                    obj["InstructorLink"] = "#/instructor/" + instructors[j].FirstName + '-' + instructors[j].LastName;
+                                }
+                            }
+                            return obj;
+                        })
+                        .catch(function (error) {
+                            console.log("Error " + JSON.stringify(error));
+                            throw error;
+                        });
+                });
+        }
+
+        function getAllTestDrives() {
+            return $http.get(appConstant.apiRoot + serviceEndpoint.testdrive)
+                .then(function (response) {
+                    localStorage.setItem("testdrives", JSON.stringify(response.data));
+                    return response.data;
+                });
+        }
+
+        function getTestDriveData(Id) {
+            return $http.get(appConstant.apiRoot + serviceEndpoint.testdrive + "?Id=" + Id)
+                .then(function (response) {
+                    obj = {};
+                    obj["Id"] = response.data.Id;
+                    obj["TestDriveName"] = response.data.Name;
+                    obj["Description"] = response.data.Description;
+                    obj["ExpiryDate"] = moment(response.data.StartDate).format('DD/MM/YYYY');
+                    obj["Hours"] = moment(response.data.duration).format('HH');
+                    obj["Minutes"] = moment(response.data.duration).format('mm');
+                    obj["Workshop"] = response.data.WorkshopName;
+                    obj["Partner"] = response.data.Partner;
+                    obj["PartnerLogo"] = response.data.PartnerLogo;
+                    obj["Tags"] = response.data.Tags;
+                    obj["Video"] = response.data.Video;
+                    return obj;
+                })
+                .catch(function (error) {
+                    console.log("Error " + JSON.stringify(error));
+                    throw error;
+                });
+        }
+
+        function formatTime(time) {
+            var d = new Date(1, 1, 1, Math.floor(time / 100), (time % 100), 0, 0);
+            return moment(d).format("hh:mm a");
+        }
+
+        function getVideoId(videoUrl)
+        {
+            var videoId;
+            if (videoUrl.includes("vimeo")) {
+                videoId = videoUrl.split("vimeo.com/")[1];
+                videoId = videoId.split("/")[0];
+            }
+            else if (videoUrl.includes("youtube")) {
+                videoId = videoUrl.split("watch?v=")[1];
+                videoId = videoId.split("/")[0];
+            }
+
+            return videoId;
+        }
+
+        return {
+            getWorkshopData: getWorkshopData,
+            getTestDriveData:getTestDriveData,
+            initInstructors: initInstructors,
+            getInstructor: getInstructor,
+            getPoll: getPoll,
+            sendResponse: sendResponse,
+            getAllWorkshops: getAllWorkshops,
+            getAllTestDrives: getAllTestDrives,
+            transformWorkshopEvents: transformWorkshopEvents,
+            getVideoId: getVideoId
+        }
+    }
+
+})();

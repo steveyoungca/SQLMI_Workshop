@@ -1,0 +1,125 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .controller('PrivateSubscriptionController', PrivateSubscriptionController);
+
+    PrivateSubscriptionController.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$window', '$location', '$sce', '$interval', '$timeout', 'notifier', 'DataService', '$http', 'appConstant', 'serviceEndpoint', 'adalAuthenticationService', 'ModalService', 'ngTableParams', '$filter'];
+
+    function PrivateSubscriptionController($scope, $rootScope, $state, $stateParams, $window, $location, $sce, $interval, $timeout, notifier, DataService, $http, appConstant, serviceEndpoint, adalService, ModalService, ngTableParams, $filter) {
+        $window.scrollTo(0, 0);
+        $scope.SelectedTestDriveUniqueName = $stateParams.testdriveId;
+        $scope.CurrentSubscription = { Id: null };
+
+        if ($scope.SelectedTestDriveUniqueName == undefined)
+            $state.go('main.home');
+
+        function getTestDriveData() {
+            $http.get(appConstant.apiRoot + serviceEndpoint.attendeeTestDrive + '/OnDemandLab/' + $scope.SelectedTestDriveUniqueName)
+                .then(function (response) {
+                    response.data.Description = $sce.trustAsHtml(response.data.Description);
+                    $scope.CurrentTestDrive = response.data;
+                    if (!$scope.CurrentTestDrive.EnablePrivateSubscriptions){
+                        $state.go('main.home');
+                    }
+                    $scope.changeModeTo('ListSubscription');
+                })
+                .catch(function (response) {
+                    $state.go('main.error');
+                });
+        };
+
+        getTestDriveData();
+
+        $scope.changeModeTo = function (mode) {
+            if (mode == 'ListSubscription') {
+                $scope.getSubscription();
+                $scope.privateSubscriptionMode = mode;
+            }
+            else if (mode == 'AddSubscription') {
+                if (this.frmManageSubscription != undefined) {
+                    this.frmManageSubscription.$setPristine();
+                }
+                $scope.privateSubscriptionMode = 'Manage';
+            }
+            else {
+                $scope.privateSubscriptionMode = 'Manage';
+            }
+        }
+
+        $scope.getSubscription = function () {
+            $scope.privateSubscriptionDataSource = new ngTableParams({ page: 1, count: 25 }, {
+                total: 0,
+                getData: function ($defer, params) {
+                    $http.get(appConstant.apiRoot + '/api/PrivateSubscriptions/GetSubscriptionsByEventId?internalId=' + encodeURIComponent($scope.CurrentTestDrive.InternalId)).
+                        then(function (response) {
+                            $scope.data = params.sorting() ? $filter('orderBy')(response.data, params.orderBy()) : response.data;
+                            params.total($scope.data.length);
+                            $defer.resolve($scope.data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                        })
+                        .catch(function (ex) {
+                            $state.go("home.setup");
+                        });
+                }
+            });
+        }
+
+        $scope.submitSubscription = function () {
+            this.frmManageSubscription.$submitted = true;
+            if (this.frmManageSubscription.$valid) {
+                if ($scope.CurrentSubscription.Id == null) {
+                    $http.post(appConstant.apiRoot + '/api/PrivateSubscriptions/CreatePrivateSubscription?internalId=' + encodeURIComponent($scope.CurrentTestDrive.InternalId), $scope.CurrentSubscription)
+                        .then(function (response) {
+                            notifier.notify("Your subscription is added successfully");
+                            $scope.EditFlag = false;
+                            $scope.changeModeTo('ListSubscription');
+                        });
+                }
+                else {
+                    $http.put(appConstant.apiRoot + '/api/PrivateSubscriptions/EditPrivateSubscription', $scope.CurrentSubscription)
+                        .then(function (response) {
+                            notifier.notify("Your subscription is updated successfully");
+                            $scope.EditFlag = false;
+                            $scope.CurrentSubscription = {};
+                            $scope.changeModeTo('ListSubscription');
+                        });
+                }
+            }
+        };
+
+        $scope.editSubscription = function (row) {
+            $scope.EditFlag = true;
+            $scope.CurrentSubscription = row;
+            $scope.changeModeTo('EditSubscription');
+        };
+
+        $scope.removeSubscription = function (row) {
+            $http.put(appConstant.apiRoot + '/api/PrivateSubscriptions/RemovePrivateSubscription?internalId=' + encodeURIComponent($scope.CurrentTestDrive.InternalId), row)
+                .then(function (response) {
+                    if (response.data.Status == 'Error') {
+                        notifier.notifyError(response.data.ErrorMessage);
+                    }
+                    else {
+                        notifier.notify("Your subscription is removed successfully");
+                        $scope.changeModeTo('ListSubscription');
+                    }
+                });
+        };
+
+        $scope.addSubscription = function () {
+            $scope.EditFlag = true;
+            $scope.CurrentSubscription = { Id: null };
+            $scope.changeModeTo('AddSubscription');
+        }
+
+        $scope.discardChanges = function () {
+            $scope.CurrentSubscription = {};
+            $scope.changeModeTo('ListSubscription');
+        }
+
+        $('.carousel-control').click(function (e) {
+            e.preventDefault();
+            $('#myCarousel').carousel($(this).data());
+        });
+    }
+})();

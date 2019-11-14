@@ -1,0 +1,81 @@
+﻿(function () {
+    'use strict';
+    angular
+        .module('cloudsandbox.studentportal')
+        .controller('MainController', MainController);
+
+    MainController.$inject = ['$scope', '$state', '$window', '$sce', 'DataService', 'ModalService', 'adalAuthenticationService', 'appConstant', '$http', '$timeout', '$rootScope', '$translate', 'tmhDynamicLocale', '$cookies'];
+    /// <summary>
+    /// Main page controller
+    /// </summary>
+    function MainController($scope, $state, $window, $sce, DataService, ModalService, adalService, appConstant, $http, $timeout, $rootScope, $translate, tmhDynamicLocale, $cookies) {
+        var vm = this;
+        $scope.loginRedirect = appConstant.loginRedirect;
+        $scope.attendeePortalURL = appConstant.attendeePortalURL;
+        //DataService.getWorkshopData().then(function (data) {
+        //    $scope.total = data.length;
+        //    $scope.workshops = data;
+        //    //console.log(data);
+        //});
+        
+        //var selectedTestDriveBeforeRedirect = localStorage.getItem("selectedTestDrive");
+
+        //if (selectedTestDriveBeforeRedirect) {
+        //    localStorage.removeItem("selectedTestDrive");
+        //    $state.go('main.testdrive', { testdriveId: selectedTestDriveBeforeRedirect });
+        //}
+        //else {
+
+        DataService.getAllWorkshops().then(function (data) {
+            $http.get(appConstant.apiRoot + '/api/ClientSettings/Get')
+                .then(function (response) {
+                    $scope.constant.mainHeading = response.data.Data.MainHeading;
+                    $scope.constant.privacyPolicyLink = response.data.Data.PrivacyPolicyLink;
+                    $scope.constant.copyrightMessage = response.data.Data.CopyrightMessage;
+                });
+                
+                $scope.total = data.length;
+                $scope.workshops = data;
+           });
+
+            DataService.getAllTestDrives().then(function (data) {
+                $scope.totalTestDrives = data.length;
+                $scope.testdrives = data;
+                for (var i = 0; i < $scope.testdrives.length; i++) {
+                    $scope.testdrives[i].Description = $sce.trustAsHtml($scope.testdrives[i].Description);
+                }
+            });
+        //}
+
+        vm.goToWorkshop = function (uniqueName) {
+            var url = "/#/event?" + uniqueName;
+            $window.open(url, '_self');
+        };
+
+        vm.goToTestDrive = function (testdriveId) {
+            var url = "/#/testdrive?" + testdriveId;
+            $window.open(url, '_self');
+        };
+
+        ////vm.handleContentHeight = function () {
+        ////    var windowHeight = $window.innerHeight;
+        ////    var container = $('.home-content');
+        ////    var event = $('.events');
+        ////    var header = $('.sub-header').outerHeight();
+        ////    var footer = $('.main-footer').outerHeight();
+        ////    var height = windowHeight - (header + footer);
+        ////    container.css('min-height', height);
+        ////    event.css('min-height', height);
+        ////};
+
+        $timeout(function () {
+            $rootScope.handleContentHeight();
+        }, 500);
+
+        ////var appWindow = angular.element($window);
+        ////appWindow.bind('resize', function () {
+        ////    vm.handleContentHeight();
+        ////});
+    }
+
+})();
